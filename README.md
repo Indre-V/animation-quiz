@@ -1,39 +1,51 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Ultimate Animation Quiz
 
-Welcome,
+[Link to Animation Quiz Website](https://indre-v.github.io/animation-quiz/)
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+The Ultimate Animation quiz offers apportunity to test knowledge at three levels in animation including cartoons. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+Players have the option provide feedback to website creators.
 
-## Codeanywhere Reminders
+![Animation-Quiz](docs/animation-quiz-responsive-display.png)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+# Contents
 
-`python3 -m http.server`
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+## User Goals
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+* User friendly navigation.
+* Non distracting background.
+* Opportunity to provide feedback.
+* Clear instructions written in plain English.
+* Relevant questions in the quiz.
+* Fair scoring system.
 
-`http_server`
+## User Stories 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+* As a user, I want my knowledge to be challenged.
+* As a user, I want to be able to test my knowledge at different levels.
+* As a user, I want to able to be able to share my results on social media.  
+* As a user, I want the instructions to be clear, concise and easily accessible. 
+* As a user, I want navigation to be intuitive.
+* As a user, I want the score system to be transparent.
+* As a user, I want to be able to use website on range of devices.
+* As a user, I want to be able to easily contact content creators for feedback or changes.
+* As a user, I want the content to be accessible for anyone with diverse needs.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+## Website Goals and Objectives
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+* Provide entertainment and enjoyment for users whilst testing their knowledge.
+* Offer useful and accurate content that entices user to spend time on website.
+* Invite users to provide feeback.
+* Integrate accessibility features with high accessibility rating and diverse user audience. 
+* Increase overall website traffic by increasing rankings on search engine.
+* Invite users to share results on Social media to imcrease user interaction.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+[Back to top](#contents)
 
----
+## Wireframes
 
-Happy coding!
+
+
