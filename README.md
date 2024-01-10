@@ -2,7 +2,7 @@
 
 [Link to Animation Quiz Website](https://indre-v.github.io/animation-quiz/)
 
-The Ultimate Animation quiz offers apportunity to test knowledge at three levels in animation including cartoons. 
+The Ultimate Animation quiz offers an opportunity to test knowledge at three levels in animation including cartoons. 
 
 Players have the option provide feedback to website creators.
 
@@ -126,17 +126,86 @@ Layout is easy to use and adheres to best practices in formatting and styling. T
 
 ### Header
 
+This webpage has a header consistent across all screen sizes. It contains a logo on the left, Intstructions and Feddback sections on the right. 
+
+![Header large screen](docs/header-full-screen.png)
+
+
 #### Intructions
+
+<details><summary><b>Instructions View</b></summary>
+
+![Instructions](docs/instructions.png)
+
+</details><br/>
 
 #### Feedback
 
+<details><summary><b>Feedback Form</b></summary>
+
+![Feedback](docs/feedback.png)
+
+</details><br/>
+
+#### Feedback Confirmation
+
+Provides the user with aknowledgement and option to return back to the game after the form has been submitted. 
+
+<details><summary><b>Feedback Confirmation Page</b></summary>
+
+![Feedback Confirmation](docs/feedback-confirm.png)
+
+</details><br/>
+
+[Back to top](#contents)
+
 ### Landing View
+
+<details><summary><b>Landing View Large Screen</b></summary>
+
+![Landing View Large Screen](docs/landing-view-ml-screen.png)
+
+</details><br/>
+
+_Small Screen Devices_ 
+
+<details><summary><b>Landing View Small Screen</b></summary>
+
+![Landing View Small Screen](docs/landing-view-small-screen.png)
+
+</details><br/>
+
+[Back to top](#contents)
 
 ### Question View
 
+[Back to top](#contents)
+
 ### Final Score View
 
+[Back to top](#contents)
+
 ### Footer
+
+<details><summary><b>Footer All Screen Sizes</b></summary>
+
+![Footer](docs/footer.png)
+
+</details><br/>
+
+[Back to top](#contents)
+
+### 404 Page
+
+In a scenario where the link may be broken, 404 page provides the option to return  to the main page.
+
+<details><summary><b>404 Page Screenshot</b></summary>
+
+![404 Page](docs/404-page.png)
+
+</details><br/>
+
+[Back to top](#contents)
 
 ## Future Enhancements
 
@@ -171,6 +240,7 @@ Layout is easy to use and adheres to best practices in formatting and styling. T
 * [Balsamiq](https://balsamiq.com/wireframes/ "Balsamiq")
 * [W3C HTML Validation Service](https://validator.w3.org/ "W3C HTML")
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/ "W3C CSS")
+* [JSHint](https://jshint.com/ "JSHint")
 * [TOC Generator](https://ecotrust-canada.github.io/markdown-toc/ "TOC Generator")
 * [Am I Responsive](https://ui.dev/amiresponsive "Am I responsive")
 * [Responsive Design Checker](https://responsivedesignchecker.com/ "Responsive Design Checker")
@@ -236,7 +306,7 @@ Layout is easy to use and adheres to best practices in formatting and styling. T
 
 ## To deploy the project
 
-Bee-Aware was deployed early in the process to GitHub pages via the following steps:
+The Ultimate Animation Quiz was deployed early in the process to GitHub pages via the following steps:
 
 - Navigate to the repository on GitHub and click on **Settings**.
 
@@ -272,6 +342,8 @@ Forking the GitHub repository allows you to create a duplicate of a local reposi
 - Type git clone, and then paste the URL you copied earlier.
 - Press Enter to create your local clone.
 
+[Back to top](#contents)
+
 # Credits
 
 - Feedback, advice and support:
@@ -294,6 +366,9 @@ Forking the GitHub repository allows you to create a duplicate of a local reposi
   - [Contrast Grid](https://contrast-grid.eightshapes.com/ "Contrast Grid")
 
 * Images:
+
+
+[Back to top](#contents)
 
 
 
