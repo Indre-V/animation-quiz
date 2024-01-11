@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200;300;400;500;600&family=Open+Sans&display=swap");
 :root {
+  --blue: #62929E;
   --light-gray: #ececec;
   --pale-gray: #ffffff6e;
-  --white: #fff;
-  --dark-gray: #323232;
+  --off-white: #f7f9f9;
+  --light-pink: #CD8987;
+  --dark-gray: #444443;
+  --navy: #031926;
+  --wrong-answer-red: #ff3333;
+  --right-answer-green:#50c878;
+
 }
 * {
   margin: 0;
@@ -47,9 +53,11 @@ body::before {
   height: 1px;
 }
 .quiz-container {
-  height: 40rem;
+
+  height: 20rem;
+  width: 60rem;
   background-color: whitesmoke;
-  margin: 10rem;
+  margin: 30rem;
 }
 
 /* Footer */

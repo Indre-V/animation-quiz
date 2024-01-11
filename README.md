@@ -107,7 +107,8 @@ Wireframes were designed using Balsamiq tool. Following best practices, mobile v
 The font family chosen for The Ultimate Animation quiz was [Lato]("https://fonts.google.com/specimen/Lato?query=lato"). It is a sans-serif font with a rounded appearance and a modern feel. Lato also has a clean and easy-to-read style, making it suitable for both print and web design.
 
 ### Colour Scheme
-
+![Coolors Scheme](docs/color-scheme.png)
+![Contrast Grid](docs/contrast-grid-color.png)
 ### Images
 
 ### Responsiveness
