@@ -31,6 +31,10 @@ html {
     scroll-behavior: smooth;
 }
 
+header {
+    padding: 5rem;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -39,8 +43,8 @@ body {
     min-height: 100vh;
     width: 100%;
     font-family: "Lato", sans-serif;
-    font-size: 1.6rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 600;
     line-height: 1.5;
     background: url("../images/background.png") no-repeat center center;
     background-size: cover;
@@ -61,15 +65,60 @@ body::before {
 }
 
 .quiz-container {
+    width: 35rem;
+    max-width: 80%;
+    border-radius: 3rem;
+    background-color: var(--light-gray);
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: 0 0 1rem 0.5rem;
+}
 
-    height: 20rem;
-    width: 30rem;
-    background-color: whitesmoke;
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 3rem;
+    margin: 5rem 0;
+}
+
+.btn {
+    background-color: var(--blue);
+    border: 1px solid;
+    font-size: 2.5rem;
+    font-family: "Lato", sans-serif;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    color: var(--light-gray);
+
+}
+
+.btn:hover {
+    border-color: var(--navy);
+}
+
+.btn.correct {
+    background-color: var(--right-answer-green);
+
+}
+
+.btn.wrong {
+    background-color: var(--wrong-answer-red);
 
 }
 
 .hide {
+
     display: none;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-btn {
+    font-weight: bold;
 }
 
 /* Footer */
