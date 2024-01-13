@@ -87,7 +87,7 @@ body::before {
     display: grid;
     grid-template-columns: repeat(2, minmax(9rem, 1fr));
     justify-items: center;
-    gap: 4rem;
+    gap: 2rem;
     margin: 5rem 0;
 }
 
@@ -104,8 +104,9 @@ body::before {
     width: 30vw;
 }
 
-.start-btn {
-    width: 40vw;
+.start-btn,
+.next-btn {
+    width: 30vw;
 }
 
 .btn-a {

@@ -23,10 +23,10 @@
             <div class="text-center hide">
                 <h1>The Ultimate Animation Quiz</h1>
             </div>
-            <div id="start-area" class="entry-area hide">
-                <h3 class="text-center"> Welcome to the quiz!</h3>
-                <h4 class="text-center">Choose your level:</h4>
-                <div id="level-btns">
+            <div id="start-area" class="entry-area">
+                <h3 class="text-center hide"> Welcome to the quiz!</h3>
+                <h4 class="text-center hide">Choose your level:</h4>
+                <div id="level-btns" class="hide">
                     <button data-type="easy" class="level-btns btn" type="button">
                         Easy
                     </button>
@@ -37,7 +37,7 @@
                         Hard
                     </button>
                 </div>
-                <div class="start">
+                <div class="start-btn">
                     <button id="start-btn" data-type="start" class="start-btn btn hide" type="button">
                         Start Quiz
                     </button>
@@ -53,25 +53,29 @@
                     </div>
                 </div>
 
+
+                <div id="question">Question</div>
+                <div id="answer-buttons" class="btn-grid">
+                    <button type="button" class="btn btn-a">Answer 1</button>
+                    <button type="button" class="btn btn-a">Answer 2</button>
+                    <button type="button" class="btn btn-a">Answer 3</button>
+                    <button type="button" class="btn btn-a">Answer 4</button>
+                </div>
+                <div id="next-btn">
+                    <button id="next-btn" data-type="next" class="next-btn btn" type="button">
+                        Next
+                    </button>
+                </div>
             </div>
-            <div id="question">Question</div>
 
-            <div id="answer-buttons" class="btn-grid">
-                <button type="button" class="btn btn-a">Answer 1</button>
-                <button type="button" class="btn btn-a">Answer 2</button>
-                <button type="button" class="btn btn-a">Answer 3</button>
-                <button type="button" class="btn btn-a">Answer 4</button>
+
+
+            <div class="game-over hide">
+                <p class="text-center">Well Done!</p>
+                <p class="text-center"> Final Score</p>
+                <h1 class="text score">0</h1>
+                <button class="btn restart">Play Again</button>
             </div>
-        </div>
-
-
-
-        <div class="game-over hide">
-            <p class="text-center">Well Done!</p>
-            <p class="text-center"> Final Score</p>
-            <h1 class="text score">0</h1>
-            <button class="btn restart">Play Again</button>
-        </div>
         </div>
 
     </main>
