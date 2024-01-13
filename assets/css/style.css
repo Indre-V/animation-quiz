@@ -85,7 +85,8 @@ body::before {
 
 .btn-grid {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, minmax(9rem, 1fr));
+    justify-items: center;
     gap: 4rem;
     margin: 5rem 0;
 }
@@ -100,14 +101,14 @@ body::before {
     padding: 1rem 1rem;
     margin: 1rem 0 1rem 0;
     color: var(--dark-gray);
-    width: 30%;
+    width: 30vw;
 }
 
 .start-btn {
-    width: 40%;
+    width: 40vw;
 }
 
-#btn-a {
+.btn-a {
     width: fit-content;
 }
 
@@ -181,7 +182,11 @@ footer {
 @media (min-width: 576px) {}
 
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+    .btn-grid {
+        grid-template-columns: repeat(2, minmax(25rem, 1fr));
+    }
+}
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {}
