@@ -106,7 +106,7 @@ body::before {
 
 .start-btn,
 .next-btn {
-    width: 30vw;
+    width: 15vw;
 }
 
 .btn-a {
@@ -139,9 +139,28 @@ body::before {
     font-weight: bold;
 }
 
+#progress-bar {
+    display: flex;
+    justify-content: space-around;
+}
+
 #progress-text {
     text-align: left;
-    font-size: medium;
+    font-size: large;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-gray);
+    background-color: var(--blue);
+    border-radius: 2rem;
+    letter-spacing: 1px;
+    border: solid 2px var(--light-gray);
+    box-shadow: 0 0 2rem var(--light-cream);
+    height: 4rem;
+    padding: 1rem;
 }
 
 #progress-box {
