@@ -20,10 +20,10 @@
     <main>
         <header> </header>
         <div class="quiz-container">
-            <div class="text-center">
+            <div class="text-center hide">
                 <h1>The Ultimate Animation Quiz</h1>
             </div>
-            <div id="start-area" class="entry-area">
+            <div id="start-area" class="entry-area hide">
                 <h3 class="text-center"> Welcome to the quiz!</h3>
                 <h4 class="text-center">Choose your level:</h4>
                 <div id="level-btns">
@@ -37,22 +37,33 @@
                         Hard
                     </button>
                 </div>
+                <div class="start">
+                    <button id="start-btn" data-type="start" class="start-btn btn hide" type="button">
+                        Start Quiz
+                    </button>
+                </div>
             </div>
-            <div id="question-display" class="hide">
+            <div id="question-display" class="">
+                <div id="progress-bar">
+                    <p id="progress-text">Question</p>
+                    <div id="progress-box">
+                        <div id="bar-full">
+
+                        </div>
+                    </div>
+                </div>
+
+                </div>
                 <div id="question">Question</div>
 
                 <div id="answer-buttons" class="btn-grid">
-                    <button type="button" class="btn">Answer 1</button>
-                    <button type="button" class="btn">Answer 2</button>
-                    <button type="button" class="btn">Answer 3</button>
-                    <button type="button" class="btn">Answer 4</button>
+                    <button type="button" id="btn-a" class="btn">Answer 1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</button>
+                    <button type="button" id="btn-a" class="btn">Answer 2</button>
+                    <button type="button" id="btn-a" class="btn">Answer 3</button>
+                    <button type="button" id="btn-a" class="btn">Answer 4</button>
                 </div>
             </div>
-            <div class="start">
-                <button id="start-btn" data-type="start" class="start-btn btn" type="button">
-                    Start Quiz
-                </button>
-            </div>
+
 
 
             <div class="game-over hide">
