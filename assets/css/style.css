@@ -32,21 +32,32 @@ html {
 
 header {
     padding-bottom: 7rem;
+    width: 100%;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+
+#support {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: end;
+    padding: 3rem;
+
 }
 
-.support {
+.nav-open-view {
+
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    background-color: var(--light-gray);
 }
 
 .nav-item {
     margin: 1rem;
     color: var(--blue);
+    background: none;
 
 }
 
@@ -69,6 +80,29 @@ body {
     background-size: cover;
 
 }
+
+#instructions,
+#feedback {
+    display: none;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+}
+
+#container-instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 30px;
+}
+
+#container-instructions li {
+    padding: 0 0 10px 10px;
+}
+
 
 main {
     flex: 1 0 auto;
@@ -154,7 +188,7 @@ body::before {
 }
 
 #start-btn {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 #progress-bar {

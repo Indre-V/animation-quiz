@@ -17,6 +17,36 @@
 </head>
 
 <body>
+    <header>
+        <div id="support">
+
+            <input type="button" value="Instructions" class="button nav-item" onclick="showInstructions(true)">
+            <input type="button" value="Feedback" class="button nav-item" onclick="showForm(true)">
+            <div class="container" id="instructions">
+                <div class="nav-open-view">
+                    <h3>How to Play</h3>
+                    <div id="container-instructions">
+                        <ol>
+                            <li>Select a Category</li>
+                            <li>Click to Start the Quiz</li>
+                            <li>Four options will be displayed</li>
+                            <li>Select the answer</li>
+                            <li>Go to the next question</li>
+                            <li>Once the last question is answered and click Finish</li>
+                            <li>Score message will be displayed</li>
+                            <li>Select Play Again to go back to the main page</li>
+                        </ol>
+                    </div>
+                    <input type="button" value="Close" class="button" onclick="showInstructions(false)">
+                </div>
+            </div>
+            <div id="feedback">
+
+            </div>
+
+
+        </div>
+    </header>
     <main>
 
         <div class="quiz-container">
@@ -89,10 +119,6 @@
         <a href="https://www.linkedin.com/in/indre-vilickaite/" target="_blank"
             aria-label="Go to LinkedIn page of developer.">
             <i class="fa-brands fa-linkedin-in"></i></a>
-            <ul class="support">
-                <li class="nav-item">Instructions</li>
-                <li class="nav-item">Feedback</li>
-            </ul>
     </footer>
     <!-- Script -->
     <script src="assets/js/script.js"></script>
