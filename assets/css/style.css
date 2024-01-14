@@ -30,42 +30,6 @@ html {
     scroll-behavior: smooth;
 }
 
-header {
-    padding-bottom: 7rem;
-    width: 100%;
-}
-
-
-#support {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: end;
-    padding: 3rem;
-    gap: 2rem;
-
-}
-
-.nav-open-view {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin: 1rem 0;
-    background-color: var(--light-gray);
-}
-
-.nav-item {
-    margin: 1rem;
-    color: var(--blue);
-    background: none;
-
-}
-
-.text-center {
-    text-align: center;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -82,33 +46,9 @@ body {
 
 }
 
-#instructions,
-#feedback {
-    display: none;
-    text-align: center;
-}
-
-.container {
-    display: flex;
-}
-
-#container-instructions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    margin-left: 30px;
-}
-
-#container-instructions li {
-    padding: 0 0 10px 10px;
-}
-
-
 main {
     flex: 1 0 auto;
     /* allows the content to grow but not shrink */
-
 }
 
 body::before {
@@ -117,6 +57,58 @@ body::before {
     width: 100%;
     height: 1px;
 }
+
+header {
+    padding-bottom: 7rem;
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Instructions and feedback styles */
+
+#instructions,
+#feedback {
+    display: none;
+    text-align: center;
+}
+
+#support {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: end;
+    padding: 1rem;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+    color: var(--blue);
+    background: none;
+    font-weight: bold;
+}
+.nav-open-view {
+    padding: 1rem;
+    font-size: 1.5rem;
+    background-color: var(--light-gray);
+}
+
+#container-instructions {
+    text-align: left;
+    margin-left: 2rem;
+    padding-top: 1rem;
+}
+
+#container-instructions li {
+    padding: 0 0 1rem 1rem;
+}
+
+
+
+/* Start gquiz area styles */
 
 #start-area {
     line-height: 3;
