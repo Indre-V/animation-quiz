@@ -19,29 +19,6 @@
 <body>
     <header>
         <div id="support">
-            <div id="contact-form">
-                <input type="button" value="Feedback" class="button nav-item" onclick="showForm(true)">
-                <div id="feedback" class="nav-open-view">
-                    <h3>Send us a message</h3>
-                    <div class="container-instructions">
-                        <form action="feedback-thanks.html" method="GET" class="form">
-                            <div class="input-box">
-                                <label for="name-submission">Your Name*</label>
-                                <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
-                                <label for="email-submission">Your Email*</label>
-                                <input type="email" id="email-submission" placeholder="example@disney.com" required>
-                                <label for="textarea">Message*</label>
-                                <textarea name="message" id="textarea" placeholder="Start typing here...."
-                                    required></textarea>
-                            </div>
-                            <button class="button" type="submit" id="submit-send" name="submit"
-                                value="Send">Send</button>
-                        </form>
-
-                    </div><input type="button" value="Close" class="button btn-close" onclick="showForm(false)">
-                </div>
-            </div>
-
             <div id="instructions-list">
                 <input type="button" value="Instructions" class="button nav-item" onclick="showInstructions(true)">
                 <div id="instructions" class="container">
@@ -59,10 +36,32 @@
                                 <li>Select Play Again to go back to the main page</li>
                             </ol>
                         </div>
-                        <input type="button" value="Close" class="button btn-close" onclick="showInstructions(false)">
+                        <input type="button" value="Close" class="btn btn-support" onclick="showInstructions(false)">
                     </div>
                 </div>
             </div>
+            <div id="contact-form">
+                <input type="button" value="Feedback" class="nav-item" onclick="showForm(true)">
+                <div id="feedback" class="nav-open-view">
+                    <div class="container-instructions">
+                        <form action="feedback-thanks.html" method="GET" class="form">
+                            <div class="input-box">
+                                <label for="name-submission">Your Name*</label>
+                                <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
+                                <label for="email-submission">Your Email*</label>
+                                <input type="email" id="email-submission" placeholder="example@disney.com" required>
+                                <label for="textarea">Message*</label>
+                                <textarea type="text" name="message" id="textarea" placeholder="Start typing here...."
+                                    required></textarea>
+                            </div>
+                            <button class="btn btn-support" type="submit" id="submit-send" name="submit"
+                                value="Send">Send</button>
+                        </form>
+
+                    </div><input type="button" value="Close" class="btn btn-support" onclick="showForm(false)">
+                </div>
+            </div>
+
 
 
         </div>
