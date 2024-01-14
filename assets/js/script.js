@@ -5,6 +5,11 @@
  */
 
 function showInstructions(show) {
-    var rulesContainer = document.getElementById('instructions');
-    instructions.style.display = show ? 'block' : 'none';
+    var instructionsContainer = document.getElementById('instructions');
+    instructionsContainer.style.display = show ? 'block' : 'none';
+}
+
+function showForm(show) {
+    var feedbackContainer = document.getElementById('feedback');
+    feedbackContainer.style.display = show ? 'block' : 'none';
 }

@@ -80,6 +80,7 @@ header {
     grid-template-columns: repeat(2, auto);
     justify-content: end;
     padding: 1rem;
+
 }
 
 .nav-item {
@@ -90,23 +91,46 @@ header {
     background: none;
     font-weight: bold;
 }
+
 .nav-open-view {
     padding: 1rem;
     font-size: 1.5rem;
     background-color: var(--light-gray);
+    margin: 0.5rem;
+
 }
 
-#container-instructions {
+.container-instructions {
     text-align: left;
     margin-left: 2rem;
     padding-top: 1rem;
 }
 
-#container-instructions li {
+.container-instructions li {
     padding: 0 0 1rem 1rem;
 }
 
+/* Feedback form styling */
 
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
 
 /* Start gquiz area styles */
 
