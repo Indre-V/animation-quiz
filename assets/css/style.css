@@ -41,6 +41,7 @@ header {
     grid-template-columns: repeat(2, auto);
     justify-content: end;
     padding: 3rem;
+    gap: 2rem;
 
 }
 
