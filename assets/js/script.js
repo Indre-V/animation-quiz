@@ -1,5 +1,5 @@
 const startBtn = document.querySelector("#start");
-const level = document.querySelectorAll("#level-btns");
+const level = document.querySelectorAll("#level-btns button");
 const username = document.querySelector("#username");
 const questionDisplay = document.getElementById("question-display");
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startBtn.addEventListener("click", async function (event) {
         event.preventDefault();
 
-        const level = document.querySelector("#level-btns").value;
+        const level = document.querySelectorAll("#level-btns buttons").value;
         const username = document.querySelector("#username").value;
         questions = await apiData(level);
         startQuiz(username, level);
@@ -29,14 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
   */
 
 const apiData = (level) => {
-    return fetch(`https://opentdb.com/api.php?amount=10&category=32&type=multiple`)
+    return fetch(`https://opentdb.com/api.php?amount=10&category=32&type=multiple`) 
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             return response.json();
         })
-        .then(data => formatQuestions(data.results))
+        .then(apiData=> formatQuestions(apiData.results))
         .catch(error => {
             console.error("Error fetching data:", error);
            
@@ -56,7 +56,9 @@ function formatQuestions(apiData) {
             answers: shuffle([...apiQuestion.incorrect_answers, apiQuestion.correct_answer])
         };
     });
+   
 }
+
 
 /**
  * Display the next question
@@ -97,7 +99,8 @@ const startQuiz = (username, level) => {
   
     questionNumber = 0;
     userScore = 0;
-    displayNextQuestion(username, level);
+    displayNextQuestion(username);
+    formatQuestions(apiData)
   };
   
 
@@ -127,12 +130,12 @@ const checkUsername = (username) => {
         alert("Please enter your username!");
         return false;
     }
-    // else if (!level) {
-    //     alert("Please select level!");
-    //     return false;
-    // }
+    else if (!level) {
+    alert("Please select level!");
+       return false;
+    }
+        return true;
     
-    return true;
 };
 
 
