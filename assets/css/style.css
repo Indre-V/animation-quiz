@@ -189,17 +189,17 @@ textarea {
     border-color: var(--navy);
 }
 
-.btn.correct {
+.correct {
     background-color: var(--right-answer-green);
 }
 
-.btn.wrong {
+.wrong {
     background-color: var(--wrong-answer-red);
 }
 
-.hide {
+/* .hide {
     display: none;
-}
+} */
 
 .start {
     display: flex;
