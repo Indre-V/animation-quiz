@@ -69,15 +69,15 @@
     <main>
 
         <div class="quiz-container">
-            <div class="text-center hide">
+            <div class="text-center">
                 <h1>The Ultimate Animation Quiz</h1>
             </div>
-            <div id="start-area" class="entry-area hide">
+            <div id="start-area" class="entry-area">
                 <h3 class="text-center hide"> Welcome to the quiz!</h3>
                 <label for="username">Enter your username:</label>
                 <input type="text" class="btn" name="username" id="username" placeholder="Enter your username" required>
                 <h4 class="text-center hide">Choose your level:</h4>
-                <div id="level-btns" class="hide">
+                <div id="level-btns" class="none">
                     <button data-type="easy" class="level-btns btn" type="button">
                         Easy
                     </button>
@@ -89,7 +89,7 @@
                     </button>
                 </div>
                 <div class="start-btn">
-                    <button id="start" data-type="start" class="start-btn btn hide" type="button">
+                    <button id="start" data-type="start" class="start-btn btn" type="button">
                         Start Quiz
                     </button>
                 </div>
@@ -123,7 +123,7 @@
                     <p class="scores">Correct Answers <span id="score">0</span></p>
                 </div>
             </div>
-            <div class="game-over">
+            <div class="game-over hide">
                 <p id="score-message"></p>
                 <p class="text-center"> Final Score:</p>
                 <h1 class="correct-score">0</h1>

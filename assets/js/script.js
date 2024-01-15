@@ -1,34 +1,47 @@
 const startBtn = document.querySelector("#start");
+const level = document.querySelectorAll("#level-btns");
+const username = document.querySelector("#username");
+const questionDisplay = document.getElementById("question-display");
 
 let questionNumber = 0; //holds the current question number
+let questions = []; // declare questions array
 
+const questionWindow = () => {
+    questionDisplay.style.display = "block";
+};
 
 // Wait for the document to be loaded
 document.addEventListener("DOMContentLoaded", function () {
-
     startBtn.addEventListener("click", async function (event) {
         event.preventDefault();
+
         const level = document.querySelector("#level-btns").value;
         const username = document.querySelector("#username").value;
-            questions = await apiData(level);
-            startQuiz(username, level);
+        questions = await apiData(level);
+        startQuiz(username, level);
     
     })
 });
-
-
 
 /**
  * Fetch data from API
  * Make a GET request using the Fetch API 
   */
 
-fetch('https://opentdb.com/api.php?amount=10&category=32&type=multiple')
-    .then(response => response.json())
-    .then(apiData => formatQuestions(apiData.results))
-    .then(questions => console.log(questions))
-    
-
+const apiData = (level) => {
+    return fetch(`https://opentdb.com/api.php?amount=10&category=32&type=multiple`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => formatQuestions(data.results))
+        .catch(error => {
+            console.error("Error fetching data:", error);
+           
+        });
+};
 /* Function to format questions obtained from the API
 *Shuffling the answers (incorrect + correct) for the question; 
 */
@@ -48,21 +61,21 @@ function formatQuestions(apiData) {
 /**
  * Display the next question
  * @param {string} username - The username of the player.
- * @param {string} difficulty - The difficulty level of the quiz.
+ * @param {string} level - The difficulty level of the quiz.
  */
 
 const displayNextQuestion = (username, level) => {
     if (questionNumber < questions.length) {
         let currentQuestion = questions[questionNumber];
-//display question text
         document.getElementById('question').innerText = currentQuestion.question;
 
-//display answer options
+        const answerButtons = document.querySelectorAll('.btn-a');
+        for (let i = 0; i < answerButtons.length; i++) {
+             answerButtons[i].innerText = currentQuestion.answers[i];
+             answerButtons[i].addEventListener('click', () => checkAnswer(answerButtons[i].innerText));
 
-const answerButtons = document.querySelectorAll('.btn-a');
-for (let i = 0; i < answerButtons.length; i++) {
-  answerButtons[i].innerText = currentQuestion.answers[i];
-  answerButtons[i].addEventListener('click', () => checkAnswer(answerButtons[i].innerText));
+        questionWindow();
+        formatQuestions(apiData);
 
 }
 // Increment the question index
@@ -72,17 +85,19 @@ questionNumber++;
     
     gameOver();
   }
-};
+}
 
 // Function to start the quiz
 const startQuiz = (username, level) => {
+
+    if (!checkUsername(username)) return;
 
     document.getElementById('start-area').classList.add('hide');
     document.getElementById('question-display').classList.remove('hide');
   
     questionNumber = 0;
     userScore = 0;
-    displayNextQuestion();
+    displayNextQuestion(username, level);
   };
   
 
@@ -92,12 +107,12 @@ const startQuiz = (username, level) => {
  */
 
 function showInstructions(show) {
-    var instructionsContainer = document.getElementById('instructions');
+    let instructionsContainer = document.getElementById('instructions');
     instructionsContainer.style.display = show ? 'block' : 'none';
 }
 
 function showForm(show) {
-    var feedbackContainer = document.getElementById('feedback');
+    let feedbackContainer = document.getElementById('feedback');
     feedbackContainer.style.display = show ? 'block' : 'none';
 }
 
@@ -109,9 +124,14 @@ function showForm(show) {
 
 const checkUsername = (username) => {
     if (!username) {
-        alert("Please ennter your username!");
+        alert("Please enter your username!");
         return false;
     }
+    // else if (!level) {
+    //     alert("Please select level!");
+    //     return false;
+    // }
+    
     return true;
 };
 

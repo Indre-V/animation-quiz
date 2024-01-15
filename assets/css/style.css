@@ -197,9 +197,9 @@ textarea {
     background-color: var(--wrong-answer-red);
 }
 
-/* .hide {
+.hide {
     display: none;
-} */
+} 
 
 .start {
     display: flex;
