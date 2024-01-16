@@ -73,10 +73,10 @@
                 <h1>The Ultimate Animation Quiz</h1>
             </div>
             <div id="start-area" class="entry-area">
-                <h3 class="text-center hide"> Welcome to the quiz!</h3>
-                <form id="start-form">
+                <h3 class="text-center"> Welcome to the quiz!</h3>
+                <form id="start" >
                     <label for="username">Enter your username:</label>
-                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                    <input type="text" name="username" id="username" class= "btn" placeholder="Mimmie Mouse" required>
                     <h4 class="text-center hide">Choose your level:</h4>
                     <div id="level-btns" class="none">
                         <button data-type="easy" class="level-btns btn" type="button">Easy</button>
@@ -87,9 +87,11 @@
                         <button id="start" data-type="start" class="start-btn btn" type="submit">Start Quiz</button>
                     </div>
                 </form>
-            </div>
+                </div> 
+            
             <!-- Question display area -->
-            <div id="question-display" class="hide">
+
+            <div id="question-area" class="hide">
                 <div id="progress-bar">
                     <p id="progress-text">Question</p>
                     <div id="progress-box">

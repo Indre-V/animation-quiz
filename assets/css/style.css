@@ -188,6 +188,9 @@ textarea {
 .btn:hover {
     border-color: var(--navy);
 }
+#level-btn.active
+
+{ background-color: green; }
 
 .correct {
     background-color: var(--right-answer-green);
