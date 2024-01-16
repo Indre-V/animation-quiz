@@ -2,16 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The ultimate animation quiz for animation and cartoon enthusiasts" />
-  <meta name="keywords" content="animation, anime, cartoon, quiz, knowledge, test, challenge, score, tv, cinema" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The ultimate animation quiz for animation and cartoon enthusiasts">
+  <meta name="keywords" content="animation, anime, cartoon, quiz, knowledge, test, challenge, score, tv, cinema">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>The Ultimate Animation Quiz</title>
 </head>
 
@@ -36,30 +37,29 @@
                 <li>Select Play Again to go back to the main page</li>
               </ol>
             </div>
-            <input type="button" value="Close" class="btn btn-support" onclick="showInstructions(false)" />
+            <input type="button" value="Close" class="btn btn-support" onclick="showInstructions(false)">
           </div>
         </div>
       </div>
       <div id="contact-form">
-        <input type="button" value="Feedback" class="nav-item" onclick="showForm(true)" />
+        <input type="button" value="Feedback" class="nav-item" onclick="showForm(true)">
         <div id="feedback" class="nav-open-view">
           <div class="container-instructions">
             <form action="feedback-thanks.html" method="GET" class="form">
               <div class="input-box">
                 <label for="name-submission">Your Name*</label>
-                <input type="text" id="name-submission" placeholder="Mickey Mouse" required />
+                <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
                 <label for="email-submission">Your Email*</label>
-                <input type="email" id="email-submission" placeholder="example@disney.com" required />
+                <input type="email" id="email-submission" placeholder="example@disney.com" required>
                 <label for="textarea">Message*</label>
-                <textarea type="text" name="message" id="textarea" placeholder="Start typing here...."
-                  required></textarea>
+                <textarea name="message" id="textarea" placeholder="Start typing here...." required></textarea>
               </div>
               <button class="btn btn-support" type="submit" id="submit-send" name="submit" value="Send">
                 Send
               </button>
             </form>
           </div>
-          <input type="button" value="Close" class="btn btn-support" onclick="showForm(false)" />
+          <input type="button" value="Close" class="btn btn-support" onclick="showForm(false)">
         </div>
       </div>
     </div>
@@ -72,10 +72,10 @@
         <h1>The Ultimate Animation Quiz</h1>
       </div>
       <div id="start-area" class="entry-area">
-        <h3 class="text-center">Welcome to the quiz!</h3>
+        <h2 class="text-center">Welcome to the quiz!</h2>
         <form id="start">
           <label for="username">Enter your username:</label>
-          <input type="text" name="username" id="username" class="btn" placeholder="Mimmie Mouse" required />
+          <input type="text" name="username" id="username" class="btn" placeholder="Mimmie Mouse" required>
           <h4 class="text-center hide">Choose your level:</h4>
           <div id="level-btns" class="none">
             <button data-type="easy" class="level-btns btn" type="button">
