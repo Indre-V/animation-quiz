@@ -47,3 +47,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
 });
+
+/**
+ * Shows and hide the Rules window to the user according to the parameter.
+ * @param {boolean} show - Boolean to verify if its to show or close window
+ */
+
+function showInstructions(show) {
+    let instructionsContainer = document.getElementById('instructions');
+    instructionsContainer.style.display = show ? 'block' : 'none';
+}
+
+function showForm(show) {
+    let feedbackContainer = document.getElementById('feedback');
+    feedbackContainer.style.display = show ? 'block' : 'none';
+}
