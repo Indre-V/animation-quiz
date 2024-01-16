@@ -1,145 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The ultimate animation quiz for animation and cartoon enthusiasts" />
-    <meta name="keywords" content="animation, anime, cartoon, quiz, knowledge, test, challenge, score, tv, cinema" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The ultimate animation quiz for animation and cartoon enthusiasts"
+    />
+    <meta
+      name="keywords"
+      content="animation, anime, cartoon, quiz, knowledge, test, challenge, score, tv, cinema"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>The Ultimate Animation Quiz</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Start Header -->
     <header>
-        <div id="support">
-            <div id="instructions-list">
-                <input type="button" value="Instructions" class="button nav-item" onclick="showInstructions(true)">
-                <div id="instructions" class="container">
-                    <div class="nav-open-view">
-                        <h3>How to Play</h3>
-                        <div class="container-instructions">
-                            <ol>
-                                <li>Select a Category</li>
-                                <li>Click to Start the Quiz</li>
-                                <li>Four options will be displayed</li>
-                                <li>Select the answer</li>
-                                <li>Go to the next question</li>
-                                <li>Once the last question is answered and click Finish</li>
-                                <li>Score message will be displayed</li>
-                                <li>Select Play Again to go back to the main page</li>
-                            </ol>
-                        </div>
-                        <input type="button" value="Close" class="btn btn-support" onclick="showInstructions(false)">
-                    </div>
-                </div>
+      <div id="support">
+        <div id="instructions-list">
+          <input
+            type="button"
+            value="Instructions"
+            class="button nav-item"
+            onclick="showInstructions(true)"
+          />
+          <div id="instructions" class="container">
+            <div class="nav-open-view">
+              <h3>How to Play</h3>
+              <div class="container-instructions">
+                <ol>
+                  <li>Select a Category</li>
+                  <li>Click to Start the Quiz</li>
+                  <li>Four options will be displayed</li>
+                  <li>Select the answer</li>
+                  <li>Go to the next question</li>
+                  <li>Once the last question is answered and click Finish</li>
+                  <li>Score message will be displayed</li>
+                  <li>Select Play Again to go back to the main page</li>
+                </ol>
+              </div>
+              <input
+                type="button"
+                value="Close"
+                class="btn btn-support"
+                onclick="showInstructions(false)"
+              />
             </div>
-            <div id="contact-form">
-                <input type="button" value="Feedback" class="nav-item" onclick="showForm(true)">
-                <div id="feedback" class="nav-open-view">
-                    <div class="container-instructions">
-                        <form action="feedback-thanks.html" method="GET" class="form">
-                            <div class="input-box">
-                                <label for="name-submission">Your Name*</label>
-                                <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
-                                <label for="email-submission">Your Email*</label>
-                                <input type="email" id="email-submission" placeholder="example@disney.com" required>
-                                <label for="textarea">Message*</label>
-                                <textarea type="text" name="message" id="textarea" placeholder="Start typing here...."
-                                    required></textarea>
-                            </div>
-                            <button class="btn btn-support" type="submit" id="submit-send" name="submit"
-                                value="Send">Send</button>
-                        </form>
-
-                    </div><input type="button" value="Close" class="btn btn-support" onclick="showForm(false)">
-                </div>
-            </div>
+          </div>
         </div>
+        <div id="contact-form">
+          <input
+            type="button"
+            value="Feedback"
+            class="nav-item"
+            onclick="showForm(true)"
+          />
+          <div id="feedback" class="nav-open-view">
+            <div class="container-instructions">
+              <form action="feedback-thanks.html" method="GET" class="form">
+                <div class="input-box">
+                  <label for="name-submission">Your Name*</label>
+                  <input
+                    type="text"
+                    id="name-submission"
+                    placeholder="Mickey Mouse"
+                    required
+                  />
+                  <label for="email-submission">Your Email*</label>
+                  <input
+                    type="email"
+                    id="email-submission"
+                    placeholder="example@disney.com"
+                    required
+                  />
+                  <label for="textarea">Message*</label>
+                  <textarea
+                    type="text"
+                    name="message"
+                    id="textarea"
+                    placeholder="Start typing here...."
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  class="btn btn-support"
+                  type="submit"
+                  id="submit-send"
+                  name="submit"
+                  value="Send"
+                >
+                  Send
+                </button>
+              </form>
+            </div>
+            <input
+              type="button"
+              value="Close"
+              class="btn btn-support"
+              onclick="showForm(false)"
+            />
+          </div>
+        </div>
+      </div>
     </header>
     <!-- End Header -->
 
     <main>
-
-        <div class="quiz-container">
-            <div class="text-center">
-                <h1>The Ultimate Animation Quiz</h1>
+      <div class="quiz-container">
+        <div class="text-center">
+          <h1>The Ultimate Animation Quiz</h1>
+        </div>
+        <div id="start-area" class="entry-area">
+          <h3 class="text-center">Welcome to the quiz!</h3>
+          <form id="start">
+            <label for="username">Enter your username:</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              class="btn"
+              placeholder="Mimmie Mouse"
+              required
+            />
+            <h4 class="text-center hide">Choose your level:</h4>
+            <div id="level-btns" class="none">
+              <button data-type="easy" class="level-btns btn" type="button">
+                Easy
+              </button>
+              <button data-type="medium" class="level-btns btn" type="button">
+                Medium
+              </button>
+              <button data-type="hard" class="level-btns btn" type="button">
+                Hard
+              </button>
             </div>
-            <div id="start-area" class="entry-area">
-                <h3 class="text-center"> Welcome to the quiz!</h3>
-                <form id="start" >
-                    <label for="username">Enter your username:</label>
-                    <input type="text" name="username" id="username" class= "btn" placeholder="Mimmie Mouse" required>
-                    <h4 class="text-center hide">Choose your level:</h4>
-                    <div id="level-btns" class="none">
-                        <button data-type="easy" class="level-btns btn" type="button">Easy</button>
-                        <button data-type="medium" class="level-btns btn" type="button">Medium</button>
-                        <button data-type="hard" class="level-btns btn" type="button">Hard</button>
-                    </div>
-                    <div class="start-btn">
-                        <button id="start" data-type="start" class="start-btn btn" type="submit">Start Quiz</button>
-                    </div>
-                </form>
-                </div> 
-            
-            <!-- Question display area -->
-
-            <div id="question-area" class="hide">
-                <div id="progress-bar">
-                    <p id="progress-text">Question</p>
-                    <div id="progress-box">
-                        <div id="bar-full">
-                        </div>
-                    </div>
-                    <div id="timer">
-                        <i class="fa-solid fa-stopwatch"></i>
-                        <div class="seconds">sec</div>
-                    </div>
-                </div>
-
-                <div id="question">Question</div>
-                <div id="answer-buttons" class="btn-grid">
-                    <button type="button" class="btn btn-a">Answer 1</button>
-                    <button type="button" class="btn btn-a">Answer 2</button>
-                    <button type="button" class="btn btn-a">Answer 3</button>
-                    <button type="button" class="btn btn-a">Answer 4</button>
-                </div>
-                <div id="next-btn">
-                    <button id="next-btn" data-type="next" class="next-btn btn" type="button">
-                        Next
-                    </button>
-                </div>
-                <div class="score-area">
-                    <p class="scores">Correct Answers <span id="score">0</span></p>
-                </div>
+            <div class="start-btn">
+              <button
+                id="start"
+                data-type="start"
+                class="start-btn btn"
+                type="submit"
+              >
+                Start Quiz
+              </button>
             </div>
-            <div class="game-over hide">
-                <p id="score-message"></p>
-                <p class="text-center"> Final Score:</p>
-                <h1 class="correct-score">0</h1>
-                <button class="btn restart">Play Again</button>
-            </div>
+          </form>
         </div>
 
+        <!-- Question display area -->
+
+        <div id="question-area" class="hide">
+          <div id="progress-bar">
+            <p id="progress-text">Question</p>
+            <div id="progress-box">
+              <div id="bar-full"></div>
+            </div>
+            <div id="timer">
+              <i class="fa-solid fa-stopwatch"></i>
+              <div class="seconds">sec</div>
+            </div>
+          </div>
+
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button type="button" class="btn btn-a">Answer 1</button>
+            <button type="button" class="btn btn-a">Answer 2</button>
+            <button type="button" class="btn btn-a">Answer 3</button>
+            <button type="button" class="btn btn-a">Answer 4</button>
+          </div>
+          <div id="next-btn">
+            <button
+              id="next-btn"
+              data-type="next"
+              class="next-btn btn"
+              type="button"
+            >
+              Next
+            </button>
+          </div>
+          <div class="score-area">
+            <p class="scores">Correct Answers <span id="score">0</span></p>
+          </div>
+        </div>
+        <div class="game-over hide">
+          <p id="score-message"></p>
+          <p class="text-center">Final Score:</p>
+          <h1 class="correct-score">0</h1>
+          <button class="btn restart">Play Again</button>
+        </div>
+      </div>
     </main>
 
     <!-- Start of Footer  -->
     <footer>
-        <a href="https://github.com/Indre-V" target="_blank" aria-label="Go to Github page of developer.">
-            <i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/indre-vilickaite/" target="_blank"
-            aria-label="Go to LinkedIn page of developer.">
-            <i class="fa-brands fa-linkedin-in"></i></a>
+      <a
+        href="https://github.com/Indre-V"
+        target="_blank"
+        aria-label="Go to Github page of developer."
+      >
+        <i class="fa-brands fa-github"></i
+      ></a>
+      <a
+        href="https://www.linkedin.com/in/indre-vilickaite/"
+        target="_blank"
+        aria-label="Go to LinkedIn page of developer."
+      >
+        <i class="fa-brands fa-linkedin-in"></i
+      ></a>
     </footer>
     <!-- Script -->
     <script src="assets/js/script.js"></script>
-</body>
-
+  </body>
 </html>
