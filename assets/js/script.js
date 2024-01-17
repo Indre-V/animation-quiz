@@ -1,8 +1,73 @@
 const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
 
+const question = document.getElementById('question');
+const choices = Array.from(document.getElementsByClassName('btn-a'));
+const progressText = document.getElementById('progressText');
+
+
 const hideArea = (area) => area.classList.add("hide"); // function to hide
 const displayArea = (area) => area.classList.remove("hide"); // function to display area
+
+let currentQuestion = {};
+let userScore = 0;
+let questionNumber = 0;
+
+let selectedLevel = '';
+let questions = []; // Add questions array
+
+// function to shuffle answers
+const shuffle = (answers) => answers.sort(() => Math.random() - 0.5)
+
+// fetch API to Load questions
+fetch('https://opentdb.com/api.php?amount=10&category=32&difficulty=easy&type=multiple')
+.then(results => results.json())
+.then(loadedQuestions => {
+  questions = loadedQuestions.results.map(apiQuestions => formatQuestions(apiQuestions));
+
+  startGame();
+})
+.catch(err => {
+  console.error(err);
+});
+
+// Function to format questions
+const formatQuestions = (apiQuestions) => {
+  return {
+    difficulty: apiQuestions.difficulty,
+    question: apiQuestions.question,
+    correctAnswer: apiQuestions.correct_answer,
+    answers: shuffle([...apiQuestions.incorrect_answers, apiQuestions.correct_answer])
+  };
+};
+
+startGame = () => {
+  questionNumber = 0;
+  userScore = 0;
+  getNewQuestion();
+};
+
+const getNewQuestion = () => {
+  if (questionNumber < questions.length) {
+    let currentQuestion = questions[questionNumber];
+
+    // Display question text
+    document.getElementById('question').innerText = currentQuestion.question;
+
+    // Display answer options
+    const answerButtons = document.querySelectorAll('.btn-a');
+
+    for (let i = 0; i < answerButtons.length; i++) {
+      // Assign each answer to a specific button
+      answerButtons[i].innerText = currentQuestion.answers[i];
+    }
+
+    questionNumber++;
+  } else {
+    gameOver();
+  }
+};
+
 
 //function to activate level buttons
 const activateButton = (selectedLevelBtn) => {
@@ -57,3 +122,5 @@ function showForm(show) {
   let feedbackContainer = document.getElementById("feedback");
   feedbackContainer.style.display = show ? "block" : "none";
 }
+
+

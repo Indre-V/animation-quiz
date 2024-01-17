@@ -6,7 +6,7 @@
   --pale-gray: #ffffff6e;
   --off-white: #f7f9f9;
   --light-cream: #fbeee6;
-  --dark-gray: #363636;
+  --dark-gray: #232323;
   --navy: #031926;
   --wrong-answer-red: #ff3333;
   --right-answer-green: #50c878;
@@ -167,12 +167,12 @@ textarea {
   border-radius: 1rem;
   padding: 1rem 1rem;
   margin: 1rem 0 1rem 0;
-  color: var(--navy);
+  color: var(--dark-gray);
   width: auto;
 }
 
 .btn-a {
-  width: fit-content;
+  min-width: 30vw;
 }
 
 .btn-support {
