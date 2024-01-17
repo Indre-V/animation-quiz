@@ -7,7 +7,7 @@ const progressBarFull = document.getElementById("bar-full");
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('btn-a'));
 
-
+const timeCount = document.getElementById('seconds');
 
 const hideArea = (area) => area.classList.add("hide"); // function to hide
 const displayArea = (area) => area.classList.remove("hide"); // function to display area
@@ -19,6 +19,36 @@ let questionNumber = 0;
 let selectedLevel = '';
 let questions = []; // Add questions array
 
+let timeCounter;
+
+
+/**
+ * Timer on the quiz
+ */
+
+function startTimer(time) {
+  let remainingTime = time;
+
+  function updateDisplay() {
+    const seconds = remainingTime % 60;
+    const formattedTime = seconds.toString().padStart(2, '0');
+    timeCount.textContent = formattedTime;
+  }
+
+  updateDisplay();
+
+  timeCounter = setInterval(() => {
+    remainingTime--;
+    updateDisplay();
+
+    if (remainingTime < 0) {
+      clearInterval(timeCounter);
+      getNewQuestion();
+      startTimer(20);
+    }
+  }, 1000);
+}
+
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5)
 
@@ -27,7 +57,6 @@ fetch('https://opentdb.com/api.php?amount=10&category=32&difficulty=easy&type=mu
   .then(results => results.json())
   .then(loadedQuestions => {
     questions = loadedQuestions.results.map(apiQuestions => formatQuestions(apiQuestions));
-
     startGame();
   })
   .catch(err => {
@@ -52,9 +81,14 @@ startGame = () => {
   questionNumber = 0;
   userScore = 0;
   getNewQuestion();
+  startTimer(20);
+  
+  
 };
 
 const getNewQuestion = () => {
+ 
+
   if (questionNumber < questions.length) {
     let currentQuestion = questions[questionNumber];
 
@@ -69,21 +103,26 @@ const getNewQuestion = () => {
       answerButtons[i].innerText = currentQuestion.answers[i];
     }
 
-    
+
     // code adapted from https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/blob/master/6.%20Create%20a%20Progress%20Bar/game.js
 
-    progressText.innerText = `Question ${questionNumber +1}/${MAX_QUESTIONS}`;
+    progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
     //Update the progress bar
     progressBarFull.style.width = `${(questionNumber / MAX_QUESTIONS) * 100}%`;
 
+  
     questionNumber++;
+
+    
   } else {
     gameOver();
   }
 };
 
 nextButton.addEventListener('click', () => {
-  getNewQuestion()
+  clearInterval(timeCounter);
+  getNewQuestion(); 
+  startTimer(20);
 })
 
 //function to activate level buttons
@@ -139,5 +178,3 @@ function showForm(show) {
   let feedbackContainer = document.getElementById("feedback");
   feedbackContainer.style.display = show ? "block" : "none";
 }
-
-
