@@ -238,7 +238,7 @@ textarea {
 #bar-full {
   height: 3rem;
   background-color: var(--blue);
-  max-width: 100%;
+  width: 100% !important;
 }
 
 /* Footer */
