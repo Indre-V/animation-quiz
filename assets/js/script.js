@@ -1,5 +1,6 @@
 const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
+const nextButton = document.getElementById('next-btn')
 
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('btn-a'));
@@ -68,6 +69,10 @@ const getNewQuestion = () => {
   }
 };
 
+nextButton.addEventListener('click', () => {
+  questionNumber++
+  getNewQuestion()
+})
 
 //function to activate level buttons
 const activateButton = (selectedLevelBtn) => {
