@@ -1,10 +1,12 @@
 const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
 const nextButton = document.getElementById('next-btn')
+const progressText = document.getElementById("progress-text");
+const progressBarFull = document.getElementById("bar-full");
 
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('btn-a'));
-const progressText = document.getElementById('progressText');
+
 
 
 const hideArea = (area) => area.classList.add("hide"); // function to hide
@@ -22,15 +24,15 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5)
 
 // fetch API to Load questions
 fetch('https://opentdb.com/api.php?amount=10&category=32&difficulty=easy&type=multiple')
-.then(results => results.json())
-.then(loadedQuestions => {
-  questions = loadedQuestions.results.map(apiQuestions => formatQuestions(apiQuestions));
+  .then(results => results.json())
+  .then(loadedQuestions => {
+    questions = loadedQuestions.results.map(apiQuestions => formatQuestions(apiQuestions));
 
-  startGame();
-})
-.catch(err => {
-  console.error(err);
-});
+    startGame();
+  })
+  .catch(err => {
+    console.error(err);
+  });
 
 // Function to format questions
 const formatQuestions = (apiQuestions) => {
@@ -41,6 +43,10 @@ const formatQuestions = (apiQuestions) => {
     answers: shuffle([...apiQuestions.incorrect_answers, apiQuestions.correct_answer])
   };
 };
+
+//CONSTANTS
+const CORRECT_BONUS = 10;
+const MAX_QUESTIONS = 10;
 
 startGame = () => {
   questionNumber = 0;
@@ -63,6 +69,13 @@ const getNewQuestion = () => {
       answerButtons[i].innerText = currentQuestion.answers[i];
     }
 
+    
+    // code adapted from https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/blob/master/6.%20Create%20a%20Progress%20Bar/game.js
+
+    progressText.innerText = `Question ${questionNumber +1}/${MAX_QUESTIONS}`;
+    //Update the progress bar
+    progressBarFull.style.width = `${(questionNumber / MAX_QUESTIONS) * 100}%`;
+
     questionNumber++;
   } else {
     gameOver();
@@ -70,7 +83,6 @@ const getNewQuestion = () => {
 };
 
 nextButton.addEventListener('click', () => {
-  questionNumber++
   getNewQuestion()
 })
 

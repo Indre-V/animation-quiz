@@ -204,7 +204,7 @@ textarea {
   align-items: center;
 }
 
-#progress-bar {
+#progress {
   display: flex;
   justify-content: space-around;
 }
@@ -238,7 +238,7 @@ textarea {
 #bar-full {
   height: 3rem;
   background-color: var(--blue);
-  width: 0%;
+  max-width: 100%;
 }
 
 /* Footer */
