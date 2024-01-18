@@ -45,6 +45,7 @@ function startTimer(time) {
     updateDisplay();
 
     if (remainingTime < 0) {
+      clearInterval(timeCounter);
       next();
     }
   }, 1000);
@@ -153,21 +154,21 @@ const checkAnswer = (selectedAnswer) => {
   // Check if the selected answer is correct
   if (selectedAnswer === currentQuestion.correctAnswer) {
     // Add 'correct' class for the correct answer to turn green
-    if (selectedButton) {
+
       selectedButton.classList.add('correct');
 
-    }
+   
   } else {
     // Add 'wrong' class for the incorrect answer to turn red
-    if (selectedButton) {
+    
       selectedButton.classList.add('wrong');
-    }
+    
 
   }
   disableAnswerButtons();
   // Move on to the next question
 
-
+ 
   setTimeout(() => {
     getNewQuestion();
     resetButtonStyles();
@@ -202,6 +203,7 @@ function next(){
       clearInterval(timeCounter);
       getNewQuestion();
       startTimer(20);
+      
 
 }
 
