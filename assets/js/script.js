@@ -1,6 +1,7 @@
-const startQuizArea = document.querySelector("#start-area");
-const questionArea = document.querySelector("#question-area");
-const nextButton = document.getElementById('next-btn')
+const startQuizArea = document.querySelector('#start-area');
+const questionArea = document.querySelector('#question-area');
+const gameOverArea = document.querySelector('#game-over');
+const nextButton = document.getElementById('next-btn');
 const progressText = document.getElementById('progress-text');
 const progressBarFull = document.getElementById('bar-full');
 
@@ -51,6 +52,15 @@ function startTimer(time) {
   }, 1000);
 }
 
+function gameOver() {
+
+  displayArea(gameOverArea);
+  hideArea(questionArea);
+
+}
+
+
+
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5)
 
@@ -91,10 +101,10 @@ startGame = () => {
 const getNewQuestion = () => {
   resetButtonStyles();
 
-    // Enable answer buttons for the new question
-    answerButtons.forEach(button => {
-      button.disabled = false;
-    });
+  // Enable answer buttons for the new question
+  answerButtons.forEach(button => {
+    button.disabled = false;
+  });
 
   if (questionNumber < questions.length) {
     let currentQuestion = questions[questionNumber];
@@ -109,7 +119,7 @@ const getNewQuestion = () => {
     });
 
 
-  
+
     // code adapted from https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/blob/master/6.%20Create%20a%20Progress%20Bar/game.js
 
     progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
@@ -127,7 +137,7 @@ const getNewQuestion = () => {
 
 // Function to check if the selected answer is correct
 const checkAnswer = (selectedAnswer) => {
-  const currentQuestion = questions[questionNumber - 1]; 
+  const currentQuestion = questions[questionNumber - 1];
 
   // Find button corresponding to the selected answer
   const selectedButton = answerButtonsArray.find(button => button.innerText === selectedAnswer);
@@ -144,11 +154,11 @@ const checkAnswer = (selectedAnswer) => {
     if (selectedButton) {
       selectedButton.classList.add('wrong');
     }
-    
+
   }
   disableAnswerButtons();
   // Move on to the next question
- 
+
 
   setTimeout(() => {
     getNewQuestion();
@@ -156,11 +166,11 @@ const checkAnswer = (selectedAnswer) => {
   }, 10000); //change to disable buttons, time out or NEXT
 
 };
-  
 
-  
 
-function resetButtonStyles () {
+
+
+function resetButtonStyles() {
   clearStatusClass(answerButtons);
 };
 
