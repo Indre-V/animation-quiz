@@ -45,9 +45,7 @@ function startTimer(time) {
     updateDisplay();
 
     if (remainingTime < 0) {
-      clearInterval(timeCounter);
-      getNewQuestion();
-      startTimer(20);
+      next();
     }
   }, 1000);
 }
@@ -197,12 +195,15 @@ const disableAnswerButtons = () => {
   });
 };
 
+document.getElementById('next-btn').addEventListener('click', next);
 
-nextButton.addEventListener('click', () => {
-  clearInterval(timeCounter);
-  getNewQuestion();
-  startTimer(20);
-})
+
+function next(){
+      clearInterval(timeCounter);
+      getNewQuestion();
+      startTimer(20);
+
+}
 
 //function to activate level buttons
 const activateButton = (selectedLevelBtn) => {
