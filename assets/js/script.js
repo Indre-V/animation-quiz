@@ -59,7 +59,17 @@ function gameOver() {
 
 }
 
+  /***
+     * Function to restart the quiz
+     */
+  document.getElementById('play-again-btn').addEventListener('click', resetGame);
 
+function resetGame(){
+  
+  //refresh page to Start Area
+  location.reload();
+
+}
 
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5)
