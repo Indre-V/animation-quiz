@@ -91,6 +91,11 @@ startGame = () => {
 const getNewQuestion = () => {
   resetButtonStyles();
 
+    // Enable answer buttons for the new question
+    answerButtons.forEach(button => {
+      button.disabled = false;
+    });
+
   if (questionNumber < questions.length) {
     let currentQuestion = questions[questionNumber];
 
@@ -132,15 +137,19 @@ const checkAnswer = (selectedAnswer) => {
     // Add 'correct' class for the correct answer to turn green
     if (selectedButton) {
       selectedButton.classList.add('correct');
+
     }
   } else {
     // Add 'wrong' class for the incorrect answer to turn red
     if (selectedButton) {
       selectedButton.classList.add('wrong');
     }
+    
   }
+  disableAnswerButtons();
   // Move on to the next question
  
+
   setTimeout(() => {
     getNewQuestion();
     resetButtonStyles();
@@ -160,6 +169,14 @@ function clearStatusClass(element) {
     btn.classList.remove('correct', 'wrong');
   });
 }
+
+const disableAnswerButtons = () => {
+  const answerButtons = document.querySelectorAll('.btn-a');
+  answerButtons.forEach(button => {
+    button.disabled = true;
+  });
+};
+
 
 nextButton.addEventListener('click', () => {
   clearInterval(timeCounter);
