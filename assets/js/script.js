@@ -60,6 +60,7 @@ function gameOver() {
   /***
      * Function to restart the quiz
      */
+
   document.getElementById('play-again-btn').addEventListener('click', resetGame);
 
 function resetGame(){
@@ -165,13 +166,7 @@ const checkAnswer = (selectedAnswer) => {
 
   }
   disableAnswerButtons();
-  // Move on to the next question
 
-
-  setTimeout(() => {
-    getNewQuestion();
-    resetButtonStyles();
-  }, 10000); //change to disable buttons, time out or NEXT
 
 };
 
@@ -195,7 +190,7 @@ const disableAnswerButtons = () => {
   });
 };
 
-document.getElementById('next-btn').addEventListener('click', next);
+document.querySelector('#next-btn').addEventListener('click', next);
 
 
 function next(){
