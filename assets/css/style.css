@@ -190,7 +190,7 @@ textarea {
   background-color: var(--right-answer-green);
 }
 
-.wrong {
+.btn.wrong {
   background-color: var(--wrong-answer-red);
 }
 

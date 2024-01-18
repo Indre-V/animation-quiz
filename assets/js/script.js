@@ -1,16 +1,18 @@
 const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
 const nextButton = document.getElementById('next-btn')
-const progressText = document.getElementById("progress-text");
-const progressBarFull = document.getElementById("bar-full");
+const progressText = document.getElementById('progress-text');
+const progressBarFull = document.getElementById('bar-full');
 
-const question = document.getElementById('question');
-const choices = Array.from(document.getElementsByClassName('btn-a'));
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const answerButtons = document.querySelectorAll('.btn-a');
+const answerButtonsArray = Array.from(document.getElementsByClassName('btn-a'));
 
 const timeCount = document.getElementById('seconds');
 
-const hideArea = (area) => area.classList.add("hide"); // function to hide
-const displayArea = (area) => area.classList.remove("hide"); // function to display area
+const hideArea = (area) => area.classList.add('hide'); // function to hide
+const displayArea = (area) => area.classList.remove('hide'); // function to display area
 
 let currentQuestion = {};
 let userScore = 0;
@@ -82,46 +84,86 @@ startGame = () => {
   userScore = 0;
   getNewQuestion();
   startTimer(20);
-  
-  
+
+
 };
 
 const getNewQuestion = () => {
- 
+  resetButtonStyles();
 
   if (questionNumber < questions.length) {
     let currentQuestion = questions[questionNumber];
 
     // Display question text
-    document.getElementById('question').innerText = currentQuestion.question;
+    questionElement.innerText = currentQuestion.question;
 
-    // Display answer options
-    const answerButtons = document.querySelectorAll('.btn-a');
-
-    for (let i = 0; i < answerButtons.length; i++) {
-      // Assign each answer to a specific button
-      answerButtons[i].innerText = currentQuestion.answers[i];
-    }
+    // Assign each answer to a specific button
+    answerButtons.forEach((button, i) => {
+      button.innerText = currentQuestion.answers[i];
+      button.addEventListener('click', () => checkAnswer(answerButtons[i].innerText));
+    });
 
 
+  
     // code adapted from https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/blob/master/6.%20Create%20a%20Progress%20Bar/game.js
 
     progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
     //Update the progress bar
     progressBarFull.style.width = `${(questionNumber / MAX_QUESTIONS) * 100}%`;
 
-  
+
     questionNumber++;
 
-    
+
   } else {
     gameOver();
   }
 };
 
+// Function to check if the selected answer is correct
+const checkAnswer = (selectedAnswer) => {
+  const currentQuestion = questions[questionNumber - 1]; 
+
+  // Find button corresponding to the selected answer
+  const selectedButton = answerButtonsArray.find(button => button.innerText === selectedAnswer);
+
+  // Check if the selected answer is correct
+  if (selectedAnswer === currentQuestion.correctAnswer) {
+    // Add 'correct' class for the correct answer to turn green
+    if (selectedButton) {
+      selectedButton.classList.add('correct');
+    }
+  } else {
+    // Add 'wrong' class for the incorrect answer to turn red
+    if (selectedButton) {
+      selectedButton.classList.add('wrong');
+    }
+  }
+  // Move on to the next question
+ 
+  setTimeout(() => {
+    getNewQuestion();
+    resetButtonStyles();
+  }, 10000); //change to disable buttons, time out or NEXT
+
+};
+  
+
+  
+
+function resetButtonStyles () {
+  clearStatusClass(answerButtons);
+};
+
+function clearStatusClass(element) {
+  element.forEach(btn => {
+    btn.classList.remove('correct', 'wrong');
+  });
+}
+
 nextButton.addEventListener('click', () => {
   clearInterval(timeCounter);
-  getNewQuestion(); 
+  getNewQuestion();
   startTimer(20);
 })
 
