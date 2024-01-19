@@ -106,20 +106,24 @@ function resetGame() {
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
-// fetch API to Load questions
-fetch(
-  "https://opentdb.com/api.php?amount=10&category=32&difficulty=easy&type=multiple"
-)
-  .then((results) => results.json())
-  .then((loadedQuestions) => {
-    questions = loadedQuestions.results.map((apiQuestions) =>
-      formatQuestions(apiQuestions)
-    );
-    startGame();
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+//Function to fetch questions from the API
+const fetchQuestions = async (difficulty) => {
+
+  const apiLink = "https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=" + difficulty;
+  
+  return fetch(apiLink)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch API questions.`);
+      }
+      return response.json();
+    })
+    .then(apiData => apiData.results.map(apiQuestion => formatQuestions(apiQuestion)))
+    .catch(error => {
+      handleFetchError(error);
+      throw error;
+    });
+};
 
 // Function to format questions
 const formatQuestions = (apiQuestions) => {
@@ -134,15 +138,21 @@ const formatQuestions = (apiQuestions) => {
   };
 };
 
+
 // function to start the game when Start Quiz clicked
-
-startGame = () => {
-  questionNumber = 0;
-  score = 0;
-  getNewQuestion();
-  startTimer(20);
-};
-
+// Fetch quiz questions based on the selected level
+   // Start the game
+async function startGame(difficulty) {
+  try {
+    questions = await fetchQuestions(difficulty);
+    questionNumber = 0;
+    score = 0;
+    getNewQuestion();
+    startTimer(20);
+  } catch (error) {
+    handleFetchError(error);
+  }
+}
 /**get new question function to load a new question onto the quiz
  * Enable answer buttons for the new question
  * Display question text
@@ -150,6 +160,8 @@ startGame = () => {
 
 const getNewQuestion = () => {
   resetButtonStyles();
+
+  console.log ("displayQuestions", questions);
 
   answerButtons.forEach((button) => {
     button.disabled = false;
@@ -253,35 +265,50 @@ const activateButton = (selectedLevelBtn) => {
 };
 
 // Wait for document to load
+// add event listener for Start Quiz button when Username and Level Selected
+// Hide start area and display question area
+// Get the difficulty level from the data-level attribute
+// Start the game only WHEN the selected difficulty is loaded
+//alert when is either level or username missing
+
 document.addEventListener("DOMContentLoaded", function () {
-  const start = document.getElementById("start");
+document.getElementById("start").addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const selectedLevel = document.querySelector(".level-btns.active");
   const usernameEntered = document.getElementById("username");
 
-  // add event listener for Start Quiz button when Username and Level Selected
-  start.addEventListener("submit", function (event) {
-    event.preventDefault();
+  if (usernameEntered.value && selectedLevel) {
+    hideArea(startQuizArea);
+    displayArea(questionArea);
+    const difficulty = selectedLevel.dataset.level;
+    await startGame(difficulty);
 
-    const selectedLevel = document.querySelector(".level-btns.active");
-
-    if (usernameEntered.value && selectedLevel) {
-      // Hide start area and display question area functions
-      hideArea(startQuizArea);
-      displayArea(questionArea);
-
-      //add function to load quiz questions based on the level selected
-    } else {
-      alert("Please select Username and Level.");
-    }
-  });
+  } else {
+    alert("Please select Username and Level.");
+  }
+});
 
   // Add event listener to level buttons
-
   document.querySelectorAll(".level-btns").forEach(function (button) {
     button.addEventListener("click", function () {
       activateButton(button);
     });
   });
 });
+
+/**
+ * API fetch error handling
+ * @param {error} error
+ */
+const handleFetchError = (error) => {
+  alert("Error fetching data. Please try again later.");
+  setTimeout(() => {
+    location.reload();
+}, 1000);
+
+}
+
 
 /**
  * Shows and hide the Rules window to the user according to the parameter.
