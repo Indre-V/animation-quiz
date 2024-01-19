@@ -1,28 +1,28 @@
 //Elements of the code where adapted from https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/blob/master/6.%20Create%20a%20Progress%20Bar/game.js
+//https://github.com/WebDevVikramChoudhary/Vanilla-Quiz-Using-Htm-Css-Js/blob/master/quiz/quiz.js
+
 
 const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
 const gameOverArea = document.querySelector("#game-over");
-const nextButton = document.getElementById("next-btn");
+
 const progressText = document.getElementById("progress-text");
 const progressBarFull = document.getElementById("bar-full");
 
 const scoreText = document.getElementById("score");
-const timeCount = document.getElementById("seconds");
+const seconds = document.getElementById("seconds");
 
 const questionElement = document.getElementById("question");
-const answerButtonsElement = document.getElementById("answer-buttons");
 const answerButtons = document.querySelectorAll(".btn-a");
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
 
 const hideArea = (area) => area.classList.add("hide"); // function to hide
 const displayArea = (area) => area.classList.remove("hide"); // function to display area
 
-let currentQuestion = {};
 let score = 0;
 let questionNumber = 0;
 
-let selectedLevel = "";
+
 let questions = []; // Add questions array
 let acceptingAnswers = true;
 let timeCounter;
@@ -32,29 +32,29 @@ const CORRECT_BONUS = 1;
 const MAX_QUESTIONS = 10;
 
 /**
- * This function increments the correct score.
- *
+ * This function increments the correct score and updated the score display
+ * @param {number} num - Increments the score by set number.
  */
 
-incrementScore = (num) => {
+const incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 };
 
 /**
- * Timer for the quiz the quiz
- *
+ * Sets timer for the quiz 
+ * Counts down from specified time
+ * When time runs out Next() function is called
+ * @param {number} time - The time is set in seconds
  */
 
-function startTimer(time) {
+const startTimer = (time) =>{
   let remainingTime = time;
 
   function updateDisplay() {
-    const seconds = remainingTime % 60;
-    const formattedTime = seconds.toString().padStart(2, "0");
-    timeCount.textContent = formattedTime;
+    const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
+    seconds.textContent = formattedTime;
   }
-
   updateDisplay();
 
   timeCounter = setInterval(() => {
@@ -67,9 +67,12 @@ function startTimer(time) {
   }, 1000);
 }
 
-// Gave over function that display Final score
+/**
+ * Game over function that display Final score
+ * 
 
-function gameOver() {
+*/
+const gameOver = () => {
   displayArea(gameOverArea);
   hideArea(questionArea);
   displayFinalScore();
@@ -307,7 +310,7 @@ const handleFetchError = (error) => {
     location.reload();
 }, 1000);
 
-}
+};
 
 
 /**
