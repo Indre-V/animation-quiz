@@ -37,8 +37,8 @@ const MAX_QUESTIONS = 10;
  */
 
 const incrementScore = (num) => {
-  score += num;
-  scoreText.innerText = score;
+    score += num;
+    scoreText.innerText = score;
 };
 
 /**
@@ -48,270 +48,299 @@ const incrementScore = (num) => {
  * @param {number} time - The time is set in seconds
  */
 
-const startTimer = (time) =>{
-  let remainingTime = time;
+const startTimer = (time) => {
+    let remainingTime = time;
 
-  function updateDisplay() {
-    const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
-    seconds.textContent = formattedTime;
-  }
-  updateDisplay();
-
-  timeCounter = setInterval(() => {
-    remainingTime--;
+    function updateDisplay() {
+        const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
+        seconds.textContent = formattedTime;
+    }
     updateDisplay();
 
-    if (remainingTime < 0) {
-      next();
-    }
-  }, 1000);
+    timeCounter = setInterval(() => {
+        remainingTime--;
+        updateDisplay();
+
+        if (remainingTime < 0) {
+            next();
+        }
+    }, 1000);
 }
 
 /**
- * Game over function that display Final score
- * 
-
-*/
+ * Game over function.
+ * Hides question area.
+ * Calls displayFinalScore function.
+ */
 const gameOver = () => {
-  displayArea(gameOverArea);
-  hideArea(questionArea);
-  displayFinalScore();
+    displayArea(gameOverArea);
+    hideArea(questionArea);
+    displayFinalScore();
 }
 
-//function to display final score
-//Include score message
+/**
+ * Function to display final score
+ * Score message based on the score
+ * Retrieves username entered 
+*/
 
-function displayFinalScore() {
-  const usernameEntered = document.getElementById("username").value;
-  const score = parseInt(document.getElementById("score").textContent);
+const displayFinalScore = () => {
+    const usernameEntered = document.getElementById("username").value;
+    const score = parseInt(document.getElementById("score").textContent);
 
-  let scoreMessage = "";
+    let scoreMessage = "";
 
-  if (score < 5) {
-    scoreMessage = `${usernameEntered} can do better! Keep trying.`;
-  } else {
-    scoreMessage = `Congratulations! ${usernameEntered} done a great job!`;
-  }
+    if (score < 5) {
+        scoreMessage = `${usernameEntered} can do better! Keep trying.`;
+    } else {
+        scoreMessage = `Congratulations! ${usernameEntered} done a great job!`;
+    }
 
-  document.getElementById("score-message").textContent = scoreMessage;
+    document.getElementById("score-message").textContent = scoreMessage;
 
-  document.querySelector(".correct-score").textContent = score;
+    document.querySelector(".correct-score").textContent = score;
 }
 
-// Function to restart the game
+
+/*
+*Function to reset the game
+*Event lsitener added to Play Gain button 
+*reload page is activated
+*/
 
 document.getElementById("play-again-btn").addEventListener("click", resetGame);
 
-function resetGame() {
-  location.reload();
+const resetGame = () => {
+    location.reload();
 }
 
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
-//Function to fetch questions from the API
+/**
+ * Fetches trivia questions from the Open Trivia Database API based on the specified difficulty.
+
+ * @param {string} difficulty - adjustable setting chosen.
+ * @returns {Promise<Array>} - returns a promise of formatted questions.
+ * @throws {Error} throws an error if does not fetch.
+ */
+
 const fetchQuestions = async (difficulty) => {
 
-  const apiLink = "https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=" + difficulty;
-  
-  return fetch(apiLink)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Failed to fetch API questions.`);
-      }
-      return response.json();
-    })
-    .then(apiData => apiData.results.map(apiQuestion => formatQuestions(apiQuestion)))
-    .catch(error => {
-      handleFetchError(error);
-      throw error;
-    });
+    const apiLink = "https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=" + difficulty;
+
+    return fetch(apiLink)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch API questions.`);
+            }
+            return response.json();
+        })
+        .then(apiData => apiData.results.map(apiQuestion => formatQuestions(apiQuestion)))
+        .catch(error => {
+            handleFetchError(error);
+            throw error;
+        });
 };
 
-// Function to format questions
+/*
+* @param {object} apiQuestions - The  data from the API.
+* @returns {object} A formatted question object with properties obtained from API
+*/
+
 const formatQuestions = (apiQuestions) => {
-  return {
-    difficulty: apiQuestions.difficulty,
-    question: apiQuestions.question,
-    correctAnswer: apiQuestions.correct_answer,
-    answers: shuffle([
-      ...apiQuestions.incorrect_answers,
-      apiQuestions.correct_answer,
-    ]),
-  };
+    return {
+        difficulty: apiQuestions.difficulty,
+        question: apiQuestions.question,
+        correctAnswer: apiQuestions.correct_answer,
+        answers: shuffle([
+            ...apiQuestions.incorrect_answers,
+            apiQuestions.correct_answer,
+        ]),
+    };
 };
 
+/**
+ *
+ * Function to start the game when Start Quiz clicked
+ * Sets score and question number variables to 0 and starts the timer.
+ * @param {string} difficulty -  Fetches quiz questions based on the selected difficulty level,
+ * @returns {Promise<void>} A promise that resolves when the game is successfully started.
+ * @param {Error} error - hadles error if fails to start
+ */
 
-// function to start the game when Start Quiz clicked
-// Fetch quiz questions based on the selected level
-   // Start the game
 async function startGame(difficulty) {
-  try {
-    questions = await fetchQuestions(difficulty);
-    questionNumber = 0;
-    score = 0;
-    getNewQuestion();
-    startTimer(20);
-  } catch (error) {
-    handleFetchError(error);
-  }
+    try {
+        questions = await fetchQuestions(difficulty);
+        questionNumber = 0;
+        score = 0;
+        getNewQuestion();
+        startTimer(20);
+    } catch (error) {
+        handleFetchError(error);
+    }
 }
-/**get new question function to load a new question onto the quiz
- * Enable answer buttons for the new question
- * Display question text
- * Assign each answer to a specific button ***/
+/* Loads and display new question onto the quiz.
+ * Resents button styles, enables answer buttons for the new question.
+ * Display question text, answer choices, progress bar.
+ * Assign each answer to a specific button.
+ * If no questions left, call gameOver function
+ */
 
 const getNewQuestion = () => {
-  resetButtonStyles();
+    resetButtonStyles();
 
-  console.log ("displayQuestions", questions);
+    console.log("displayQuestions", questions);
 
-  answerButtons.forEach((button) => {
-    button.disabled = false;
-  });
-
-  if (questionNumber < questions.length) {
-    let currentQuestion = questions[questionNumber];
-
-    questionElement.innerText = currentQuestion.question;
-
-    answerButtons.forEach((button, i) => {
-      button.innerText = currentQuestion.answers[i];
-      button.addEventListener("click", () =>
-        checkAnswer(answerButtons[i].innerText)
-      );
+    answerButtons.forEach((button) => {
+        button.disabled = false;
     });
 
-    progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+    if (questionNumber < questions.length) {
+        let currentQuestion = questions[questionNumber];
 
-    progressBarFull.style.width = `${(questionNumber / MAX_QUESTIONS) * 100}%`;
+        questionElement.innerText = currentQuestion.question;
 
-    questionNumber++;
-  } else {
-    gameOver();
-  }
+        answerButtons.forEach((button, i) => {
+            button.innerText = currentQuestion.answers[i];
+            button.addEventListener("click", () =>
+                checkAnswer(answerButtons[i].innerText)
+            );
+        });
+
+        progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+
+        progressBarFull.style.width = `${(questionNumber / MAX_QUESTIONS) * 100}%`;
+
+        questionNumber++;
+    } else {
+        gameOver();
+    }
 };
 
-// Function to check if the selected answer is correct
-// Find button corresponding to the selected answer
-// Check if the selected answer is correct
-// Add 'correct' class for the correct answer to turn green
-
+/*Function to check if the selected answer is correct
+*Find button corresponding to the selected answer
+*Call function to prevent users from selecting multiple answers
+*Check if the selected answer is correct
+*Add 'correct' class for the correct answer to turn green
+*/
 const checkAnswer = (selectedAnswer) => {
-  const currentQuestion = questions[questionNumber - 1];
+    const currentQuestion = questions[questionNumber - 1];
 
-  const selectedButton = answerButtonsArray.find(
-    (button) => button.innerText === selectedAnswer
-  );
-  if (acceptingAnswers) {
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-      incrementScore(CORRECT_BONUS);
-      console.log("Score after correct answer:", score);
+    const selectedButton = answerButtonsArray.find(
+        (button) => button.innerText === selectedAnswer
+    );
+    if (acceptingAnswers) {
+        if (selectedAnswer === currentQuestion.correctAnswer) {
+            incrementScore(CORRECT_BONUS);
+            console.log("Score after correct answer:", score);
 
-      if (selectedButton) {
-        selectedButton.classList.add("correct");
-      }
-    } else {
-      if (selectedButton) {
-        selectedButton.classList.add("wrong");
-      }
+            if (selectedButton) {
+                selectedButton.classList.add("correct");
+            }
+        } else {
+            if (selectedButton) {
+                selectedButton.classList.add("wrong");
+            }
+        }
+        currentQuestion.answerChecked = true;
+        disableAnswerButtons();
+        acceptingAnswers = false;
     }
-    currentQuestion.answerChecked = true;
-    disableAnswerButtons();
-    acceptingAnswers = false;
-  }
 };
 
 //resets answer buttons for the next question
 
 function resetButtonStyles() {
-  clearStatusClass(answerButtons);
+    clearStatusClass(answerButtons);
 }
 
-// clears the color and status of the buttons
-function clearStatusClass(element) {
-  element.forEach((btn) => {
-    btn.classList.remove("correct", "wrong");
-  });
+/**
+ * clears the color and status of the buttons
+ * @param {HTMLElement[]} elements - An array of HTML elements of buttons.
+ */
+const clearStatusClass = (element) => {
+    element.forEach((btn) => {
+        btn.classList.remove("correct", "wrong");
+    });
 }
 
 //prevents user from selecting multiple answers
 
 const disableAnswerButtons = () => {
-  const answerButtons = document.querySelectorAll(".btn-a");
-  answerButtons.forEach((button) => {
-    button.disabled = true;
-  });
+    const answerButtons = document.querySelectorAll(".btn-a");
+    answerButtons.forEach((button) => {
+        button.disabled = true;
+    });
 };
 
 //NEXT button functionality which clears timer, displays new question and start timer again
 
 document.querySelector("#next-btn").addEventListener("click", next);
 
-function next() {
-  clearInterval(timeCounter);
-  getNewQuestion();
-  startTimer(20);
-  acceptingAnswers = true;
+const next = () =>{
+    clearInterval(timeCounter);
+    getNewQuestion();
+    startTimer(20);
+    acceptingAnswers = true;
 }
 
-//function to activate level buttons
-//add selected level to question display area
+/*function to activate level buttons
+*add selected level to question display area
+*/
 const activateButton = (selectedLevelBtn) => {
-  document
-    .querySelectorAll(".level-btns")
-    .forEach((button) => button.classList.remove("active"));
-  selectedLevelBtn.classList.add("active");
+    document
+        .querySelectorAll(".level-btns")
+        .forEach((button) => button.classList.remove("active"));
+    selectedLevelBtn.classList.add("active");
 
-  document.getElementById("selected-level").textContent = selectedLevelBtn.textContent;
+    document.getElementById("selected-level").textContent = selectedLevelBtn.textContent;
 
 };
 
-// Wait for document to load
-// add event listener for Start Quiz button when Username and Level Selected
-// Hide start area and display question area
-// Get the difficulty level from the data-level attribute
-// Start the game only WHEN the selected difficulty is loaded
-//alert when is either level or username missing
+/* Wait for document to fully load and execute content
+* @param {Event} event - The form submission event.
+*Username and Level selection process
+*Hide start area and display question area
+*alert when is either level or username missing
+*/
 
-document.addEventListener("DOMContentLoaded", function () {
-document.getElementById("start").addEventListener("submit", async function (event) {
-  event.preventDefault();
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("start").addEventListener("submit", async function(event) {
+        event.preventDefault();
 
-  const selectedLevel = document.querySelector(".level-btns.active");
-  const usernameEntered = document.getElementById("username");
+        const selectedLevel = document.querySelector(".level-btns.active");
+        const usernameEntered = document.getElementById("username");
 
-  if (usernameEntered.value && selectedLevel) {
-    hideArea(startQuizArea);
-    displayArea(questionArea);
-    const difficulty = selectedLevel.dataset.level;
-    await startGame(difficulty);
+        if (usernameEntered.value && selectedLevel) {
+            hideArea(startQuizArea);
+            displayArea(questionArea);
+            const difficulty = selectedLevel.dataset.level;
+            await startGame(difficulty);
 
-  } else {
-    alert("Please select Username and Level.");
-  }
-});
-
-  // Add event listener to level buttons
-  document.querySelectorAll(".level-btns").forEach(function (button) {
-    button.addEventListener("click", function () {
-      activateButton(button);
+        } else {
+            alert("Please select Username and Level.");
+        }
     });
-  });
+    document.querySelectorAll(".level-btns").forEach(function(button) {
+        button.addEventListener("click", function() {
+            activateButton(button);
+        });
+    });
 });
 
 /**
  * API fetch error handling
+ * page reloads if error occurs
  * @param {error} error
  */
 const handleFetchError = (error) => {
-  alert("Error fetching data. Please try again later.");
-  setTimeout(() => {
-    location.reload();
-}, 1000);
+    alert("Error fetching data. Please try again later.");
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
 
 };
-
 
 /**
  * Shows and hide the Rules window to the user according to the parameter.
@@ -319,11 +348,11 @@ const handleFetchError = (error) => {
  */
 
 function showInstructions(show) {
-  let instructionsContainer = document.getElementById("instructions");
-  instructionsContainer.style.display = show ? "block" : "none";
+    let instructionsContainer = document.getElementById("instructions");
+    instructionsContainer.style.display = show ? "block" : "none";
 }
 
 function showForm(show) {
-  let feedbackContainer = document.getElementById("feedback");
-  feedbackContainer.style.display = show ? "block" : "none";
+    let feedbackContainer = document.getElementById("feedback");
+    feedbackContainer.style.display = show ? "block" : "none";
 }
