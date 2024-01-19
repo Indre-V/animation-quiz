@@ -108,12 +108,13 @@ const displayFinalScore = () => {
 *reload page is activated
 */
 
-document.getElementById("play-again-btn").addEventListener("click", resetGame);
+
 
 const resetGame = () => {
     location.reload();
 }
 
+document.getElementById("play-again-btn").addEventListener("click", resetGame);
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
@@ -230,24 +231,20 @@ const checkAnswer = (selectedAnswer) => {
     const selectedButton = answerButtonsArray.find(
         (button) => button.innerText === selectedAnswer
     );
-    if (acceptingAnswers) {
-        if (selectedAnswer === currentQuestion.correctAnswer) {
-            incrementScore(CORRECT_BONUS);
-            console.log("Score after correct answer:", score);
-
-            if (selectedButton) {
-                selectedButton.classList.add("correct");
-            }
-        } else {
-            if (selectedButton) {
-                selectedButton.classList.add("wrong");
-            }
-        }
+    if (acceptingAnswers && selectedButton) {
+      if (selectedAnswer === currentQuestion.correctAnswer) {
+          incrementScore(CORRECT_BONUS);
+          console.log("Score after correct answer:", score);
+          selectedButton.classList.add("correct");
+      } else {
+          selectedButton.classList.add("wrong");
+      }
+  }
         currentQuestion.answerChecked = true;
         disableAnswerButtons();
         acceptingAnswers = false;
-    }
-};
+    };
+
 
 //resets answer buttons for the next question
 
@@ -276,7 +273,6 @@ const disableAnswerButtons = () => {
 
 //NEXT button functionality which clears timer, displays new question and start timer again
 
-document.querySelector("#next-btn").addEventListener("click", next);
 
 const next = () =>{
     clearInterval(timeCounter);
@@ -285,6 +281,7 @@ const next = () =>{
     acceptingAnswers = true;
 }
 
+document.querySelector("#next-btn").addEventListener("click", next);
 /*function to activate level buttons
 *add selected level to question display area
 */
@@ -312,15 +309,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const selectedLevel = document.querySelector(".level-btns.active");
         const usernameEntered = document.getElementById("username");
 
-        if (usernameEntered.value && selectedLevel) {
-            hideArea(startQuizArea);
-            displayArea(questionArea);
-            const difficulty = selectedLevel.dataset.level;
-            await startGame(difficulty);
-
-        } else {
-            alert("Please select Username and Level.");
-        }
+        (usernameEntered.value && selectedLevel)
+        ? (
+            hideArea(startQuizArea),
+            displayArea(questionArea),
+            await startGame(selectedLevel.dataset.level)
+          )
+        : alert("Please select Username and Level.");
     });
     document.querySelectorAll(".level-btns").forEach(function(button) {
         button.addEventListener("click", function() {
