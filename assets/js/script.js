@@ -73,9 +73,6 @@ function gameOver() {
   displayArea(gameOverArea);
   hideArea(questionArea);
   displayFinalScore();
-
-  // Log a message (optional)
-  console.log("Game over");
 }
 
 //function to display final score
@@ -244,11 +241,15 @@ function next() {
 }
 
 //function to activate level buttons
+//add selected level to question display area
 const activateButton = (selectedLevelBtn) => {
   document
     .querySelectorAll(".level-btns")
     .forEach((button) => button.classList.remove("active"));
   selectedLevelBtn.classList.add("active");
+
+  document.getElementById("selected-level").textContent = selectedLevelBtn.textContent;
+
 };
 
 // Wait for document to load

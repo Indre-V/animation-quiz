@@ -182,10 +182,15 @@ textarea {
 .btn:hover {
   border-color: var(--navy);
 }
-#level-btn.active {
+
+.level-btns.active {
   background-color: green;
 }
+ .level-btns:hover{
 
+  background-color: blanchedalmond;
+
+ }
 .correct {
   background-color: var(--right-answer-green);
 }
