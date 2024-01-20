@@ -174,6 +174,7 @@ const formatQuestions = (apiQuestions) => {
 async function startGame(difficulty) {
     try {
         questions = await fetchQuestions(difficulty);
+        console.log("load", difficulty);
         questionNumber = 0;
         score = 0;
         getNewQuestion();

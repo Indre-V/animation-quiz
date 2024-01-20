@@ -137,7 +137,9 @@ textarea {
 #start-area {
     line-height: 3;
 }
-
+#question{
+    margin-top: 3rem;
+}
 .quiz-container {
     display: flex;
     flex-direction: column;
