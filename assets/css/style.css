@@ -157,7 +157,7 @@ textarea {
     grid-template-columns: repeat(2, minmax(9rem, 1fr));
     justify-items: center;
     gap: 2rem;
-    margin: 5rem 0;
+    margin: 2rem 0;
 }
 
 .btn {
@@ -174,7 +174,8 @@ textarea {
 }
 
 .btn-a {
-    min-width: 30vw;
+    min-width: 35vw;
+    padding: 1rem;
 }
 
 .btn-a.disabled{pointer-events: none;}
@@ -261,6 +262,9 @@ footer {
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
+
+    .btn-a {min-width: 30vw;}
+
     .btn-grid {
         grid-template-columns: repeat(2, minmax(25rem, 1fr));
     }
