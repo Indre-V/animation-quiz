@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200;300;400;500;600&family=Open+Sans&display=swap");
 
 :root {
-    --blue: #62929e;
-    --light-gray: #d8d8d8;
-    --pale-gray: #ffffff6e;
-    --off-white: #f7f9f9;
-    --light-cream: #fbeee6;
+    --blue: #95B0B7;
     --dark-gray: #232323;
-    --navy: #031926;
+    --light-gray: #d8d8d8;
+    --light-cream: #f4f0ed;
+    --dark-blue: #507682;
     --wrong-answer-red: #ff3333;
-    --right-answer-green: #50c878;
+    --right-answer-green: #51BF83; 
+    --pale-gray: #ffffff9f;
 }
 
 * {
@@ -37,6 +36,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: "Lato", sans-serif;
+    color: var(--dark-gray);
     font-size: 2rem;
     font-weight: 600;
     line-height: 1.5;
@@ -94,7 +94,7 @@ textarea {
     justify-content: end;
     padding: 1rem;
     margin: 0.5rem;
-    color: var(--dark-gray);
+   
 }
 #list {
     text-align: left;
@@ -118,7 +118,7 @@ textarea {
     display: flex;
     justify-content: space-evenly;
     margin: 1rem;
-    color: var(--blue);
+    color: var(--dark-blue);
     background: none;
     font-size: 2rem;
     font-weight: bold;
@@ -148,7 +148,6 @@ textarea {
     margin: 2rem;
     box-shadow: 0 0 1rem 0.5rem;
     background-blend-mode: overlay;
-    color: var(--dark-gray);
 }
 
 .btn-grid {
@@ -162,6 +161,7 @@ textarea {
 .btn {
     background-color: var(--blue);
     border: 2px solid;
+    border-color: var(--dark-blue);
     font-size: 2rem;
     font-weight: 600;
     border-radius: 1rem;
@@ -180,17 +180,11 @@ textarea {
 }
 
 .btn:hover {
-    border-color: var(--navy);
+    background-color: var(--light-cream);
 }
 
 .level-btns.active {
-    background-color: green;
-}
-
-.level-btns:hover {
-
-    background-color: blanchedalmond;
-
+    background-color: var(--dark-blue);
 }
 
 .correct {
