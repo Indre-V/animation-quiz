@@ -22,10 +22,9 @@
     <div id="support">
       <div id="instructions-list">
         <input type="button" value="Instructions" class="button nav-item" onclick="showInstructions(true)">
-        <div id="instructions" class="container">
-          <div class="nav-open-view">
+          <div class="nav-open-view text-center" id="instructions">
             <h3>How to Play</h3>
-            <div class="container-instructions">
+            <div id="list">
               <ol>
                 <li>Select a Category</li>
                 <li>Click to Start the Quiz</li>
@@ -36,17 +35,16 @@
                 <li>Score message will be displayed</li>
                 <li>Select Play Again to go back to the main page</li>
               </ol>
-            </div>
+            </div> 
             <input type="button" value="Close" class="btn btn-support" onclick="showInstructions(false)">
           </div>
         </div>
-      </div>
+
       <div id="contact-form">
         <input type="button" value="Feedback" class="nav-item" onclick="showForm(true)">
-        <div id="feedback" class="nav-open-view">
-          <div class="container-instructions">
+        <div class="nav-open-view" id="feedback">
             <form action="feedback-thanks.html" method="GET" class="form">
-              <div class="input-box">
+              <div id="input-box">
                 <label for="name-submission">Your Name*</label>
                 <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
                 <label for="email-submission">Your Email*</label>
@@ -58,7 +56,6 @@
                 Send
               </button>
             </form>
-          </div>
           <input type="button" value="Close" class="btn btn-support" onclick="showForm(false)">
         </div>
       </div>

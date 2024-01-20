@@ -36,7 +36,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    width: 100vw;
     font-family: "Lato", sans-serif;
     font-size: 2rem;
     font-weight: 600;
@@ -45,10 +44,11 @@ body {
     background-size: cover;
 }
 
+/* allows the content to grow but not shrink */
 main {
-    flex: 1 0 auto;
-    /* allows the content to grow but not shrink */
+    flex: 1 0 auto; 
 }
+
 
 body::before {
     content: "";
@@ -60,62 +60,7 @@ body::before {
 header {
     padding-bottom: 7rem;
     width: 100%;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* Instructions and feedback styles */
-
-#instructions,
-#feedback {
-    display: none;
-    text-align: center;
-}
-
-#support {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: end;
-    padding: 1rem;
-    color: var(--dark-gray);
-}
-
-.nav-item {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 1rem;
-    color: var(--blue);
-    background: none;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.nav-open-view {
-    padding: 1rem;
-    font-size: 1.5rem;
-    background-color: var(--light-gray);
-    margin: 0.5rem;
-}
-
-.container-instructions {
-    text-align: left;
-    margin-left: 2rem;
-    padding-top: 1rem;
-}
-
-.container-instructions li {
-    padding: 0 0 1rem 1rem;
-}
-
-/* Feedback form styling */
-
-.input-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 35vw;
+    overflow: hidden;
 }
 
 label {
@@ -132,7 +77,62 @@ textarea {
     font-family: "Lato", sans-serif;
 }
 
-/* Start gquiz area styles */
+.text-center {
+    text-align: center;
+}
+
+/* Instructions and feedback styles */
+
+#instructions,
+#feedback {
+    display: none;
+    text-align: center;
+} 
+#support {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: end;
+    padding: 1rem;
+    margin: 0.5rem;
+    color: var(--dark-gray);
+}
+#list {
+    text-align: left;
+    margin-left: 2rem;
+    padding-top: 1rem;
+}
+
+#list li {
+    padding: 0 0 1rem 1rem;
+} 
+
+/* Feedback form styling */
+
+#input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 35vw;
+}
+.nav-item {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+    color: var(--blue);
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-open-view {
+    padding: 1rem;
+    font-size: 1.5rem;
+    background-color: var(--light-gray);
+    margin: 1.5rem;
+}
+
+
+/* Start quiz area styles */
 
 #start-area {
     line-height: 3;
