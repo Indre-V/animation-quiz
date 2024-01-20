@@ -250,6 +250,10 @@ footer {
     color: var(--blue);
 }
 
+.fa-check {
+    color: var(--right-answer-green);
+}
+
 /* Small devices (landscape phones, 576px and up)  */
 @media (min-width: 576px) {}
 
