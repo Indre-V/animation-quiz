@@ -183,6 +183,7 @@ async function startGame(difficulty) {
         score = 0;
         getNewQuestion();
         startTimer(20);
+      
         
     } catch (error) {
         handleFetchError(error);
