@@ -10,15 +10,17 @@ const progressText = document.getElementById("progress-text");
 const progressBarFull = document.getElementById("bar-full");
 
 const scoreText = document.getElementById("score");
-
 const seconds = document.getElementById("seconds");
 
+const loader = document.getElementById("loader");
 const questionElement = document.getElementById("question");
 const answerButtons = document.querySelectorAll(".btn-a");
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
 
 const hideArea = (area) => area.classList.add("hide"); // function to hide
 const displayArea = (area) => area.classList.remove("hide"); // function to display area
+
+
 
 let score = 0;
 let questionNumber = 0;
@@ -173,16 +175,20 @@ const formatQuestions = (apiQuestions) => {
 
 async function startGame(difficulty) {
     try {
+        
+        displayArea(loader);
         questions = await fetchQuestions(difficulty);
         console.log("load", difficulty);
         questionNumber = 0;
         score = 0;
         getNewQuestion();
         startTimer(20);
+        
     } catch (error) {
         handleFetchError(error);
     }
 }
+
 /* Loads and display new question onto the quiz.
  * Resents button styles, enables answer buttons for the new question.
  * Display question text, answer choices, progress bar.
