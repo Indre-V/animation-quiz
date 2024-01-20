@@ -10,6 +10,7 @@ const progressText = document.getElementById("progress-text");
 const progressBarFull = document.getElementById("bar-full");
 
 const scoreText = document.getElementById("score");
+
 const seconds = document.getElementById("seconds");
 
 const questionElement = document.getElementById("question");

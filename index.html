@@ -72,8 +72,8 @@
         <form id="start">
           <label for="username">Enter your username:</label>
           <input type="text" name="username" id="username" class="btn" placeholder="Mickey Mouse" required>
-          <h4 class="text-center hide">Choose your level:</h4>
-          <div id="level-btns" class="none">
+          <h4 class="text-center">Choose your level:</h4>
+          <div id="difficulty">
             <button data-type="easy" class="level-btns btn" data-level="easy" type="button">
               Easy
             </button>
@@ -105,7 +105,6 @@
             <div id="seconds"></div>
           </div>
         </div>
-
         <div id="question">Question</div>
         <div id="answer-buttons" class="btn-grid">
           <button type="button" class="btn btn-a ">Answer 1</button>
@@ -118,12 +117,12 @@
             Next
           </button>
         </div>
-      
         <div id="score-area">
-          <p class="score"><i class="fa fa-level-up" aria-hidden="true"></i><span id="selected-level">x</span></p>
-          <p class="score"><i class="fa-solid fa-check"></i> : <span id="score">0</span></p>
+          <p><i class="fa fa-level-up" aria-hidden="true"></i><span id="selected-level">x</span></p>
+          <p><i class="fa-solid fa-check"></i> : <span id="score">0</span></p>
         </div>
     </div>
+    <!-- Game over results area -->
       <div id="game-over" class="hide">
         <p id="score-message"></p>
         <p class="text-center">Final Score:</p>
