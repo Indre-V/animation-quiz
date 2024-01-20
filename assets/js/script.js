@@ -194,8 +194,8 @@ const getNewQuestion = () => {
 
     console.log("displayQuestions", questions);
 
-    answerButtons.forEach((button) => {
-        button.disabled = false;
+    answerButtons.forEach((btn) => {
+        btn.disabled = false;
     });
 
     if (questionNumber < questions.length) {
@@ -260,6 +260,8 @@ function resetButtonStyles() {
 const clearStatusClass = (element) => {
     element.forEach((btn) => {
         btn.classList.remove("correct", "wrong");
+        btn.classList.remove("disabled");
+       
     });
 }
 
@@ -267,8 +269,9 @@ const clearStatusClass = (element) => {
 
 const disableAnswerButtons = () => {
     const answerButtons = document.querySelectorAll(".btn-a");
-    answerButtons.forEach((button) => {
-        button.disabled = true;
+    answerButtons.forEach((btn) => {
+        btn.classList.add("disabled");
+        btn.disabled = true;
     });
 };
 

@@ -175,6 +175,8 @@ textarea {
     min-width: 30vw;
 }
 
+.btn-a.disabled{pointer-events: none;}
+
 .btn-support {
     font-size: 1.5rem;
 }
@@ -187,7 +189,7 @@ textarea {
     background-color: var(--dark-blue);
 }
 
-.correct {
+.btn.correct {
     background-color: var(--right-answer-green);
 }
 
