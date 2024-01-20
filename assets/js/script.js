@@ -210,9 +210,7 @@ const getNewQuestion = () => {
             );
         });
 
-        progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
-
-        progressBarFull.style.width = `${(questionNumber / MAX_QUESTIONS) * 100}%`;
+         progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
 
         questionNumber++;
     } else {

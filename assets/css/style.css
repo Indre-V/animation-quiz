@@ -209,11 +209,10 @@ textarea {
 
 #progress {
     display: flex;
-    justify-content: space-around;
-}
+    flex-direction: column;
+    align-items: center;}
 
 #progress-text {
-    text-align: left;
     font-size: large;
 }
 
@@ -227,22 +226,7 @@ textarea {
     letter-spacing: 1px;
     border: solid 2px var(--light-gray);
     box-shadow: 0 0 2rem var(--light-cream);
-    height: 4rem;
-    padding: 1rem;
-}
-
-#progress-box {
-    box-sizing: border-box;
-    width: 15rem;
-    height: 4rem;
-    border: 0.5rem solid var(--blue);
-    margin: 0 0 2rem 0;
-}
-
-#bar-full {
-    height: 3rem;
-    background-color: var(--blue);
-
+    width: 10rem;
 }
 
 /* Footer */
