@@ -260,6 +260,10 @@ footer {
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
 
+    .quiz-container {
+        font-size: 2rem;
+    }
+    
     .btn-a {min-width: 30vw;}
 
     .btn-grid {
