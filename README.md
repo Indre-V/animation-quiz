@@ -261,7 +261,9 @@ In a scenario where the link may be broken, 404 page provides the option to retu
 ## Libraries & Framework
 
 - [Google Fonts](https://fonts.google.com/ "Google Fonts")
-- [Font Awesome library](https://fontawesome.com/ "Font Awesome")
+- [Favicon](https://favicon.io/ "Favicon")
+- [Open Trivia DB]("https://opentdb.com/" "Open Trivia DB")
+- [cdnjs]("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" "cdnjs")
 
 ## Tools
 
@@ -290,16 +292,52 @@ In a scenario where the link may be broken, 404 page provides the option to retu
 
 ## Responsiveness Tests
 
+To test the responsiveness, I have launched the website very early on. I followed the mobile-first strategy and verified all of my modifications using the DevTools browsers for Google Chrome and Microsoft Edge. Deployed versions were tested using the external website [Responsive Design Checker](https://responsivedesignchecker.com/ "Responsive Design Checker"). The [Am I Responsive](https://ui.dev/amiresponsive "Am I responsive") website was another external source that was used to obtain a unified view of different device breakpoints.
+
+I have also used Google Chrome's Mobile Simulator extension to evaluate the responsiveness of even more specialized devices. Device samples were examined for navigation, element alignment, content layout, and functionality concerns at different breakpoints. I moved the hamburger icon from the left to the right to enhance user experience as a result of the testing.
+
+Final Test Results:
+
+| Size | Device Example     | Navigation | Element Alignments | Content Placement | Functionality | Notes                                             |
+| ---- | ------------------ | ---------- | ------------------ | ----------------- | ------------- | ------------------------------------------------- |
+| sm   | Samsung Galaxy S20 | Good       | Good               | Good              | Good          | 
+| sm   | iPhone 11 PRO      | Good       | Good               | Good              | Good          | Updated font size of the sart area
+| sm   | iPhone 13 PRO MAX  | Good       | Good               | Good              | Good          | Updated header bottom margin to fit quiz container 
+| md   | iPad MINI          | Good       | Good               | Good              | Good          |                                                   |
+| md   | Galaxy Tab S7      | Good       | Good               | Good              | Good          |                                                   |
+| md   | iPad Air           | Good       | Good               | Good              | Good          |                                                   |
+| lg   | iPad Pro           | Good       | Good               | Good              | Good          |                                                   |
+| xl   | Mackbook Air       | Good       | Good               | Good              | Good          |                             
+| xl   | HP Stream Laptop   | Good       | Good               | Good              | Good          |
+| xxl  | Dell Lattitude     | Good       | Good               | Good              | Good          | Updated font weight for support headings                                        |
+| xxl  | Desktop            | Good       | Good               | Good              | Good          |                                                   |
+
 [Back to top](#contents)
+
 
 ## Code Validation
 
 ### HTML
 
+I have used [W3C HTML Validation Service](https://validator.w3.org/ "W3C HTML"). I have tested 2 html files. They both came back without errors.
+![W3C HTML Validator](docs/html-validator-index.png "W3C HTML Validator index.html")
+
+![W3C HTML Validator](docs/html-validator-feedback-thanks.png "W3C HTML Validator feedback-thanks.html")
+
+
+[Back to top](#contents)
+
 ### CSS
+CSS code for the webpage was validated on [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/ "W3C CSS Validator"). It has returned errors only relating to external cdnjs file which is used for font awesome icons. There were no errors relating CSS code for this website. 
+
+![W3C CSS Validator](docs/css-validator-results.png "W3C CSS Validator results")
+
+[Back to top](#contents)
 
 ### Javascript
 
+
+![JS Validation Image](docs/js-test-result.png)
 
 [Back to top](#contents)
 
@@ -409,7 +447,7 @@ Forking the GitHub repository allows you to create a duplicate of a local reposi
 
 * Quiz Questions
 
-  * [Open Trivia DB]("https://opentdb.com/" "OPen Trivia DB")
+  * [Open Trivia DB]("https://opentdb.com/" "Open Trivia DB")
 
 - Code inspiration and learning content:
 
