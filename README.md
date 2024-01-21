@@ -67,8 +67,7 @@ Players have the option provide feedback to website creators.
 
 * As a user, I want my knowledge to be challenged.
 * As a user, I want to be able to test my knowledge at different levels.
-* As a user, I want to receive immediate feedback on my quiz answers, including the correct answer.
-* As a user, I want to able to be able to share my results on social media.  
+* As a user, I want to receive immediate feedback on my quiz answers.
 * As a user, I want the instructions to be clear, concise and easily accessible. 
 * As a user, I want navigation to be intuitive.
 * As a user, I want the score system to be transparent.
@@ -307,6 +306,17 @@ In a scenario where the link may be broken, 404 page provides the option to retu
 
 ## User Story Testing
 
+| User Story                                                                               | Result                                                                   | Pass |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---- |
+| As a user, I want my knowledge to be challenged.                                         | Quiz fetches questions from API so they do not repeat frequently         | Yes  |
+| As a user, I want to be able to test my knowledge at different levels.                   | User can choose from 3 levels                                            | Yes  |
+| As a user, I want to receive immediate feedback on my quiz answers                       | Once answer selected, color changes depending whether its correct or not | Yes  |
+| As a user, I want the instructions to be clear, concise and easily accessible.           | Instructions written in plain English and displayed at the of the page   | Yes  |
+| As a user, I want navigation to be intuitive.                                            | Buttons named logically                                                  | Yes  |
+| As a user, I want the score system to be transparent.                                    | Final score displayed                                                    | Yes  |
+| As a user, I want to be able to use website on range of devices.                         | Quiz is fully functional on all devices                                  | Yes  |
+| As a user, I want to be able to easily contact content creators for feedback or changes. | Feedback form available                                                  | Yes  |
+| As a user, I want the content to be accessible for anyone with diverse needs.            | Passed all accessibility tests                                           | Yes  |
 
 [Back to top](#contents)
 
@@ -318,6 +328,8 @@ In a scenario where the link may be broken, 404 page provides the option to retu
 
 
 ## Accessibility Testing
+
+I have used web accessibility evaluation tool [WAVE Tool](https://wave.webaim.org/) which helps to determine if web content is accessible to individuals with disabilities.
 
 
 [Back to top](#contents)
@@ -382,15 +394,28 @@ Forking the GitHub repository allows you to create a duplicate of a local reposi
 
   - [Simen Daehlin](https://github.com/Eventyret "Simen Daehlin")
 
+* Quiz Questions
+
+  * [Open Trivia DB]("https://opentdb.com/" "OPen Trivia DB")
+
 - Code inspiration and learning content:
 
-* [Flexbox and Grid Tutorials by Kevin Powell](https://www.youtube.com/user/KepowOb "Kevin Powell")
-* [Project Portfolio-2 channel on Slack](https://slack.com/intl/en-ie/ "Slack")
+  - [Project Portfolio-2 channel on Slack](https://slack.com/intl/en-ie/ "Slack")
+  - [Love Maths Project](https://codeinstitute.net "Love Maths Project")
+  - [W3C Schools](https://www.w3schools.com/ "W3C Schools")
+  - [StackOverflow](https://stackoverflow.com/ "StackOverflow")
+  - [CodePen](https://codepen.io/pen/ "CodePen")
 
-- [Love Maths Project](https://codeinstitute.net "Love Maths Project")
-- [W3C Schools](https://www.w3schools.com/ "W3C Schools")
-- [StackOverflow](https://stackoverflow.com/ "StackOverflow")
-- [CodePen](https://codepen.io/pen/ "CodePen")
+* YouTube Channels for Quiz fetch and API Fetch: 
+
+  * [Keep Coding](https://www.youtube.com/watch?v=MxrGPP4F8Sc "YouTube")
+  * [Web Dev Simplified](https://www.youtube.com/watch?v=riDzcEQbX6k "YouTube")
+  * [Great Stack](https://www.youtube.com/watch?v=PBcqGxrr9g8 "YouTube")
+  * [James Q Quick](https://www.youtube.com/watch?v=u98ROZjBWy8&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx "YouTube")
+  * [Ali Aslan](https://www.youtube.com/watch?v=xZXW5SnCiWI&t=2450s "YoutTube")
+  * [Code Explained](https://www.youtube.com/watch?v=49pYIMygIcU "YouTube")
+
+
 
 * Visual content:
 
@@ -398,6 +423,8 @@ Forking the GitHub repository allows you to create a duplicate of a local reposi
   - [Contrast Grid](https://contrast-grid.eightshapes.com/ "Contrast Grid")
 
 * Images:
+  
+  - [Gencraft](https://gencraft.com/ "Gencraft")
 
 
 [Back to top](#contents)
