@@ -37,7 +37,6 @@ body {
     min-height: 100vh;
     font-family: "Lato", sans-serif;
     color: var(--dark-gray);
-    font-size: 2rem;
     font-weight: 600;
     line-height: 1.5;
     background: url("../images/background.png") no-repeat center center;
@@ -257,8 +256,6 @@ footer {
     color: var(--right-answer-green);
 }
 
-/* Small devices (landscape phones, 576px and up)  */
-@media (min-width: 576px) {}
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
@@ -270,11 +267,3 @@ footer {
     }
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {}
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
-
-/* Large devices (larger desktops, 1400px and up)  */
-@media (min-width: 1400px) {}

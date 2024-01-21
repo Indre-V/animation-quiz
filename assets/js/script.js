@@ -7,7 +7,6 @@ const questionArea = document.querySelector("#question-area");
 const gameOverArea = document.querySelector("#game-over");
 
 const progressText = document.getElementById("progress-text");
-const progressBarFull = document.getElementById("bar-full");
 
 const scoreText = document.getElementById("score");
 const seconds = document.getElementById("seconds");
@@ -68,7 +67,7 @@ const startTimer = (time) => {
             next();
         }
     }, 1000);
-}
+};
 
 /**
  * Game over function.
@@ -79,7 +78,7 @@ const gameOver = () => {
     displayArea(gameOverArea);
     hideArea(questionArea);
     displayFinalScore();
-}
+};
 
 /**
  * Function to display final score
@@ -102,7 +101,7 @@ const displayFinalScore = () => {
     document.getElementById("score-message").textContent = scoreMessage;
 
     document.querySelector(".correct-score").textContent = score;
-}
+};
 
 
 /*
@@ -123,7 +122,6 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
 /**
  * Fetches trivia questions from the Open Trivia Database API based on the specified difficulty.
-
  * @param {string} difficulty - adjustable setting chosen.
  * @returns {Promise<Array>} - returns a promise of formatted questions.
  * @throws {Error} throws an error if does not fetch.
@@ -252,9 +250,9 @@ const checkAnswer = (selectedAnswer) => {
 
 //resets answer buttons for the next question
 
-function resetButtonStyles() {
+const resetButtonStyles = () => {
     clearStatusClass(answerButtons);
-}
+};
 
 /**
  * clears the color and status of the buttons
@@ -266,7 +264,7 @@ const clearStatusClass = (element) => {
         btn.classList.remove("disabled");
        
     });
-}
+};
 
 //prevents user from selecting multiple answers
 
@@ -286,7 +284,7 @@ const next = () =>{
     getNewQuestion();
     startTimer(20);
     acceptingAnswers = true;
-}
+};
 
 document.querySelector("#next-btn").addEventListener("click", next);
 /*function to activate level buttons
