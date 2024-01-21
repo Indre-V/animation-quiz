@@ -260,14 +260,16 @@ footer {
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
 
-    .quiz-container {
-        font-size: 2rem;
-    }
+.quiz-container {
+    font-size: 2rem;
+ }
     
-    .btn-a {min-width: 30vw;}
+.btn-a {
+    min-width: 30vw;
+}
 
-    .btn-grid {
-        grid-template-columns: repeat(2, minmax(25rem, 1fr));
+.btn-grid {
+     grid-template-columns: repeat(2, minmax(25rem, 1fr));
     }
 }
 

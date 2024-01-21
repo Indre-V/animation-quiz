@@ -4,6 +4,8 @@
 
 The Ultimate Animation quiz offers an opportunity to test knowledge at three levels in animation including cartoons. 
 
+Every question has 20 second timer.
+
 Players have the option provide feedback to website creators.
 
 ![Animation-Quiz](docs/animation-quiz-responsive-display.png)
@@ -107,8 +109,22 @@ Wireframes were designed using Balsamiq tool. Following best practices, mobile v
 The font family chosen for The Ultimate Animation quiz was [Lato]("https://fonts.google.com/specimen/Lato?query=lato"). It is a sans-serif font with a rounded appearance and a modern feel. Lato also has a clean and easy-to-read style, making it suitable for both print and web design.
 
 ### Colour Scheme
+
+The color scheme chosen based on the background image. All the colours are cool toned to match the black and white image theme. 
 ![Coolors Scheme](docs/color-scheme.png)
 ![Contrast Grid](docs/contrast-grid-color.png)
+| Primary Colors CSS HEX             |                                                                                |
+| ---------------------------------- | ------------------------------------------------------------------------------ |
+|     --blue: #95B0B7;               | Button and timer background color, footer hover color.                         |
+|     --dark-gray: #232323;          | Font color for the quiz.                                                       |
+|     --light-gray: #d8d8d8;         | Timer border color, support open background color.                             |
+|     --light-cream: #f4f0ed;        | Button hover color, timer shadow color.                                        |
+|     --dark-blue: #507682;          | Font color for support section, border color for buttons, active button color. |
+| Other Colors CSS Hex               |                                                                                |
+|     --wrong-answer-red: #ff3333;   | Color for wrong answer button.                                                 |
+|     --right-answer-green: #51BF83; | Color for correct answer button, color for check icon.                         |
+|     --pale-gray: #ffffff9f;        | Overlay color for the quiz container.                                          |
+
 ### Images
 
 ### Responsiveness
