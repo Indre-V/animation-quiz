@@ -205,6 +205,8 @@ _Small Screen Devices_
 
 ### Question View
 
+
+
 [Back to top](#contents)
 
 ### Final Score View
@@ -213,9 +215,13 @@ _Small Screen Devices_
 
 ### Footer
 
+To continue with cool toned theme, footer is very simple with two icons at the bottom. They both link to the site owners GitHub and LinkedIn pages and open in the separate tab. Footer icons also have hover effect. 
+
 <details><summary><b>Footer All Screen Sizes</b></summary>
 
 ![Footer](docs/footer.png)
+
+![Footer](docs/footer-hover.png)
 
 </details><br/>
 
