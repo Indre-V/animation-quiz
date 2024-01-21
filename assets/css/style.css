@@ -71,6 +71,7 @@ input,
 textarea {
     width: 100%;
     padding: 1rem;
+    font-family: 'Lato', sans-serif;
     margin-bottom: 1rem;
     box-sizing: border-box;
  

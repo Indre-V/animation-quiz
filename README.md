@@ -153,7 +153,7 @@ both can be open at the same time.
 
 #### Intructions
 
-When clicked on instructions open in a window with aclose button on the bottom. 
+When clicked on instructions, a window opens with a close button on the bottom. This functionality is the same accross all devices. Instructions are written in plain English and displayed in aa list style view. 
 
 <details><summary><b>Instructions View</b></summary>
 
@@ -163,6 +163,8 @@ When clicked on instructions open in a window with aclose button on the bottom.
 
 #### Feedback
 
+Users have an option to submit feedback and any other queries they may have. All fields are required and verified by the code. It asks the user for name, email address and a message. 
+
 <details><summary><b>Feedback Form</b></summary>
 
 ![Feedback](docs/feedback.png)
@@ -171,7 +173,7 @@ When clicked on instructions open in a window with aclose button on the bottom.
 
 #### Feedback Confirmation
 
-Provides the user with aknowledgement and option to return back to the game after the form has been submitted. 
+Provides the user with aknowledgement. Page reloads after 5 secons and return to the start screen. 
 
 <details><summary><b>Feedback Confirmation Page</b></summary>
 
