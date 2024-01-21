@@ -57,9 +57,8 @@ body::before {
 }
 
 header {
-    padding-bottom: 7rem;
     width: 100%;
-    overflow: hidden;
+   
 }
 
 label {
@@ -264,6 +263,10 @@ footer {
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
+
+header {
+    padding-bottom: 7rem;
+}
 
 .quiz-container {
     font-size: 2rem;

@@ -146,7 +146,7 @@ Layout is easy to use and adheres to best practices in formatting and styling. T
 ### Header
 
 This webpage has a header consistent across all screen sizes. It contains Intstructions and Feddback sections on the right. 
-both can be open at the same time. 
+both can be open at the same time. The close buttons and send buttons as the same styles as all the other buttons on the page. 
 
 ![Header large screen](docs/header-full-screen.png)
 
@@ -184,6 +184,8 @@ Provides the user with aknowledgement. Page reloads after 5 secons and return to
 [Back to top](#contents)
 
 ### Landing View
+
+The quiz is built on one page to get the best performance. The first page consists of a welcome message, username field, difficulty levels and start button. All the buttons have hover effect and level buttons have active color as well. Username and Difficulty Levels are required fields in oder to proceed to the next part of the quiz. Once they are selected, questions from API are fetched based on the difficulty level. For consistency purposes, home screen is the same accross all devices. 
 
 <details><summary><b>Landing View Large Screen</b></summary>
 
