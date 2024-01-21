@@ -323,14 +323,23 @@ In a scenario where the link may be broken, 404 page provides the option to retu
 
 ## Feature Testing
 
+This website was extensively tested for functionality using both Chrome and Edge developer tools.
+
+[Feature Testing Results](docs/manual-testing.pdf "Feature Testing Results")
+
 
 [Back to top](#contents)
 
 
 ## Accessibility Testing
 
-I have used web accessibility evaluation tool [WAVE Tool](https://wave.webaim.org/) which helps to determine if web content is accessible to individuals with disabilities.
+I have used web accessibility evaluation tool [WAVE Tool](https://wave.webaim.org/) which helps to determine if web content is accessible to individuals with diverse needs. No issues were raised.
 
+![WAVE](docs/wave-report.png "WAVE Result")
+
+In addition to WAVE testing, I have tested my webpage for color contrast accessibility on [Color Contrast Accessibility Validator](https://color.a11y.com/).
+
+![Color Contrast Accessibility Validator](docs/a11y-result.png "Color Contrast Accessibility Validator Result")
 
 [Back to top](#contents)
 
@@ -342,6 +351,10 @@ I have used web accessibility evaluation tool [WAVE Tool](https://wave.webaim.or
 
 
 ## Browser Testing
+
+The Animation Quiz website was examined for bugs and malfunctions using a variety of browsers. Opera, Firefox, Google Chrome, and Microsoft Edge were selected for thorough testing. Additionally, I have registered with [BrowserStack](https://live.browserstack.com/) in order to test my page on both Safari and Internet Explorer. Due of its age, Internet Explorer's initial results were quite subpar. On an iPad and an iPhone, I tested Safari. For the website's final version, no significant problems were discovered on the top 4 browsers. The test findings were verified. 
+
+[Browser Compatibility Manual Test](docs/browser-compatibility-test-results.pdf "Browser Compatibility Manual Test")
 
 
 [Back to top](#contents)

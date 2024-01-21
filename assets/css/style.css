@@ -37,7 +37,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Lato', sans-serif;
-    font: var(--dark-gray);
+    color: var(--dark-gray);
     line-height: 1.5;
     background: url("../images/background.png") no-repeat center center;
     background-size: cover;
