@@ -8,7 +8,7 @@
     --dark-blue: #507682;
     --wrong-answer-red: #ff3333;
     --right-answer-green: #51BF83; 
-    --pale-gray: #ffffff9f;
+    --pale-gray: #ffffff9c;
 }
 
 * {
@@ -138,11 +138,13 @@ textarea {
 }
 #question{
     margin-top: 3rem;
+    font-size: 2rem;
 }
 .quiz-container {
     display: flex;
     flex-direction: column;
     text-align: center;
+    font-family: 'Lato', sans-serif;
     color: var(--dark-gray);
     font-size: 1.5rem;
     border-radius: 3rem;
@@ -165,6 +167,7 @@ textarea {
     background-color: var(--blue);
     border: 2px solid;
     border-color: var(--dark-blue);
+    font-family: 'Lato', sans-serif;
     font-size: 2rem;
     border-radius: 1rem;
     padding: 1rem 1rem;
