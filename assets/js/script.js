@@ -200,6 +200,7 @@ const startGame = async (difficulty) => {
 
 const getNewQuestion = () => {
     resetButtonStyles();
+    acceptingAnswers = true;
 
     console.log("displayQuestions", questions);
 
@@ -227,36 +228,50 @@ const getNewQuestion = () => {
     }
 };
 
-/*Function to check if the selected answer is correct
+/**
+ *Function to check if the selected answer is correct
 *Find button corresponding to the selected answer
 *Call function to prevent users from selecting multiple answers
 *Check if the selected answer is correct
 *Add 'correct' class for the correct answer to turn green
 */
-const checkAnswer =  (selectedAnswer) => {
-    const currentQuestion = questions[questionNumber - 1];
+    const checkAnswer = (selectedAnswer) => {
 
-    const selectedButton = answerButtonsArray.find(
-        (button) => button.innerHTML === selectedAnswer
-    );
-    if (acceptingAnswers && selectedButton) {
-       
-      if (selectedAnswer === currentQuestion.correctAnswer) {
-          incrementScore(CORRECT_BONUS);
-          console.log("Score after correct answer:", score);
-          selectedButton.classList.add("correct");
-      } else {
-          selectedButton.classList.add("wrong");
-      } 
-  }      
+        const currentQuestion = questions[questionNumber - 1];
+        const selectedButton = answerButtonsArray.find(
+            (button) => button.innerHTML === selectedAnswer
+        );
+    
+        const classToApply = selectedAnswer === currentQuestion.correctAnswer ? "correct" : "wrong";
+    
+        selectedButton.classList.add(classToApply);
+    
+       if (acceptingAnswers && selectedButton) {
+                if (selectedAnswer === currentQuestion.correctAnswer) {
+                    incrementScore(CORRECT_BONUS);
+                } else {
+                    const correctButton = answerButtonsArray.find(
+                        (button) => button.innerHTML === currentQuestion.correctAnswer
+                    );
+                    correctButton.classList.add("correct");
+                }
         
+            disableAnswerButtons();
+    
+            setTimeout(() => {
+                selectedButton.classList.remove(classToApply);
+                clearStatusClass(answerButtonsArray);
+                clearInterval(timeCounter);
+                getNewQuestion();
+                startTimer(20);
+            }, 1000);
+        }
+    
         currentQuestion.answerChecked = true;
-        disableAnswerButtons();
         acceptingAnswers = false;
-
-     
     };
 
+       
 
 //resets answer buttons for the next question
 
@@ -296,7 +311,6 @@ const next = () => {
     acceptingAnswers = true;
 };
 
-document.querySelector("#next-btn").addEventListener("click", next);
 /*function to activate level buttons
 * add selected level to question display area
 */
