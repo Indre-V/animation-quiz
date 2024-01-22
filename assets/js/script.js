@@ -42,7 +42,7 @@ const MAX_QUESTIONS = 10;
 
 const incrementScore = (num) => {
     score += num;
-    scoreText.innerText = score;
+    scoreText.innerHTML = score;
 };
 
 /**
@@ -129,9 +129,11 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  * @throws {Error} throws an error if does not fetch.
  */
 
-const fetchQuestions = (difficulty) => {
-//show loader
-    const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty="`+ difficulty;
+const fetchQuestions = async (difficulty) => {
+
+    //show loader
+
+    const apiLink = "https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=" + difficulty;
 
     return fetch(apiLink)
         .then(response => {
@@ -207,16 +209,16 @@ const getNewQuestion = () => {
     if (questionNumber < questions.length) {
         let currentQuestion = questions[questionNumber];
 
-        questionElement.innerText = currentQuestion.question;
+        questionElement.innerHTML = currentQuestion.question;
 
         answerButtons.forEach((button, i) => {
-            button.innerText = currentQuestion.answers[i];
+            button.innerHTML = currentQuestion.answers[i];
             button.addEventListener("click", () =>
-                checkAnswer(answerButtons[i].innerText)
+                checkAnswer(answerButtons[i].innerHTML)
             );
         });
 
-         progressText.innerText = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+         progressText.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
 
         questionNumber++;
     } else {
@@ -234,7 +236,7 @@ const checkAnswer = (selectedAnswer) => {
     const currentQuestion = questions[questionNumber - 1];
 
     const selectedButton = answerButtonsArray.find(
-        (button) => button.innerText === selectedAnswer
+        (button) => button.innerHTML === selectedAnswer
     );
     if (acceptingAnswers && selectedButton) {
       if (selectedAnswer === currentQuestion.correctAnswer) {
@@ -291,7 +293,7 @@ const next = () => {
 
 document.querySelector("#next-btn").addEventListener("click", next);
 /*function to activate level buttons
-*add selected level to question display area
+* add selected level to question display area
 */
 const activateButton = (selectedLevelBtn) => {
     document
@@ -349,15 +351,6 @@ const handleFetchError = (error) => {
  * Shows and hide the Rules window to the user according to the parameter.
  * @param {boolean} show - Boolean to verify if its to show or close window
  */
-// function showInstructions(show) {
-//     let instructionsList = document.getElementById("instructions");
-//     instructionsList.style.display = show ? "block" : "none";
-// }
-
-// function showForm(show) {
-//     let contactForm = document.getElementById("feedback");
-//     contactForm.style.display = show ? "block" : "none";
-// }
 
 const showSupport = (show, id) => {
     let supportElement = document.querySelector(`#${id}`);
