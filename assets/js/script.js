@@ -1,16 +1,16 @@
 
-const startQuizArea = document.querySelector("#start-area");
-const questionArea = document.querySelector("#question-area");
-const gameOverArea = document.querySelector("#game-over");
+const startQuizAreaRef = document.querySelector("#start-area");
+const questionAreaRef = document.querySelector("#question-area");
+const gameOverAreaRef = document.querySelector("#game-over");
 
-const progressText = document.querySelector("#progress-text");
+const progressTextRef = document.querySelector("#progress-text");
 
-const scoreText = document.querySelector("#score");
-const seconds = document.querySelector("#seconds");
+const scoreTextRef = document.querySelector("#score");
+const secondsRef = document.querySelector("#seconds");
 
 
-const questionElement = document.querySelector("#question");
-const answerButtons = document.querySelectorAll(".btn-a");
+const questionElementRef = document.querySelector("#question");
+const answerButtonsRef = document.querySelectorAll(".btn-a");
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
  
 const showInstructionsRef = document.querySelector("#show-instructions");
@@ -42,7 +42,7 @@ const MAX_QUESTIONS = 10;
 
 const incrementScore = (num) => {
     score += num;
-    scoreText.innerHTML = score;
+    scoreTextRef.innerHTML = score;
 };
 
 /**
@@ -57,7 +57,7 @@ const startTimer = (time) => {
 
     function updateDisplay() {
         const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
-        seconds.textContent = formattedTime;
+        secondsRef.textContent = formattedTime;
     }
     updateDisplay();
 
@@ -77,8 +77,8 @@ const startTimer = (time) => {
  * Calls displayFinalScore function.
  */
 const gameOver = () => {
-    displayArea(gameOverArea);
-    hideArea(questionArea);
+    displayArea(gameOverAreaRef);
+    hideArea(questionAreaRef);
     displayFinalScore();
 };
 
@@ -176,7 +176,7 @@ const formatQuestions = (apiQuestions) => {
  * @param {Error} error - hadles error if fails to start
  */
 
-async function startGame(difficulty) {
+const startGame = async (difficulty) => {
     try {
         questions = await fetchQuestions(difficulty);
         console.log("load", difficulty);
@@ -202,23 +202,23 @@ const getNewQuestion = () => {
 
     console.log("displayQuestions", questions);
 
-    answerButtons.forEach((btn) => {
+    answerButtonsRef.forEach((btn) => {
         btn.disabled = false;
     });
 
     if (questionNumber < questions.length) {
         let currentQuestion = questions[questionNumber];
 
-        questionElement.innerHTML = currentQuestion.question;
+        questionElementRef.innerHTML = currentQuestion.question;
 
-        answerButtons.forEach((button, i) => {
+        answerButtonsRef.forEach((button, i) => {
             button.innerHTML = currentQuestion.answers[i];
             button.addEventListener("click", () =>
-                checkAnswer(answerButtons[i].innerHTML)
+                checkAnswer(answerButtonsRef[i].innerHTML)
             );
         });
 
-         progressText.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+         progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
 
         questionNumber++;
     } else {
@@ -256,7 +256,7 @@ const checkAnswer = (selectedAnswer) => {
 //resets answer buttons for the next question
 
 const resetButtonStyles = () => {
-    clearStatusClass(answerButtons);
+    clearStatusClass(answerButtonsRef);
 };
 
 /**
@@ -274,8 +274,8 @@ const clearStatusClass = (element) => {
 //prevents user from selecting multiple answers
 
 const disableAnswerButtons = () => {
-    const answerButtons = document.querySelectorAll(".btn-a");
-    answerButtons.forEach((btn) => {
+    
+    answerButtonsRef.forEach((btn) => {
         btn.classList.add("disabled");
         btn.disabled = true;
     });
@@ -321,8 +321,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         (usernameEntered.value && selectedLevel)
         ? (
-            hideArea(startQuizArea),
-            displayArea(questionArea),
+            hideArea(startQuizAreaRef),
+            displayArea(questionAreaRef),
             await startGame(selectedLevel.dataset.level)
           )
         : alert("Please select Username and Level.");
@@ -377,4 +377,3 @@ closeContactFormBtnRef.addEventListener("click", (event) => {
     event.preventDefault();
     showSupport(false, "feedback");
 })
-
