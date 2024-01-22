@@ -21,7 +21,7 @@
   <header>
     <div id="support">
       <div id="instructions-list">
-        <input type="button" value="Instructions" class="button nav-item" onclick="showInstructions(true)">
+        <button class="button nav-item" type="button" id="show-instructions">Instructions</button>
           <div class="nav-open-view text-center" id="instructions">
             <h3>How to Play</h3>
             <div id="list">
@@ -37,12 +37,12 @@
                 <li>Select Play Again to go back to the main page</li>
               </ol>
             </div> 
-            <input type="button" value="Close" class="btn btn-support" onclick="showInstructions(false)">
+            <button class="btn btn-support" type="button" id="close-instructions">Close</button>
           </div>
         </div>
 
       <div id="contact-form">
-        <input type="button" value="Feedback" class="nav-item" onclick="showForm(true)">
+        <button class="button nav-item" type="button" id="show-contactForm">Feedback</button>
         <div class="nav-open-view" id="feedback">
             <form action="feedback-thanks.html" method="GET" class="form">
               <div id="input-box">
@@ -57,7 +57,7 @@
                 Send
               </button>
             </form>
-          <input type="button" value="Close" class="btn btn-support" onclick="showForm(false)">
+            <button class="btn btn-support" type="button" id="close-contactForm">Close</button>
         </div>
       </div>
     </div>
@@ -139,6 +139,7 @@
       <i class="fa-brands fa-linkedin-in"></i></a>
   </footer>
   <!-- Script -->
+  
   <script src="assets/js/script.js"></script>
 </body>
 

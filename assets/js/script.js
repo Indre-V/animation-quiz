@@ -1,6 +1,3 @@
-//Elements of the code where adapted from https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/blob/master/6.%20Create%20a%20Progress%20Bar/game.js
-//https://github.com/WebDevVikramChoudhary/Vanilla-Quiz-Using-Htm-Css-Js/blob/master/quiz/quiz.js
-
 
 const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
@@ -15,6 +12,11 @@ const seconds = document.getElementById("seconds");
 const questionElement = document.getElementById("question");
 const answerButtons = document.querySelectorAll(".btn-a");
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
+ 
+const showInstructionsRef = document.querySelector("#show-instructions");
+const showContactFormRef = document.querySelector("#show-contactForm");
+const closeInstructionsBtnRef = document.querySelector("#close-instructions");
+const closeContactFormBtnRef = document.querySelector("#close-contactForm");
 
 const hideArea = (area) => area.classList.add("hide"); // function to hide
 const displayArea = (area) => area.classList.remove("hide"); // function to display area
@@ -127,9 +129,9 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  * @throws {Error} throws an error if does not fetch.
  */
 
-const fetchQuestions = async (difficulty) => {
-
-    const apiLink = "https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=" + difficulty;
+const fetchQuestions = (difficulty) => {
+//show loader
+    const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty="`+ difficulty;
 
     return fetch(apiLink)
         .then(response => {
@@ -140,6 +142,7 @@ const fetchQuestions = async (difficulty) => {
         })
         .then(apiData => apiData.results.map(apiQuestion => formatQuestions(apiQuestion)))
         .catch(error => {
+            //hide spinner
             handleFetchError(error);
             throw error;
         });
@@ -279,7 +282,7 @@ const disableAnswerButtons = () => {
 //NEXT button functionality which clears timer, displays new question and start timer again
 
 
-const next = () =>{
+const next = () => {
     clearInterval(timeCounter);
     getNewQuestion();
     startTimer(20);
@@ -342,16 +345,43 @@ const handleFetchError = (error) => {
 
 };
 
-/*
+/** 
  * Shows and hide the Rules window to the user according to the parameter.
  * @param {boolean} show - Boolean to verify if its to show or close window
  */
-function showInstructions(show) {
-    let instructionsList = document.getElementById("instructions");
-    instructionsList.style.display = show ? "block" : "none";
-}
+// function showInstructions(show) {
+//     let instructionsList = document.getElementById("instructions");
+//     instructionsList.style.display = show ? "block" : "none";
+// }
 
-function showForm(show) {
-    let contactForm = document.getElementById("feedback");
-    contactForm.style.display = show ? "block" : "none";
-}
+// function showForm(show) {
+//     let contactForm = document.getElementById("feedback");
+//     contactForm.style.display = show ? "block" : "none";
+// }
+
+const showSupport = (show, id) => {
+    let supportElement = document.querySelector(`#${id}`);
+    supportElement.style.display = show ? "block" : "none";
+};
+
+showInstructionsRef.addEventListener("click", (event) => {
+    event.preventDefault();
+    showSupport(true, "instructions");
+})
+
+showContactFormRef.addEventListener("click", (event) => {
+    event.preventDefault();
+    showSupport(true, "feedback");
+})
+
+closeInstructionsBtnRef.addEventListener("click", (event) => {
+    event.preventDefault();
+    showSupport(false, "instructions");
+
+})
+
+closeContactFormBtnRef.addEventListener("click", (event) => {
+    event.preventDefault();
+    showSupport(false, "feedback");
+})
+
