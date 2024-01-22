@@ -3,13 +3,13 @@ const startQuizArea = document.querySelector("#start-area");
 const questionArea = document.querySelector("#question-area");
 const gameOverArea = document.querySelector("#game-over");
 
-const progressText = document.getElementById("progress-text");
+const progressText = document.querySelector("#progress-text");
 
-const scoreText = document.getElementById("score");
-const seconds = document.getElementById("seconds");
+const scoreText = document.querySelector("#score");
+const seconds = document.querySelector("#seconds");
 
 
-const questionElement = document.getElementById("question");
+const questionElement = document.querySelector("#question");
 const answerButtons = document.querySelectorAll(".btn-a");
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
  
@@ -89,8 +89,8 @@ const gameOver = () => {
 */
 
 const displayFinalScore = () => {
-    const usernameEntered = document.getElementById("username").value;
-    const score = parseInt(document.getElementById("score").textContent);
+    const usernameEntered = document.querySelector("#username").value;
+    const score = parseInt(document.querySelector("#score").textContent);
 
     let scoreMessage = "";
 
@@ -100,7 +100,7 @@ const displayFinalScore = () => {
         scoreMessage = `Congratulations! ${usernameEntered} done a great job!`;
     }
 
-    document.getElementById("score-message").textContent = scoreMessage;
+    document.querySelector("#score-message").textContent = scoreMessage;
 
     document.querySelector(".correct-score").textContent = score;
 };
@@ -118,7 +118,7 @@ const resetGame = () => {
     location.reload();
 }
 
-document.getElementById("play-again-btn").addEventListener("click", resetGame);
+document.querySelector("#play-again-btn").addEventListener("click", resetGame);
 // function to shuffle answers
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
@@ -301,7 +301,7 @@ const activateButton = (selectedLevelBtn) => {
         .forEach((button) => button.classList.remove("active"));
     selectedLevelBtn.classList.add("active");
 
-    document.getElementById("selected-level").textContent = selectedLevelBtn.textContent;
+    document.querySelector("#selected-level").textContent = selectedLevelBtn.textContent;
 
 };
 
@@ -313,11 +313,11 @@ const activateButton = (selectedLevelBtn) => {
 */
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("start").addEventListener("submit", async function(event) {
+    document.querySelector("#start").addEventListener("submit", async function(event) {
         event.preventDefault();
 
         const selectedLevel = document.querySelector(".level-btns.active");
-        const usernameEntered = document.getElementById("username");
+        const usernameEntered = document.querySelector("#username");
 
         (usernameEntered.value && selectedLevel)
         ? (
