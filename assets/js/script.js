@@ -31,6 +31,7 @@ let questions = []; // Add questions array
 let acceptingAnswers = true;
 let timeCounter;
 
+
 //CONSTANTS
 const CORRECT_BONUS = 1;
 const MAX_QUESTIONS = 10;
@@ -51,19 +52,19 @@ const incrementScore = (num) => {
  * When time runs out Next() function is called
  * @param {number} time - The time is set in seconds
  */
+const updateDisplay = (remainingTime) => {
+        const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
+        secondsRef.textContent = formattedTime;
+};
 
 const startTimer = (time) => {
     let remainingTime = time;
 
-    function updateDisplay() {
-        const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
-        secondsRef.textContent = formattedTime;
-    }
-    updateDisplay();
+    updateDisplay(remainingTime);
 
     timeCounter = setInterval(() => {
         remainingTime--;
-        updateDisplay();
+        updateDisplay(remainingTime);
 
         if (remainingTime < 0) {
             next();
@@ -232,24 +233,28 @@ const getNewQuestion = () => {
 *Check if the selected answer is correct
 *Add 'correct' class for the correct answer to turn green
 */
-const checkAnswer = (selectedAnswer) => {
+const checkAnswer =  (selectedAnswer) => {
     const currentQuestion = questions[questionNumber - 1];
 
     const selectedButton = answerButtonsArray.find(
         (button) => button.innerHTML === selectedAnswer
     );
     if (acceptingAnswers && selectedButton) {
+       
       if (selectedAnswer === currentQuestion.correctAnswer) {
           incrementScore(CORRECT_BONUS);
           console.log("Score after correct answer:", score);
           selectedButton.classList.add("correct");
       } else {
           selectedButton.classList.add("wrong");
-      }
-  }
+      } 
+  }      
+        
         currentQuestion.answerChecked = true;
         disableAnswerButtons();
         acceptingAnswers = false;
+
+     
     };
 
 
