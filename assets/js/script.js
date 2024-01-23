@@ -5,7 +5,11 @@ const gameOverAreaRef = document.querySelector("#game-over");
 
 const progressTextRef = document.querySelector("#progress-text");
 
-const scoreTextRef = document.querySelector("#score");
+const scoreRef = document.querySelectorAll(".score");
+const scoreMessageRef = document.querySelector("#score-message");
+
+
+const usernameRef = document.querySelector("#username");
 const secondsRef = document.querySelector("#seconds");
 
 
@@ -18,23 +22,22 @@ const showContactFormRef = document.querySelector("#show-contactForm");
 const closeInstructionsBtnRef = document.querySelector("#close-instructions");
 const closeContactFormBtnRef = document.querySelector("#close-contactForm");
 
-const hideArea = (area) => area.classList.add("hide"); // function to hide
-const displayArea = (area) => area.classList.remove("hide"); // function to display area
-
+const hideArea = (area) => area.classList.add("hide"); 
+const displayArea = (area) => area.classList.remove("hide"); 
 
 
 let score = 0;
 let questionNumber = 0;
 
 
-let questions = []; // Add questions array
+let questions = [];
 let acceptingAnswers = true;
 let timeCounter;
 
-
-//CONSTANTS
 const CORRECT_BONUS = 1;
 const MAX_QUESTIONS = 10;
+
+
 
 /**
  * This function increments the correct score and updated the score display
@@ -43,7 +46,7 @@ const MAX_QUESTIONS = 10;
 
 const incrementScore = (num) => {
     score += num;
-    scoreTextRef.innerHTML = score;
+    scoreRef.innerHTML = score;
 };
 
 /**
@@ -72,26 +75,25 @@ const startTimer = (time) => {
     }, 1000);
 };
 
-/**
- * Game over function.
- * Hides question area.
- * Calls displayFinalScore function.
- */
+
+ //Finish game 
+
 const gameOver = () => {
     displayArea(gameOverAreaRef);
     hideArea(questionAreaRef);
     displayFinalScore();
 };
 
-/**
- * Function to display final score
+
+ /*
+* Display final score
  * Score message based on the score
  * Retrieves username entered 
 */
 
 const displayFinalScore = () => {
-    const usernameEntered = document.querySelector("#username").value;
-    const score = parseInt(document.querySelector("#score").textContent);
+    const usernameEntered = usernameRef.value;
+    const score = parseInt(scoreRef.textContent);
 
     let scoreMessage = "";
 
@@ -101,26 +103,23 @@ const displayFinalScore = () => {
         scoreMessage = `Congratulations! ${usernameEntered} done a great job!`;
     }
 
-    document.querySelector("#score-message").textContent = scoreMessage;
+    scoreMessageRef.textContent = scoreMessage;
 
-    document.querySelector(".correct-score").textContent = score;
+    // document.querySelector(".correct-score").textContent = score;
 };
 
 
 /*
-*Function to reset the game
-*Event lsitener added to Play Gain button 
-*reload page is activated
+*Reset the game
+*Activate reload page
 */
-
-
 
 const resetGame = () => {
     location.reload();
 }
 
 document.querySelector("#play-again-btn").addEventListener("click", resetGame);
-// function to shuffle answers
+
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
 /**
