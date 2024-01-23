@@ -39,7 +39,7 @@ let score = 0;
 let questionNumber = 0;
 
 
-let questions = [];
+let quizQuestions = [];
 let acceptingAnswers = true;
 let timeCounter;
 
@@ -184,7 +184,7 @@ const formatQuestions = (apiQuestions) => {
 
 const startGame = async (difficulty) => {
     try {
-        questions = await fetchQuestions(difficulty);
+        quizQuestions = await fetchQuestions(difficulty);
         console.log("load", difficulty);
         questionNumber = 0;
         score = 0;
@@ -206,14 +206,14 @@ const getNewQuestion = () => {
     resetButtonStyles();
     acceptingAnswers = true;
 
-    console.log("displayQuestions", questions);
+    console.log("displayQuestions", quizQuestions);
 
     answerButtonsRef.forEach((btn) => {
         btn.disabled = false;
     });
 
-    if (questionNumber < questions.length) {
-        let currentQuestion = questions[questionNumber];
+    if (questionNumber < quizQuestions.length) {
+        let currentQuestion = quizQuestions[questionNumber];
 
         questionElementRef.innerHTML = currentQuestion.question;
 
@@ -240,7 +240,7 @@ const getNewQuestion = () => {
 */
     const checkAnswer = (selectedAnswer) => {
 
-        const currentQuestion = questions[questionNumber - 1];
+        const currentQuestion = quizQuestions[questionNumber - 1];
         const selectedButton = answerButtonsArray.find(
             (button) => button.innerHTML === selectedAnswer
         );
