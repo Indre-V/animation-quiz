@@ -49,7 +49,7 @@ const MAX_QUESTIONS = 10;
 
 
 /**
- * This function increments the correct score and updated the score display
+ * Increments the correct score
  * @param {number} num - Increments the score by set number.
  */
 
@@ -61,7 +61,6 @@ const incrementScore = (num) => {
 /**
  * Sets timer for the quiz 
  * Counts down from specified time
- * When time runs out Next() function is called
  * @param {number} time - The time is set in seconds
  */
 const updateDisplay = (remainingTime) => {
@@ -95,9 +94,9 @@ const gameOver = () => {
 
 
  /*
-* Display final score
- * Score message based on the score
- * Retrieves username entered 
+*Display final score
+*Score message based on the score
+*Retrieves username entered 
 */
 
 const displayFinalScore = () => {
@@ -159,7 +158,7 @@ const fetchQuestions = async (difficulty) => {
         });
 };
 
-/*
+/** 
 * @param {object} apiQuestions - The  data from the API.
 * @returns {object} A formatted question object with properties obtained from API
 */
@@ -177,9 +176,7 @@ const formatQuestions = (apiQuestions) => {
 };
 
 /**
- *
- * Function to start the game when Start Quiz clicked
- * Sets score and question number variables to 0 and starts the timer.
+ * Start the game when Start Quiz clicked
  * @param {string} difficulty -  Fetches quiz questions based on the selected difficulty level,
  * @returns {Promise<void>} A promise that resolves when the game is successfully started.
  * @param {Error} error - hadles error if fails to start
@@ -199,12 +196,11 @@ const startGame = async (difficulty) => {
     }
 }
 
-/* Loads and display new question onto the quiz.
- * Resents button styles, enables answer buttons for the new question.
- * Display question text, answer choices, progress bar.
- * Assign each answer to a specific button.
- * If no questions left, call gameOver function
- */
+/*
+* Loads and displays new question onto the quiz.
+* Display question text, answer choices
+* Assign each answer to a specific button.
+*/
 
 const getNewQuestion = () => {
     resetButtonStyles();
@@ -237,11 +233,10 @@ const getNewQuestion = () => {
 };
 
 /**
- *Function to check if the selected answer is correct
+*Checks if the selected answer is correct
 *Find button corresponding to the selected answer
-*Call function to prevent users from selecting multiple answers
 *Check if the selected answer is correct
-*Add 'correct' class for the correct answer to turn green
+*Add a class to display correct answer
 */
     const checkAnswer = (selectedAnswer) => {
 
@@ -289,7 +284,7 @@ const resetButtonStyles = () => {
 };
 
 /**
- * clears the color and status of the buttons
+ * Clears the color and status of the buttons
  * @param {HTMLElement[]} elements - An array of HTML elements of buttons.
  */
 const clearStatusClass = (element) => {
@@ -310,7 +305,7 @@ const disableAnswerButtons = () => {
     });
 };
 
-//NEXT button functionality which clears timer, displays new question and start timer again
+//Moves to next question if timed out
 
 
 const next = () => {
@@ -320,8 +315,9 @@ const next = () => {
     acceptingAnswers = true;
 };
 
-/*function to activate level buttons
-* add selected level to question display area
+/*
+*Activate level buttons
+*Adds selected level to question display area
 */
 const activateButton = (selectedLevelBtn) => {
         levelBtnsRef
@@ -337,7 +333,7 @@ const activateButton = (selectedLevelBtn) => {
 *@param {Event} event - The form submission event.
 *Username and Level selection process
 *Hide start area and display question area
-*alert when is either level or username missing
+*Alert when is either level or username missing
 */
 
 document.addEventListener("DOMContentLoaded", function() {
