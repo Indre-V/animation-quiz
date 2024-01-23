@@ -228,7 +228,7 @@ To continue with cool toned theme, footer is very simple with two icons at the b
 
 ### 404 Page
 
-In a scenario where the link may be broken, 404 page provides the option to return  to the main page.
+In a scenario where the link may be broken, 404 page has a built in 15 second auto refresh function whoch returns to homepage. 
 
 <details><summary><b>404 Page Screenshot</b></summary>
 
