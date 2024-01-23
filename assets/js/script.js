@@ -5,8 +5,11 @@ const gameOverAreaRef = document.querySelector("#game-over");
 
 const progressTextRef = document.querySelector("#progress-text");
 
-const scoreRef = document.querySelectorAll(".score");
+const scoreRef = document.querySelector("#score");
+const correctScoreRef = document.querySelector('#correct-score');
 const scoreMessageRef = document.querySelector("#score-message");
+
+const playAgainRef= document.querySelector("#play-again-btn");
 
 
 const usernameRef = document.querySelector("#username");
@@ -105,7 +108,7 @@ const displayFinalScore = () => {
 
     scoreMessageRef.textContent = scoreMessage;
 
-    // document.querySelector(".correct-score").textContent = score;
+    correctScoreRef.textContent = score;
 };
 
 
@@ -118,7 +121,7 @@ const resetGame = () => {
     location.reload();
 }
 
-document.querySelector("#play-again-btn").addEventListener("click", resetGame);
+playAgainRef.addEventListener("click", resetGame);
 
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
@@ -247,6 +250,7 @@ const getNewQuestion = () => {
     
        if (acceptingAnswers && selectedButton) {
                 if (selectedAnswer === currentQuestion.correctAnswer) {
+                    console.log("add score", scoreRef)
                     incrementScore(CORRECT_BONUS);
                 } else {
                     const correctButton = answerButtonsArray.find(
