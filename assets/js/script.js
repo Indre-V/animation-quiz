@@ -3,6 +3,12 @@ const startQuizAreaRef = document.querySelector("#start-area");
 const questionAreaRef = document.querySelector("#question-area");
 const gameOverAreaRef = document.querySelector("#game-over");
 
+const startButtonRef = document.querySelector("#start");
+
+
+const levelBtnsRef = document.querySelectorAll(".level-btns");
+const selectedLevelRef= document.querySelector("#selected-level");
+
 const progressTextRef = document.querySelector("#progress-text");
 
 const scoreRef = document.querySelector("#score");
@@ -318,28 +324,28 @@ const next = () => {
 * add selected level to question display area
 */
 const activateButton = (selectedLevelBtn) => {
-    document
-        .querySelectorAll(".level-btns")
+        levelBtnsRef
         .forEach((button) => button.classList.remove("active"));
     selectedLevelBtn.classList.add("active");
 
-    document.querySelector("#selected-level").textContent = selectedLevelBtn.textContent;
+    selectedLevelRef.textContent = selectedLevelBtn.textContent;
 
 };
 
-/* Wait for document to fully load and execute content
-* @param {Event} event - The form submission event.
+/** 
+*Wait for document to fully load and execute content
+*@param {Event} event - The form submission event.
 *Username and Level selection process
 *Hide start area and display question area
 *alert when is either level or username missing
 */
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector("#start").addEventListener("submit", async function(event) {
+    startButtonRef.addEventListener("submit", async function(event) {
         event.preventDefault();
 
         const selectedLevel = document.querySelector(".level-btns.active");
-        const usernameEntered = document.querySelector("#username");
+        const usernameEntered = usernameRef;
 
         (usernameEntered.value && selectedLevel)
         ? (
@@ -349,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function() {
           )
         : alert("Please select Username and Level.");
     });
-    document.querySelectorAll(".level-btns").forEach(function(button) {
+    levelBtnsRef.forEach(function(button) {
         button.addEventListener("click", function() {
             activateButton(button);
         });
