@@ -48,7 +48,7 @@ const MAX_QUESTIONS = 10;
 
 
 
-/**
+/** 
  * Increments the correct score
  * @param {number} num - Increments the score by set number.
  */
@@ -139,23 +139,23 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
 const fetchQuestions = async (difficulty) => {
 // show loader
-
 const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
 
-    return fetch(apiLink)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Failed to fetch API questions.`);
+     return fetch(apiLink)
+    .then(response => {
+        if (!response.ok) {
+             throw new Error(`Failed to fetch API questions.`);
             }
             return response.json();
         })
-        .then(apiData => formatQuestions(apiData.results))
-        .catch(error => {
+    .then (apiData => formatQuestions(apiData.results))
+    .catch(error => {
             //hide spinner
             handleFetchError(error);
             throw error;
         });
 };
+
 
 /** 
 * @param {object} apiQuestions - The  data from the API.
@@ -202,7 +202,7 @@ const startGame = async (difficulty) => {
 */
 
 const getNewQuestion = () => {
-    resetButtonStyles();
+    clearStatusClass(answerButtonsRef);
     acceptingAnswers = true;
 
     console.log("displayQuestions", quizQuestions);
@@ -263,7 +263,7 @@ const getNewQuestion = () => {
     
             setTimeout(() => {
                 selectedButton.classList.remove(classToApply);
-                clearStatusClass(answerButtonsArray);
+                clearStatusClass(answerButtonsRef);
                 clearInterval(timeCounter);
                 getNewQuestion();
                 startTimer(20);
@@ -276,12 +276,6 @@ const getNewQuestion = () => {
 
        
 
-//resets answer buttons for the next question
-
-const resetButtonStyles = () => {
-    clearStatusClass(answerButtonsRef);
-};
-
 /**
  * Clears the color and status of the buttons
  * @param {HTMLElement[]} elements - An array of HTML elements of buttons.
@@ -290,8 +284,7 @@ const clearStatusClass = (element) => {
     element.forEach((btn) => {
         btn.classList.remove("correct", "wrong");
         btn.classList.remove("disabled");
-       
-    });
+        });
 };
 
 //prevents user from selecting multiple answers

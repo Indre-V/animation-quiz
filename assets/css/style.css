@@ -200,7 +200,7 @@ textarea {
     font-size: 1.5rem;
 }
 
-.btn:hover {
+.level-btns:hover {
     background-color: var(--light-cream);
 }
 
