@@ -138,10 +138,9 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  */
 
 const fetchQuestions = async (difficulty) => {
+// show loader
 
-    //show loader
-
-    const apiLink = "https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=" + difficulty;
+const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
 
     return fetch(apiLink)
         .then(response => {
@@ -150,7 +149,7 @@ const fetchQuestions = async (difficulty) => {
             }
             return response.json();
         })
-        .then(apiData => apiData.results.map(apiQuestion => formatQuestions(apiQuestion)))
+        .then(apiData => formatQuestions(apiData.results))
         .catch(error => {
             //hide spinner
             handleFetchError(error);
@@ -164,15 +163,15 @@ const fetchQuestions = async (difficulty) => {
 */
 
 const formatQuestions = (apiQuestions) => {
-    return {
-        difficulty: apiQuestions.difficulty,
-        question: apiQuestions.question,
-        correctAnswer: apiQuestions.correct_answer,
+    return apiQuestions.map(apiQuestion => ({
+        difficulty: apiQuestion.difficulty,
+        question: apiQuestion.question,
+        correctAnswer: apiQuestion.correct_answer,
         answers: shuffle([
-            ...apiQuestions.incorrect_answers,
-            apiQuestions.correct_answer,
+            ...apiQuestion.incorrect_answers,
+            apiQuestion.correct_answer,
         ]),
-    };
+    }));
 };
 
 /**
