@@ -87,6 +87,7 @@ const startTimer = (time) => {
  //Finish game 
 
 const gameOver = () => {
+    clearInterval(timeCounter);
     displayArea(gameOverAreaRef);
     hideArea(questionAreaRef);
     displayFinalScore();
@@ -137,7 +138,7 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  * @throws {Error} throws an error if does not fetch.
  */
 
-const fetchQuestions = async (difficulty) => {
+const fetchQuestions = (difficulty) => {
 // show loader
 const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
 
@@ -200,10 +201,15 @@ const startGame = async (difficulty) => {
 * Display question text, answer choices
 * Assign each answer to a specific button.
 */
-
 const getNewQuestion = () => {
+  
+    if (questionNumber >= 10) {
+        console.log("gameOver");
+       return gameOver();
+      
+    }
+
     clearStatusClass(answerButtonsRef);
-    acceptingAnswers = true;
 
     console.log("displayQuestions", quizQuestions);
 
@@ -211,26 +217,23 @@ const getNewQuestion = () => {
         btn.disabled = false;
     });
 
- 
-    if (questionNumber <=10) {
-        let currentQuestion = quizQuestions[questionNumber];
+    acceptingAnswers = true;
+    console.log("question number", questionNumber);
 
-           questionElementRef.innerHTML = currentQuestion.question;
+    let currentQuestion = quizQuestions[questionNumber];
 
-        answerButtonsRef.forEach((button, i) => {
-            button.innerHTML = currentQuestion.answers[i];
-            button.addEventListener("click", () =>
-                checkAnswer(answerButtonsRef[i].innerHTML)
-            );
-        });
-    
-         progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+    questionElementRef.innerHTML = currentQuestion.question;
 
-        questionNumber++;
-    } else {
-        gameOver();
-    }
+    answerButtonsRef.forEach((button, i) => {
+        button.innerHTML = currentQuestion.answers[i];
+        button.addEventListener("click", () => checkAnswer(answerButtonsRef[i].innerHTML));
+    });
+
+    progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+
+    questionNumber++;
 };
+
 
 /**
 *Checks if the selected answer is correct
@@ -299,15 +302,20 @@ const disableAnswerButtons = () => {
 };
 
 //Moves to next question if timed out
-
-
 const next = () => {
-    clearInterval(timeCounter);
-    getNewQuestion();
-    startTimer(20);
-    acceptingAnswers = true;
-};
+        
+if (questionNumber >= MAX_QUESTIONS) {
 
+     console.log("Game already over");
+     return gameOver();
+        }
+console.log("Moving to the next question");
+    
+clearInterval(timeCounter);
+getNewQuestion();
+startTimer(20);
+ acceptingAnswers = true;
+    };
 /*
 *Activate level buttons
 *Adds selected level to question display area
@@ -330,7 +338,7 @@ const activateButton = (selectedLevelBtn) => {
 */
 
 document.addEventListener("DOMContentLoaded", function() {
-    startButtonRef.addEventListener("submit", async function(event) {
+    startButtonRef.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const selectedLevel = document.querySelector(".level-btns.active");
@@ -344,8 +352,8 @@ document.addEventListener("DOMContentLoaded", function() {
           )
         : alert("Please select Username and Level.");
     });
-    levelBtnsRef.forEach(function(button) {
-        button.addEventListener("click", function() {
+    levelBtnsRef.forEach((button) => {
+        button.addEventListener("click", () => {
             activateButton(button);
         });
     });
