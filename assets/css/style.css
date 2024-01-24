@@ -43,13 +43,10 @@ body {
     background-size: cover;
 }
 
-
-
 /* allows the content to grow but not shrink */
 main {
     flex: 1 0 auto; 
 }
-
 
 body::before {
     content: "";
@@ -115,8 +112,6 @@ textarea {
 #list li {
     padding: 0 0 1rem 1rem;
 } 
-
-/* Feedback form styling */
 
 #input-box {
     display: flex;

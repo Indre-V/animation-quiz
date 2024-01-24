@@ -36,7 +36,7 @@ const displayArea = (area) => area.classList.remove("hide");
 
 
 let score = 0;
-let questionNumber = 0;
+let questionNumber = 10;
 
 
 let quizQuestions = [];
@@ -211,10 +211,11 @@ const getNewQuestion = () => {
         btn.disabled = false;
     });
 
-    if (questionNumber < quizQuestions.length) {
+ 
+    if (questionNumber <=10) {
         let currentQuestion = quizQuestions[questionNumber];
 
-        questionElementRef.innerHTML = currentQuestion.question;
+           questionElementRef.innerHTML = currentQuestion.question;
 
         answerButtonsRef.forEach((button, i) => {
             button.innerHTML = currentQuestion.answers[i];
@@ -222,7 +223,7 @@ const getNewQuestion = () => {
                 checkAnswer(answerButtonsRef[i].innerHTML)
             );
         });
-
+    
          progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
 
         questionNumber++;
