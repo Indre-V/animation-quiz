@@ -141,7 +141,8 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
 const fetchQuestions = (difficulty) => {
     console.log ("show loader", loaderRef);
-    showLoader();
+    displayArea(loaderRef);
+    hideArea(questionAreaRef);
     const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
 
     return fetch(apiLink)
@@ -149,35 +150,16 @@ const fetchQuestions = (difficulty) => {
             if (!response.ok) {
                 throw new Error(`Failed to fetch API questions.`);
             }
-            hideLoader();
+            hideArea(loaderRef);
+            displayArea(questionAreaRef);
             return response.json();
         })
         .then(apiData => formatQuestions(apiData.results))
         .catch(error => {
-            hideLoader();
+            console.log ("no loader show");
             handleFetchError(error);
             throw error;
         });
-};
-
-
-/**
- * displays loader 
- */
-
-showLoader = () => {
-    displayArea(loaderRef);
-   hideArea(questionAreaRef);
-   
-};
-
-/**
- * hides loader
- */
-
-hideLoader = () => {
-    hideArea(loaderRef);
-    displayArea(questionAreaRef);
 };
 
 /** 
