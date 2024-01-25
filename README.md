@@ -200,11 +200,25 @@ _Small Screen Devices_
 
 ### Question View
 
+Questions are multiple choice and displayed one by one. The question body and 4 possible answers can be seen. Above the questions, users can see the timer and the progress whch displays question number. The timer is set to 20 seconds, if the question is not answered to moves to the next one and the timer starts again. When the answer is selected, correct answer is displayed in green and wrong one in red. Under the question choices, users can also see the level selected and the number of right and wrong answers. 
 
+<details><summary><b>Question View</b></summary>
+
+![Question Window](docs/question-window.png)
+
+</details><br/>
 
 [Back to top](#contents)
 
 ### Final Score View
+
+Final score view displays a message depending on the right score with the username. Also, a Play Again button which brings the user back to the landing view.
+
+<details><summary><b>Question View</b></summary>
+
+![Final Score](docs/final-score.png)
+
+</details><br/>
 
 [Back to top](#contents)
 
