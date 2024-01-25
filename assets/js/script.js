@@ -13,6 +13,7 @@ const selectedLevelRef= document.querySelector("#selected-level");
 const progressTextRef = document.querySelector("#progress-text");
 
 const scoreRef = document.querySelector("#score");
+const incorrectScoreRef = document.querySelector("#incorrect");
 const correctScoreRef = document.querySelector('#correct-score');
 const scoreMessageRef = document.querySelector("#score-message");
 
@@ -36,7 +37,8 @@ const hideArea = (area) => area.classList.add("hide");
 const displayArea = (area) => area.classList.remove("hide"); 
 
 
-let score = 0;
+let correctScore = 0;
+let incorrectScore = 0;
 let questionNumber = 10;
 
 
@@ -44,7 +46,7 @@ let quizQuestions = [];
 let acceptingAnswers = true;
 let timeCounter;
 
-const CORRECT_BONUS = 1;
+const SCORE_BONUS = 1;
 const MAX_QUESTIONS = 10;
 
 
@@ -55,8 +57,13 @@ const MAX_QUESTIONS = 10;
  */
 
 const incrementScore = (num) => {
-    score += num;
-    scoreRef.innerHTML = score;
+    correctScore += num;
+    scoreRef.innerHTML = correctScore;
+};
+
+const incrementIncorrect = (num) => {
+    incorrectScore += num;
+    incorrectScoreRef.innerHTML = incorrectScore;
 };
 
 /**
@@ -260,8 +267,9 @@ const getNewQuestion = () => {
        if (acceptingAnswers && selectedButton) {
                 if (selectedAnswer === currentQuestion.correctAnswer) {
                     console.log("add score", scoreRef)
-                    incrementScore(CORRECT_BONUS);
+                    incrementScore(SCORE_BONUS);
                 } else {
+                    incrementIncorrect(SCORE_BONUS);
                     const correctButton = answerButtonsArray.find(
                         (button) => button.innerHTML === currentQuestion.correctAnswer
                     );
