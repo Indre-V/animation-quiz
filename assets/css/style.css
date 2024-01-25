@@ -90,6 +90,12 @@ textarea {
 
 /* Instructions and feedback styles */
 
+#instructions-list,
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
 #instructions,
 #feedback {
     display: none;
@@ -195,7 +201,9 @@ textarea {
     font-size: 1.5rem;
 }
 
-.level-btns:hover {
+.level-btns:hover,
+.btn-support:hover,
+.start-btn:hover {
     background-color: var(--light-cream);
 }
 
@@ -245,6 +253,7 @@ textarea {
 
 /* LOADER */
 #loader {
+    text-align: center;
     border: 1.6rem solid var(--pale-gray);
     border-radius: 50%;
     border-top: 1.6rem solid var(--blue);
