@@ -4,6 +4,7 @@ const questionAreaRef = document.querySelector("#question-area");
 const gameOverAreaRef = document.querySelector("#game-over");
 
 const startButtonRef = document.querySelector("#start");
+const loaderRef = document.querySelector('#loader');
 
 
 const levelBtnsRef = document.querySelectorAll(".level-btns");
@@ -139,24 +140,45 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  */
 
 const fetchQuestions = (difficulty) => {
-// show loader
-const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
+    console.log ("show loader", loaderRef);
+    showLoader();
+    const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
 
-     return fetch(apiLink)
-    .then(response => {
-        if (!response.ok) {
-             throw new Error(`Failed to fetch API questions.`);
+    return fetch(apiLink)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch API questions.`);
             }
+            hideLoader();
             return response.json();
         })
-    .then (apiData => formatQuestions(apiData.results))
-    .catch(error => {
-            //hide spinner
+        .then(apiData => formatQuestions(apiData.results))
+        .catch(error => {
+            hideLoader();
             handleFetchError(error);
             throw error;
         });
 };
 
+
+/**
+ * displays loader 
+ */
+
+showLoader = () => {
+    displayArea(loaderRef);
+   hideArea(questionAreaRef);
+   
+};
+
+/**
+ * hides loader
+ */
+
+hideLoader = () => {
+    hideArea(loaderRef);
+    displayArea(questionAreaRef);
+};
 
 /** 
 * @param {object} apiQuestions - The  data from the API.
@@ -190,6 +212,7 @@ const startGame = async (difficulty) => {
         score = 0;
         getNewQuestion();
         startTimer(20);
+        
         
     } catch (error) {
         handleFetchError(error);

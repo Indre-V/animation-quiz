@@ -243,6 +243,24 @@ textarea {
     width: 10rem;
 }
 
+/* LOADER */
+#loader {
+    border: 1.6rem solid var(--pale-gray);
+    border-radius: 50%;
+    border-top: 1.6rem solid var(--blue);
+    width: 12rem;
+    height: 12rem;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 /* Footer */
 
 footer {
