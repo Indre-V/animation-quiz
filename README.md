@@ -248,6 +248,16 @@ In a scenario where the link may be broken, 404 page has a built in 15 second au
 
 [Back to top](#contents)
 
+### Loader
+
+Loader was also added to remove an empty display of question box while content is being loaded from [Open Trivia DB]("https://opentdb.com/"). In an unlikely scenario, where databse website is not active, loader will show and fetch error will appear if the questions are retrieved from DB. 
+
+<details><summary><b>Loader</b></summary>
+
+![Loader](docs/loader.png)
+
+</details><br/>
+
 ## Future Enhancements
 
 
