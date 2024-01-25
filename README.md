@@ -4,7 +4,7 @@
 
 The Ultimate Animation quiz offers an opportunity to test knowledge at three levels in animation including cartoons. 
 
-Every question has 20 second timer.
+Every question has a 20 second timer. Quiz users have 10 questions to challenge themselves.
 
 Players have the option provide feedback to website creators.
 
@@ -75,9 +75,6 @@ Players have the option provide feedback to website creators.
 * As a user, I want to be able to easily contact content creators for feedback or changes.
 * As a user, I want the content to be accessible for anyone with diverse needs.
 
-
-
-
 ## Website Goals and Objectives
 
 * Provide entertainment and enjoyment for users whilst testing their knowledge.
@@ -91,7 +88,7 @@ Players have the option provide feedback to website creators.
 
 ## Wireframes
 
-Wireframes were designed using Balsamiq tool. Following best practices, mobile version was designed first, then tablet and lastly the laptop view. There is some slight deviations from wireframes in the live version of the quiz. It is one page website to enhance the logical flow. 
+Wireframes were designed using Balsamiq tool. Following best practices, mobile version was designed first, then tablet and lastly the laptop view. There is some deviations from wireframes in the live version of the quiz. It is one page website to enhance the logical flow. I have added level user selected in the question view, a number of corect and wrong answers as well. 
 
  [Mobile Wireframes](docs/mobile-wireframes.pdf "Mobile Wireframes")
 
@@ -144,15 +141,14 @@ Layout is easy to use and adheres to best practices in formatting and styling. T
 
 ### Header
 
-This webpage has a header consistent across all screen sizes. It contains Intstructions and Feddback sections on the right. 
-both can be open at the same time. The close buttons and send buttons as the same styles as all the other buttons on the page. 
+This webpage has a header consistent across all screen sizes. It contains Intstructions and Feddback sections on the right. They both can be open at the same time. The close buttons and send buttons are the same styles as all the other buttons on the page. The headings are blue color so they blend in well and do not distract the quiz players. 
 
 ![Header large screen](docs/header-full-screen.png)
 
 
-#### Intructions
+#### Instructions
 
-When clicked on instructions, a window opens with a close button on the bottom. This functionality is the same accross all devices. Instructions are written in plain English and displayed in aa list style view. 
+When clicked on instructions, a window opens with a close button on the bottom. This functionality is the same accross all devices. Instructions are written in plain English and displayed in a list style view. 
 
 <details><summary><b>Instructions View</b></summary>
 
@@ -184,7 +180,7 @@ Provides the user with aknowledgement. Page reloads after 5 secons and return to
 
 ### Landing View
 
-The quiz is built on one page to get the best performance. The first page consists of a welcome message, username field, difficulty levels and start button. All the buttons have hover effect and level buttons have active color as well. Username and Difficulty Levels are required fields in oder to proceed to the next part of the quiz. Once they are selected, questions from API are fetched based on the difficulty level. For consistency purposes, home screen is the same accross all devices. 
+The quiz is built on one page to get the best performance. The first page consists of quiz name, welcome message, username field, difficulty levels and start button. All the buttons have hover effect and level buttons have active color as well. Username and Difficulty Levels are required fields in oder to proceed to the next part of the quiz. Once they are selected, questions from API are fetched based on the difficulty level. For consistency purposes, home screen is the same accross all devices. 
 
 <details><summary><b>Landing View Large Screen</b></summary>
 
