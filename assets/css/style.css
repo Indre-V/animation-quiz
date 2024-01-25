@@ -43,7 +43,7 @@ body {
     background-size: cover;
 }
 
-/* allows the content to grow but not shrink */
+
 main {
     flex: 1 0 auto; 
 }
@@ -78,6 +78,70 @@ textarea {
 .text-center {
     text-align: center;
 }
+
+.hide {
+    display: none;
+}
+
+/* Button syles  */
+
+.btn {
+    background-color: var(--blue);
+    border: 2px solid;
+    border-color: var(--dark-blue);
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    margin: 1rem 0 1rem 0;
+    color: var(--dark-gray);
+    width: auto;
+}
+
+.btn-support {
+    font-size: 1.5rem;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(9rem, 1fr));
+    justify-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.btn-a {
+    min-width: 35vw;
+    padding: 1rem;
+}
+
+.level-btns {
+    margin: 1rem;
+    font-size: 2rem;
+}
+.btn-a.disabled  {
+    pointer-events: none;
+}
+
+.level-btns:hover,
+.btn-support:hover,
+.start-btn:hover {
+    background-color: var(--light-cream);
+}
+
+.level-btns.active {
+    background-color: var(--dark-blue);
+}
+
+.btn.correct {
+    background-color: var(--right-answer-green);
+}
+
+.btn.wrong {
+    background-color: var(--wrong-answer-red);
+}
+
+/* Page not found - 404 styling */
 
 #error-page {
     justify-content: space-around;
@@ -128,30 +192,23 @@ textarea {
 .nav-item {
     display: flex;
     justify-content: space-evenly;
-    margin: 1rem;
     font-family: 'Lato', sans-serif;
     color: var(--dark-blue);
     font-weight: 900;
-    background: none;
     font-size: 2rem;
+    margin: 1rem;
+    background: none;
 }
 
 .nav-open-view {
-    padding: 1rem;
     font-size: 1.5rem;
     background-color: var(--light-gray);
     margin: 1.5rem;
+    padding: 1rem;
 }
 
-/* Start quiz area styles */
+/* Display container styles */
 
-#start-area {
-    line-height: 3;
-}
-#question{
-    margin-top: 3rem;
-    font-size: 2rem;
-}
 .quiz-container {
     display: flex;
     flex-direction: column;
@@ -167,71 +224,25 @@ textarea {
     background-blend-mode: overlay;
 }
 
-.btn-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(9rem, 1fr));
-    justify-items: center;
-    gap: 2rem;
-    margin: 2rem 0;
+/* Start-quiz area styles */
+
+#start-area {
+    line-height: 3;
 }
 
-.btn {
-    background-color: var(--blue);
-    border: 2px solid;
-    border-color: var(--dark-blue);
-    font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    border-radius: 1rem;
-    padding: 1rem 1rem;
-    margin: 1rem 0 1rem 0;
-    color: var(--dark-gray);
-    width: auto;
-}
+/* Question area styling */
 
-.btn-a {
-    min-width: 35vw;
-    padding: 1rem;
-}
-
-.level-btns {
-    margin: 1rem;
+#question{
+    margin-top: 3rem;
     font-size: 2rem;
 }
-.btn-a.disabled  {
-    pointer-events: none;
+
+.fa-check {
+    color: var(--right-answer-green);
 }
 
-.btn-support {
-    font-size: 1.5rem;
-}
-
-.level-btns:hover,
-.btn-support:hover,
-.start-btn:hover {
-    background-color: var(--light-cream);
-}
-
-.level-btns.active {
-    background-color: var(--dark-blue);
-}
-
-.btn.correct {
-    background-color: var(--right-answer-green);
-}
-
-.btn.wrong {
-    background-color: var(--wrong-answer-red);
-}
-
-
-.hide {
-    display: none;
-}
-
-.start {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.fa-x {
+    color: var(--wrong-answer-red);
 }
 
 #result {
@@ -302,13 +313,6 @@ footer {
     color: var(--blue);
 }
 
-.fa-check {
-    color: var(--right-answer-green);
-}
-
-.fa-x {
-    color: var(--wrong-answer-red);
-}
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
