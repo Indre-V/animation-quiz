@@ -193,6 +193,10 @@ textarea {
     padding: 1rem;
 }
 
+.level-btns {
+    margin: 1rem;
+    font-size: 2rem;
+}
 .btn-a.disabled  {
     pointer-events: none;
 }
@@ -219,6 +223,7 @@ textarea {
     background-color: var(--wrong-answer-red);
 }
 
+
 .hide {
     display: none;
 }
@@ -227,6 +232,12 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#result {
+    padding: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
 }
 
 #progress {
@@ -295,6 +306,9 @@ footer {
     color: var(--right-answer-green);
 }
 
+.fa-x {
+    color: var(--wrong-answer-red);
+}
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
