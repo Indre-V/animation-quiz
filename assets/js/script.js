@@ -22,6 +22,8 @@ const closeContactFormBtnRef = document.querySelector("#close-contactForm");
 
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
 
+let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
 const hideArea = (area) => area.classList.add("hide");
 const displayArea = (area) => area.classList.remove("hide");
 
@@ -38,6 +40,10 @@ let timeCounter;
 const SCORE_BONUS = 1;
 const MAX_QUESTIONS = 10;
 
+
+// Event listener for displaying high scores when the button is clicked
+const highScoresBtnRef = document.querySelector("#high-scores-btn");
+highScoresBtnRef.addEventListener("click", displayHighScoresAlert);
 
 
 /** 
@@ -84,8 +90,6 @@ const startTimer = (time) => {
         }
     }, 1000);
 };
-
-
 //Finish game 
 
 const gameOver = () => {
@@ -95,15 +99,25 @@ const gameOver = () => {
     displayFinalScore();
 };
 
-
 /*
 *Display final score
+*Add score to local storage
 *Score message based on the score
 *Retrieves username entered 
 */
 const displayFinalScore = () => {
     const usernameEntered = usernameRef.value;
     const score = parseInt(scoreRef.textContent);
+
+    // Construct a score object containing the user's name and their score
+    const scoreObject = {
+        name: usernameRef.value,
+        score: score
+    };
+
+    highScores.push(scoreObject);
+    highScores.splice(5);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
 
     let scoreMessage = "";
 
@@ -118,7 +132,20 @@ const displayFinalScore = () => {
     correctScoreRef.textContent = score;
 };
 
+/**
+ * Displays high scores in an alert dialog.
+ * @param {Array} highScores - An array containing high scores objects with properties 'name' and 'score'.
+ */
 
+const displayHighScoresAlert = () => {
+
+    let highScoresString = 'Player Scores:\n';
+    highScores.forEach((score, index) => {
+        highScoresString += `${index + 1}. ${score.name}: ${score.score}\n`;
+    });
+
+    alert(highScoresString);
+};
 
 
 /*
@@ -127,7 +154,6 @@ const displayFinalScore = () => {
 */
 
 const resetGame = () => {
-
     location.reload();
 }
 
@@ -143,7 +169,6 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  */
 
 const fetchQuestions = (difficulty) => {
-    console.log("show loader", loaderRef);
     displayArea(loaderRef);
     hideArea(questionAreaRef);
     const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
@@ -159,7 +184,6 @@ const fetchQuestions = (difficulty) => {
         })
         .then(apiData => formatQuestions(apiData.results))
         .catch(error => {
-            console.log("no loader show");
             handleFetchError(error);
             throw error;
         });
@@ -194,10 +218,8 @@ const startGame = async (difficulty) => {
         quizQuestions = await fetchQuestions(difficulty);
         console.log("load", difficulty);
         questionNumber = 0;
-        score = 0;
+        // score = 0;
         getNewQuestion();
-
-
 
     } catch (error) {
         handleFetchError(error);
@@ -209,7 +231,6 @@ const startGame = async (difficulty) => {
 * Display question text, answer choices
 * Assign each answer to a specific button.
 */
-
 
 const getNewQuestion = () => {
     console.log("start of get new question");
@@ -223,7 +244,6 @@ const getNewQuestion = () => {
 
     console.log("displayQuestions", quizQuestions);
 
-    // Enable all answer buttons
     answerButtonsRef.forEach((btn) => {
         btn.disabled = false;
     });
@@ -234,8 +254,6 @@ const getNewQuestion = () => {
     let currentQuestion = quizQuestions[questionNumber];
 
     questionElementRef.innerHTML = currentQuestion.question;
-
-
 
     // Add event listeners to answer buttons
     answerButtonsRef.forEach((button, i) => {
@@ -281,10 +299,7 @@ const checkAnswer = (selectedAnswer) => {
         } else {
             incrementIncorrect(SCORE_BONUS);
             console.log("add WRONG score");
-            const correctButton = answerButtonsArray.find(
-                (button) => button.innerHTML === currentQuestion.correctAnswer
-            );
-            correctButton.classList.add("correct");
+            answerButtonsArray.find((button) => button.innerHTML === currentQuestion.correctAnswer)?.classList.add("correct");
         }
 
         disableAnswerButtons();
@@ -295,7 +310,6 @@ const checkAnswer = (selectedAnswer) => {
             console.log("setTimeOut in checkAnswers");
             clearStatusClass(answerButtonsRef);
             selectedButton.classList.remove(classToApply);
-            // Remove existing event listeners from answer buttons
             answerButtonsRef.forEach((button) => {
                 button.removeEventListener("click", handleAnswerClick);
             });
