@@ -1,40 +1,29 @@
-
 const startQuizAreaRef = document.querySelector("#start-area");
 const questionAreaRef = document.querySelector("#question-area");
 const gameOverAreaRef = document.querySelector("#game-over");
-
 const startButtonRef = document.querySelector("#start");
 const loaderRef = document.querySelector('#loader');
-
-
 const levelBtnsRef = document.querySelectorAll(".level-btns");
-const selectedLevelRef= document.querySelector("#selected-level");
-
+const selectedLevelRef = document.querySelector("#selected-level");
 const progressTextRef = document.querySelector("#progress-text");
-
 const scoreRef = document.querySelector("#score");
 const incorrectScoreRef = document.querySelector("#incorrect");
 const correctScoreRef = document.querySelector('#correct-score');
 const scoreMessageRef = document.querySelector("#score-message");
-
-const playAgainRef= document.querySelector("#play-again-btn");
-
-
+const playAgainRef = document.querySelector("#play-again-btn");
 const usernameRef = document.querySelector("#username");
 const secondsRef = document.querySelector("#seconds");
-
-
 const questionElementRef = document.querySelector("#question");
 const answerButtonsRef = document.querySelectorAll(".btn-a");
-const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
- 
 const showInstructionsRef = document.querySelector("#show-instructions");
 const showContactFormRef = document.querySelector("#show-contactForm");
 const closeInstructionsBtnRef = document.querySelector("#close-instructions");
 const closeContactFormBtnRef = document.querySelector("#close-contactForm");
 
-const hideArea = (area) => area.classList.add("hide"); 
-const displayArea = (area) => area.classList.remove("hide"); 
+const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
+
+const hideArea = (area) => area.classList.add("hide");
+const displayArea = (area) => area.classList.remove("hide");
 
 
 let correctScore = 0;
@@ -72,8 +61,8 @@ const incrementIncorrect = (num) => {
  * @param {number} time - The time is set in seconds
  */
 const updateDisplay = (remainingTime) => {
-        const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
-        secondsRef.textContent = formattedTime;
+    const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
+    secondsRef.textContent = formattedTime;
 };
 
 const startTimer = (time) => {
@@ -86,13 +75,24 @@ const startTimer = (time) => {
         updateDisplay(remainingTime);
 
         if (remainingTime < 0) {
-            next();
+            clearInterval(timeCounter);
+            getNewQuestion();
+            startTimer(20);
+            acceptingAnswers = true;
         }
+        else if (questionNumber >= MAX_QUESTIONS) {
+
+            console.log("Game already over");
+            return gameOver();
+        }
+        console.log("Moving to the next question");
+
+
     }, 1000);
 };
 
 
- //Finish game 
+//Finish game 
 
 const gameOver = () => {
     clearInterval(timeCounter);
@@ -102,7 +102,7 @@ const gameOver = () => {
 };
 
 
- /*
+/*
 *Display final score
 *Score message based on the score
 *Retrieves username entered 
@@ -147,7 +147,7 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
  */
 
 const fetchQuestions = (difficulty) => {
-    console.log ("show loader", loaderRef);
+    console.log("show loader", loaderRef);
     displayArea(loaderRef);
     hideArea(questionAreaRef);
     const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
@@ -163,7 +163,7 @@ const fetchQuestions = (difficulty) => {
         })
         .then(apiData => formatQuestions(apiData.results))
         .catch(error => {
-            console.log ("no loader show");
+            console.log("no loader show");
             handleFetchError(error);
             throw error;
         });
@@ -201,8 +201,8 @@ const startGame = async (difficulty) => {
         score = 0;
         getNewQuestion();
         startTimer(20);
-        
-        
+
+
     } catch (error) {
         handleFetchError(error);
     }
@@ -214,11 +214,11 @@ const startGame = async (difficulty) => {
 * Assign each answer to a specific button.
 */
 const getNewQuestion = () => {
-  
+
     if (questionNumber >= 10) {
         console.log("gameOver");
-       return gameOver();
-      
+        return gameOver();
+
     }
 
     clearStatusClass(answerButtonsRef);
@@ -253,45 +253,43 @@ const getNewQuestion = () => {
 *Check if the selected answer is correct
 *Add a class to display correct answer
 */
-    const checkAnswer = (selectedAnswer) => {
+const checkAnswer = (selectedAnswer) => {
 
-        const currentQuestion = quizQuestions[questionNumber - 1];
-        const selectedButton = answerButtonsArray.find(
-            (button) => button.innerHTML === selectedAnswer
-        );
-    
-        const classToApply = selectedAnswer === currentQuestion.correctAnswer ? "correct" : "wrong";
-    
-        selectedButton.classList.add(classToApply);
-    
-       if (acceptingAnswers && selectedButton) {
-                if (selectedAnswer === currentQuestion.correctAnswer) {
-                    console.log("add score", scoreRef)
-                    incrementScore(SCORE_BONUS);
-                } else {
-                    incrementIncorrect(SCORE_BONUS);
-                    const correctButton = answerButtonsArray.find(
-                        (button) => button.innerHTML === currentQuestion.correctAnswer
-                    );
-                    correctButton.classList.add("correct");
-                }
-        
-            disableAnswerButtons();
-    
-            setTimeout(() => {
-                selectedButton.classList.remove(classToApply);
-                clearStatusClass(answerButtonsRef);
-                clearInterval(timeCounter);
-                getNewQuestion();
-                startTimer(20);
-            }, 1000);
-        }
-    
-        currentQuestion.answerChecked = true;
-        acceptingAnswers = false;
-    };
+    const currentQuestion = quizQuestions[questionNumber - 1];
+    const selectedButton = answerButtonsArray.find(
+        (button) => button.innerHTML === selectedAnswer
+    );
 
-       
+    const classToApply = selectedAnswer === currentQuestion.correctAnswer ? "correct" : "wrong";
+
+    selectedButton.classList.add(classToApply);
+
+   if (acceptingAnswers && selectedButton) {
+            if (selectedAnswer === currentQuestion.correctAnswer) {
+                console.log("add score", scoreRef)
+                incrementScore(SCORE_BONUS);
+            } else {
+                incrementIncorrect(SCORE_BONUS);
+                const correctButton = answerButtonsArray.find(
+                    (button) => button.innerHTML === currentQuestion.correctAnswer
+                );
+                correctButton.classList.add("correct");
+            }
+    
+        disableAnswerButtons();
+
+        setTimeout(() => {
+            selectedButton.classList.remove(classToApply);
+            clearStatusClass(answerButtonsRef);
+            clearInterval(timeCounter);
+            getNewQuestion();
+            startTimer(20);
+        }, 1000);
+    }
+
+    currentQuestion.answerChecked = true;
+    acceptingAnswers = false;
+};
 
 /**
  * Clears the color and status of the buttons
@@ -301,40 +299,26 @@ const clearStatusClass = (element) => {
     element.forEach((btn) => {
         btn.classList.remove("correct", "wrong");
         btn.classList.remove("disabled");
-        });
+    });
 };
 
 //prevents user from selecting multiple answers
 
 const disableAnswerButtons = () => {
-    
+
     answerButtonsRef.forEach((btn) => {
         btn.classList.add("disabled");
         btn.disabled = true;
     });
 };
 
-//Moves to next question if timed out
-const next = () => {
-        
-if (questionNumber >= MAX_QUESTIONS) {
-
-     console.log("Game already over");
-     return gameOver();
-        }
-console.log("Moving to the next question");
-    
-clearInterval(timeCounter);
-getNewQuestion();
-startTimer(20);
- acceptingAnswers = true;
-    };
-/*
-*Activate level buttons
-*Adds selected level to question display area
+/** 
+* Activate level buttons
+* Adds selected level to question display area
 */
+
 const activateButton = (selectedLevelBtn) => {
-        levelBtnsRef
+    levelBtnsRef
         .forEach((button) => button.classList.remove("active"));
     selectedLevelBtn.classList.add("active");
 
@@ -350,7 +334,7 @@ const activateButton = (selectedLevelBtn) => {
 *Alert when is either level or username missing
 */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     startButtonRef.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -358,12 +342,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const usernameEntered = usernameRef;
 
         (usernameEntered.value && selectedLevel)
-        ? (
-            hideArea(startQuizAreaRef),
-            displayArea(questionAreaRef),
-            await startGame(selectedLevel.dataset.level)
-          )
-        : alert("Please select Username and Level.");
+            ? (
+                hideArea(startQuizAreaRef),
+                displayArea(questionAreaRef),
+                await startGame(selectedLevel.dataset.level)
+            )
+            : alert("Please select Username and Level.");
     });
     levelBtnsRef.forEach((button) => {
         button.addEventListener("click", () => {
