@@ -53,6 +53,7 @@ const incrementScore = (num) => {
 const incrementIncorrect = (num) => {
     incorrectScore += num;
     incorrectScoreRef.innerHTML = incorrectScore;
+    console.log ("increment incorrect score");
 };
 
 /**
@@ -73,21 +74,19 @@ const startTimer = (time) => {
     timeCounter = setInterval(() => {
         remainingTime--;
         updateDisplay(remainingTime);
+        console.log("countdown time");
 
-        if (remainingTime < 0) {
+        if (remainingTime <= 0) {
             clearInterval(timeCounter);
-            getNewQuestion();
-            startTimer(20);
+            getNewQuestion(); // Move to the next question if time runs out
+            startTimer(20); // Start timer for the next question
             acceptingAnswers = true;
+            console.log("QuestionTime over");
+        } else if (questionNumber >= MAX_QUESTIONS) {
+            clearInterval(timeCounter);
+            gameOver(); // Call gameOver function if it's the last question
+            console.log("Game over");
         }
-        else if (questionNumber >= MAX_QUESTIONS) {
-
-            console.log("Game already over");
-            return gameOver();
-        }
-        console.log("Moving to the next question");
-
-
     }, 1000);
 };
 
@@ -107,7 +106,6 @@ const gameOver = () => {
 *Score message based on the score
 *Retrieves username entered 
 */
-
 const displayFinalScore = () => {
     const usernameEntered = usernameRef.value;
     const score = parseInt(scoreRef.textContent);
@@ -126,12 +124,15 @@ const displayFinalScore = () => {
 };
 
 
+
+
 /*
 *Reset the game
 *Activate reload page
 */
 
 const resetGame = () => {
+
     location.reload();
 }
 
@@ -279,12 +280,12 @@ const checkAnswer = (selectedAnswer) => {
         disableAnswerButtons();
 
         setTimeout(() => {
-            selectedButton.classList.remove(classToApply);
             clearStatusClass(answerButtonsRef);
+            selectedButton.classList.remove(classToApply);
             clearInterval(timeCounter);
             getNewQuestion();
             startTimer(20);
-        }, 1000);
+        }, 1500);
     }
 
     currentQuestion.answerChecked = true;
