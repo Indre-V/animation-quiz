@@ -53,7 +53,7 @@ const incrementScore = (num) => {
 const incrementIncorrect = (num) => {
     incorrectScore += num;
     incorrectScoreRef.innerHTML = incorrectScore;
-    console.log ("increment incorrect score");
+  
 };
 
 /**
@@ -68,24 +68,19 @@ const updateDisplay = (remainingTime) => {
 
 const startTimer = (time) => {
     let remainingTime = time;
-
+    console.log ("start timer function");
     updateDisplay(remainingTime);
 
     timeCounter = setInterval(() => {
         remainingTime--;
         updateDisplay(remainingTime);
-        console.log("countdown time");
+        console.log ("remaining time display");
 
         if (remainingTime <= 0) {
             clearInterval(timeCounter);
-            getNewQuestion(); // Move to the next question if time runs out
-            startTimer(20); // Start timer for the next question
+            getNewQuestion(); 
             acceptingAnswers = true;
             console.log("QuestionTime over");
-        } else if (questionNumber >= MAX_QUESTIONS) {
-            clearInterval(timeCounter);
-            gameOver(); // Call gameOver function if it's the last question
-            console.log("Game over");
         }
     }, 1000);
 };
@@ -201,7 +196,7 @@ const startGame = async (difficulty) => {
         questionNumber = 0;
         score = 0;
         getNewQuestion();
-        startTimer(20);
+       
 
 
     } catch (error) {
@@ -215,13 +210,13 @@ const startGame = async (difficulty) => {
 * Assign each answer to a specific button.
 */
 const getNewQuestion = () => {
+    console.log ("start of get new question");
 
     if (questionNumber >= 10) {
         console.log("gameOver");
         return gameOver();
 
     }
-
     clearStatusClass(answerButtonsRef);
 
     console.log("displayQuestions", quizQuestions);
@@ -245,8 +240,11 @@ const getNewQuestion = () => {
     progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
 
     questionNumber++;
+    
+    
+    console.log ("startTime in get new question");
+    startTimer(20);
 };
-
 
 /**
 *Checks if the selected answer is correct
@@ -255,7 +253,7 @@ const getNewQuestion = () => {
 *Add a class to display correct answer
 */
 const checkAnswer = (selectedAnswer) => {
-
+    console.log("check Answer");
     const currentQuestion = quizQuestions[questionNumber - 1];
     const selectedButton = answerButtonsArray.find(
         (button) => button.innerHTML === selectedAnswer
@@ -267,10 +265,11 @@ const checkAnswer = (selectedAnswer) => {
 
    if (acceptingAnswers && selectedButton) {
             if (selectedAnswer === currentQuestion.correctAnswer) {
-                console.log("add score", scoreRef)
+                console.log("add correct score");
                 incrementScore(SCORE_BONUS);
             } else {
                 incrementIncorrect(SCORE_BONUS);
+                console.log("add WRONG score");
                 const correctButton = answerButtonsArray.find(
                     (button) => button.innerHTML === currentQuestion.correctAnswer
                 );
@@ -280,12 +279,14 @@ const checkAnswer = (selectedAnswer) => {
         disableAnswerButtons();
 
         setTimeout(() => {
-            clearStatusClass(answerButtonsRef);
-            selectedButton.classList.remove(classToApply);
+            console.log ("clear interval", timeCounter);
             clearInterval(timeCounter);
+            console.log("setTimeOut in checkAnswers");
+            clearStatusClass(answerButtonsRef);
+            selectedButton.classList.remove(classToApply);  
             getNewQuestion();
-            startTimer(20);
-        }, 1500);
+            
+        }, 1000);
     }
 
     currentQuestion.answerChecked = true;
