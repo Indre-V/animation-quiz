@@ -41,9 +41,8 @@ const SCORE_BONUS = 1;
 const MAX_QUESTIONS = 10;
 
 
-// Event listener for displaying high scores when the button is clicked
 const highScoresBtnRef = document.querySelector("#high-scores-btn");
-highScoresBtnRef.addEventListener("click", displayHighScoresAlert);
+
 
 
 /** 
@@ -147,6 +146,7 @@ const displayHighScoresAlert = () => {
     alert(highScoresString);
 };
 
+highScoresBtnRef.addEventListener("click", displayHighScoresAlert);
 
 /*
 *Reset the game

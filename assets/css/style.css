@@ -123,9 +123,7 @@ textarea {
     pointer-events: none;
 }
 
-.level-btns:hover,
-.btn-support:hover,
-.start-btn:hover {
+.hover:hover {
     background-color: var(--light-cream);
 }
 
