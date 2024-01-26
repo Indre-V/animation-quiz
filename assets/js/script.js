@@ -53,7 +53,7 @@ const incrementScore = (num) => {
 const incrementIncorrect = (num) => {
     incorrectScore += num;
     incorrectScoreRef.innerHTML = incorrectScore;
-  
+
 };
 
 /**
@@ -68,17 +68,17 @@ const updateDisplay = (remainingTime) => {
 
 const startTimer = (time) => {
     let remainingTime = time;
-    console.log ("start timer function");
+    console.log("start timer function");
     updateDisplay(remainingTime);
 
     timeCounter = setInterval(() => {
         remainingTime--;
         updateDisplay(remainingTime);
-        console.log ("remaining time display");
+        console.log("remaining time display");
 
         if (remainingTime <= 0) {
             clearInterval(timeCounter);
-            getNewQuestion(); 
+            getNewQuestion();
             acceptingAnswers = true;
             console.log("QuestionTime over");
         }
@@ -196,7 +196,7 @@ const startGame = async (difficulty) => {
         questionNumber = 0;
         score = 0;
         getNewQuestion();
-       
+
 
 
     } catch (error) {
@@ -209,18 +209,21 @@ const startGame = async (difficulty) => {
 * Display question text, answer choices
 * Assign each answer to a specific button.
 */
+
+
 const getNewQuestion = () => {
-    console.log ("start of get new question");
+    console.log("start of get new question");
 
     if (questionNumber >= 10) {
         console.log("gameOver");
         return gameOver();
-
     }
+
     clearStatusClass(answerButtonsRef);
 
     console.log("displayQuestions", quizQuestions);
 
+    // Enable all answer buttons
     answerButtonsRef.forEach((btn) => {
         btn.disabled = false;
     });
@@ -232,18 +235,26 @@ const getNewQuestion = () => {
 
     questionElementRef.innerHTML = currentQuestion.question;
 
+
+
+    // Add event listeners to answer buttons
     answerButtonsRef.forEach((button, i) => {
         button.innerHTML = currentQuestion.answers[i];
-        button.addEventListener("click", () => checkAnswer(answerButtonsRef[i].innerHTML));
+        button.addEventListener("click", handleAnswerClick);
     });
 
     progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
 
     questionNumber++;
-    
-    
-    console.log ("startTime in get new question");
+
+    console.log("startTime in get new question");
     startTimer(20);
+};
+
+// Event listener function for answer button clicks
+const handleAnswerClick = (event) => {
+    const selectedAnswer = event.target.innerHTML;
+    checkAnswer(selectedAnswer);
 };
 
 /**
@@ -263,29 +274,33 @@ const checkAnswer = (selectedAnswer) => {
 
     selectedButton.classList.add(classToApply);
 
-   if (acceptingAnswers && selectedButton) {
-            if (selectedAnswer === currentQuestion.correctAnswer) {
-                console.log("add correct score");
-                incrementScore(SCORE_BONUS);
-            } else {
-                incrementIncorrect(SCORE_BONUS);
-                console.log("add WRONG score");
-                const correctButton = answerButtonsArray.find(
-                    (button) => button.innerHTML === currentQuestion.correctAnswer
-                );
-                correctButton.classList.add("correct");
-            }
-    
+    if (acceptingAnswers && selectedButton) {
+        if (selectedAnswer === currentQuestion.correctAnswer) {
+            console.log("add correct score");
+            incrementScore(SCORE_BONUS);
+        } else {
+            incrementIncorrect(SCORE_BONUS);
+            console.log("add WRONG score");
+            const correctButton = answerButtonsArray.find(
+                (button) => button.innerHTML === currentQuestion.correctAnswer
+            );
+            correctButton.classList.add("correct");
+        }
+
         disableAnswerButtons();
 
         setTimeout(() => {
-            console.log ("clear interval", timeCounter);
+            console.log("clear interval", timeCounter);
             clearInterval(timeCounter);
             console.log("setTimeOut in checkAnswers");
             clearStatusClass(answerButtonsRef);
-            selectedButton.classList.remove(classToApply);  
+            selectedButton.classList.remove(classToApply);
+            // Remove existing event listeners from answer buttons
+            answerButtonsRef.forEach((button) => {
+                button.removeEventListener("click", handleAnswerClick);
+            });
             getNewQuestion();
-            
+
         }, 1000);
     }
 
