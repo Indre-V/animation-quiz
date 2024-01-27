@@ -205,6 +205,7 @@ textarea {
     padding: 1rem;
 }
 
+
 /* Display container styles */
 
 .quiz-container {
@@ -249,6 +250,24 @@ textarea {
     letter-spacing: 0.5rem;
 }
 
+
+#score-dots div {
+    height: 3rem;
+    width: 3rem;
+    display: inline-block;
+    border: 1px solid var(--pale-gray);
+    background-color: var(--light-gray);
+    margin-top: 1rem;
+    border-radius: 50%; 
+}
+
+#score-dots .progress-dot.correct {
+    background-color: var(--right-answer-green);
+}
+
+#score-dots .progress-dot.wrong {
+    background-color: var(--wrong-answer-red);
+}
 #progress {
     display: flex;
     flex-direction: column;

@@ -19,7 +19,8 @@ const showInstructionsRef = document.querySelector("#show-instructions");
 const showContactFormRef = document.querySelector("#show-contactForm");
 const closeInstructionsBtnRef = document.querySelector("#close-instructions");
 const closeContactFormBtnRef = document.querySelector("#close-contactForm");
-
+const highScoresBtnRef = document.querySelector("#high-scores-btn");
+const scoreIndicatorRef = document.querySelector('#score-dots');
 const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
 
 let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
@@ -40,10 +41,16 @@ let timeCounter;
 const SCORE_BONUS = 1;
 const MAX_QUESTIONS = 10;
 
-
-const highScoresBtnRef = document.querySelector("#high-scores-btn");
-
-
+/***
+ * Function to update progress dots based on the answer status
+ * @param {string} status - The status of the answer, either 'correct' or 'wrong'.
+ */
+const updateProgressDots = (status) => {
+    const dot = document.createElement('div');
+    dot.classList.add('progress-dot');
+    dot.classList.add(status);
+    scoreIndicatorRef.appendChild(dot);
+}
 
 /** 
  * Increments the correct score
@@ -82,6 +89,7 @@ const startTimer = (time) => {
         console.log("remaining time display");
 
         if (remainingTime <= 0) {
+            updateProgressDots('empty');
             clearInterval(timeCounter);
             getNewQuestion();
             acceptingAnswers = true;
@@ -296,8 +304,11 @@ const checkAnswer = (selectedAnswer) => {
         if (selectedAnswer === currentQuestion.correctAnswer) {
             console.log("add correct score");
             incrementScore(SCORE_BONUS);
+            updateProgressDots('correct');
+            console.log ("update progress dots");
         } else {
             incrementIncorrect(SCORE_BONUS);
+            updateProgressDots('wrong');
             console.log("add WRONG score");
             answerButtonsArray.find((button) => button.innerHTML === currentQuestion.correctAnswer)?.classList.add("correct");
         }
