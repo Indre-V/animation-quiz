@@ -407,7 +407,7 @@ document.addEventListener("click", (event) => {
 
 /** 
 *Wait for document to fully load and execute content
-*@param {Event} event - The form submission event.
+*@param {Event} event - the form submission event.
 *Username and Level selection process
 *Hide start area and display question area
 *Alert when is either level or username missing
