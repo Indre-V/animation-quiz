@@ -416,28 +416,20 @@ const handleFetchError = (error) => {
  * @param {boolean} show - Boolean to verify if its to show or close window
  */
 
-const showSupport = (show, id) => {
-    let supportElement = document.querySelector(`#${id}`);
-    supportElement.style.display = show ? "block" : "none";
+const supportElements = {
+    'show-instructions': 'instructions',
+    'show-contactForm': 'feedback',
+    'close-instructions': 'instructions',
+    'close-contactForm': 'feedback'
 };
 
-showInstructionsRef.addEventListener("click", (event) => {
-    event.preventDefault();
-    showSupport(true, "instructions");
-})
-
-showContactFormRef.addEventListener("click", (event) => {
-    event.preventDefault();
-    showSupport(true, "feedback");
-})
-
-closeInstructionsBtnRef.addEventListener("click", (event) => {
-    event.preventDefault();
-    showSupport(false, "instructions");
-
-})
-
-closeContactFormBtnRef.addEventListener("click", (event) => {
-    event.preventDefault();
-    showSupport(false, "feedback");
-})
+document.addEventListener("click", (event) => {
+    const { target } = event;
+    const { id } = target;
+    if (id in supportElements) {
+        event.preventDefault();
+        const show = id.startsWith('show');
+        const supportElement = document.querySelector(`#${supportElements[id]}`);
+        supportElement.style.display = show ? "block" : "none";
+    }
+});
