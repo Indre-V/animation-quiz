@@ -22,53 +22,53 @@
     <div id="support">
       <div id="instructions-list">
         <button class="button nav-item" type="button" id="show-instructions">Instructions</button>
-          <div class="nav-open-view text-center" id="instructions">
-            <h3>How to Play</h3>
-            <div id="list">
-              <ol>
-                <li>Enter Username</li>
-                <li>Select difficulty levl</li>
-                <li>Click to Start the Quiz</li>
-                <li>Four options will be displayed with 20 secs timer</li>
-                <li>Select the answer</li>
-                <li>Correct naswer displayed</li>
-                <li>Once the last question is answered</li>
-                <li>Score message will be displayed</li>
-                <li>Select Play Again to go back to the main page</li>
-              </ol>
-            </div> 
-            <button class="btn btn-support hover" type="button" id="close-instructions">Close</button>
+        <div class="nav-open-view text-center" id="instructions">
+          <h3>How to Play</h3>
+          <div id="list">
+            <ol>
+              <li>Enter Username</li>
+              <li>Select difficulty levl</li>
+              <li>Click to Start the Quiz</li>
+              <li>Four options will be displayed with 20 secs timer</li>
+              <li>Select the answer</li>
+              <li>Correct naswer displayed</li>
+              <li>Once the last question is answered</li>
+              <li>Score message will be displayed</li>
+              <li>Select Play Again to go back to the main page</li>
+            </ol>
           </div>
+          <button class="btn btn-support hover" type="button" id="close-instructions">Close</button>
         </div>
+      </div>
 
       <div id="contact-form">
         <button class="button nav-item" type="button" id="show-contactForm">Feedback</button>
         <div class="nav-open-view" id="feedback">
-            <form action="feedback-thanks.html" method="GET" class="form">
-              <div id="input-box">
-                <label for="name-submission">Your Name*</label>
-                <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
-                <label for="email-submission">Your Email*</label>
-                <input type="email" id="email-submission" placeholder="example@disney.com" required>
-                <label for="textarea">Message*</label>
-                <textarea name="message" id="textarea" placeholder="Start typing here...." required></textarea>
-              </div>
-              <button class="btn btn-support hover" type="submit" id="submit-send" name="submit" value="Send">
-                Send
-              </button>
-            </form>
-            <button class="btn btn-support hover" type="button" id="close-contactForm">Close</button>
+          <form action="feedback-thanks.html" method="GET" class="form">
+            <div id="input-box">
+              <label for="name-submission">Your Name*</label>
+              <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
+              <label for="email-submission">Your Email*</label>
+              <input type="email" id="email-submission" placeholder="example@disney.com" required>
+              <label for="textarea">Message*</label>
+              <textarea name="message" id="textarea" placeholder="Start typing here...." required></textarea>
+            </div>
+            <button class="btn btn-support hover" type="submit" id="submit-send" name="submit" value="Send">
+              Send
+            </button>
+          </form>
+          <button class="btn btn-support hover" type="button" id="close-contactForm">Close</button>
         </div>
       </div>
     </div>
   </header>
   <!-- End Header -->
   <!-- Loader  -->
-<div id="loader" class="hide"></div> >
+  <div id="loader" class="hide"></div> >
   <main>
     <!-- Quiz start area -->
     <div class="quiz-container text-center">
-        <h1>The Ultimate Animation Quiz</h1>
+      <h1>The Ultimate Animation Quiz</h1>
       <div id="start-area" class="entry-area">
         <h2 class="text-center">Welcome to the quiz!</h2>
         <form id="start">
@@ -94,16 +94,18 @@
         </form>
       </div>
       <!-- End of start area -->
-     <!-- Start of question display area -->
-       <div id="question-area" class="hide"> 
-        <div id="progress"> 
+      <!-- Start of question display area -->
+      <div id="question-area" class="hide">
+        <div id="progress">
           <p id="progress-text">Question</p>
-          <div id="score-dots"></div>
+          <div id="score-dots"></div>         
           <div id="timer">
-            <i class="fa-solid fa-stopwatch"></i>
-            <div id="seconds"></div>
-          </div>
-            </div>
+            <!-- Font Awesome stopwatch icon -->
+            <i class="fas fa-stopwatch"></i>
+            <!-- Element to display the remaining seconds -->
+            <span id="seconds">20</span>
+        </div>
+        </div>
         <div id="question">Question</div>
         <div id="answer-buttons" class="btn-grid">
           <button type="button" class="btn btn-a ">Answer 1</button>
@@ -113,23 +115,23 @@
         </div>
         <div id="score-area">
           <p><i class="fa fa-level-up" aria-hidden="true"></i><span id="selected-level">x</span></p>
-          </div> 
+        </div>
         <div id="result">
           <i class="fa-solid fa-check"></i>: <span id="score">0</span>
           <i class="fa-solid fa-x"></i>: <span id="incorrect">0</span>
         </div>
-    </div>
-     <!-- End of question display area -->
-    <!-- Game over results area -->
+      </div>
+      <!-- End of question display area -->
+      <!-- Game over results area -->
       <div id="game-over" class="hide">
         <p id="score-message"></p>
         <p class="text-center">Final Score:</p>
         <h1 id="correct-score">0</h1>
-      <p><button id="high-scores-btn" class="btn high-scores hover">Player Scores</button></p> 
-       <p><button id="play-again-btn" class="btn restart hover">Play Again</button></p> 
+        <p><button id="high-scores-btn" class="btn high-scores hover">Player Scores</button></p>
+        <p><button id="play-again-btn" class="btn restart hover">Play Again</button></p>
       </div>
     </div>
-   <!-- End of Game Over area -->
+    <!-- End of Game Over area -->
   </main>
 
   <!-- Start of Footer  -->

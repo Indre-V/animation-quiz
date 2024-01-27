@@ -53,7 +53,7 @@ const updateProgressDots = (status) => {
 }
 
 /** 
- * Increments the correct score
+ * Increments the correct and incorrect score
  * @param {number} num - Increments the score by set number.
  */
 
@@ -73,31 +73,34 @@ const incrementIncorrect = (num) => {
  * Counts down from specified time
  * @param {number} time - The time is set in seconds
  */
-const updateDisplay = (remainingTime) => {
-    const formattedTime = (remainingTime % 60).toString().padStart(2, "0");
-    secondsRef.textContent = formattedTime;
-};
 
-const startTimer = (time) => {
-    let remainingTime = time;
-    console.log("start timer function");
-    updateDisplay(remainingTime);
-
-    timeCounter = setInterval(() => {
-        remainingTime--;
-        updateDisplay(remainingTime);
-        console.log("remaining time display");
-
-        if (remainingTime <= 0) {
-            updateProgressDots('empty');
-            clearInterval(timeCounter);
-            getNewQuestion();
-            acceptingAnswers = true;
-            console.log("QuestionTime over");
+const startTimer = () => {
+    clearInterval(timeCounter);
+    let sec = 20; 
+    const timerElement = secondsRef;
+    timeCounter = setInterval(() => { 
+        timerElement.textContent = sec;
+        sec--; 
+        if (sec < 0) { 
+            clearInterval(timeCounter); 
+            handleTimeUp(); 
         }
-    }, 1000);
-};
-//Finish game 
+    }, 1000); 
+}
+
+/**
+ * Handles the time-up event
+ */
+ 
+const handleTimeUp = () => {
+    updateProgressDots('empty');
+    getNewQuestion();
+    acceptingAnswers = true;
+}
+
+/*
+* After last question, Game Over is called
+*/
 
 const gameOver = () => {
     clearInterval(timeCounter);
@@ -108,6 +111,7 @@ const gameOver = () => {
 
 /*
 *Display final score
+*Construct a score object containing the user's name and their score
 *Add score to local storage
 *Score message based on the score
 *Retrieves username entered 
@@ -116,7 +120,6 @@ const displayFinalScore = () => {
     const usernameEntered = usernameRef.value;
     const score = parseInt(scoreRef.textContent);
 
-    // Construct a score object containing the user's name and their score
     const scoreObject = {
         name: usernameRef.value,
         score: score
@@ -135,7 +138,6 @@ const displayFinalScore = () => {
     }
 
     scoreMessageRef.textContent = scoreMessage;
-
     correctScoreRef.textContent = score;
 };
 
@@ -274,7 +276,7 @@ const getNewQuestion = () => {
     questionNumber++;
 
     console.log("startTime in get new question");
-    startTimer(20);
+    startTimer();
 };
 
 // Event listener function for answer button clicks
@@ -316,9 +318,7 @@ const checkAnswer = (selectedAnswer) => {
         disableAnswerButtons();
 
         setTimeout(() => {
-            console.log("clear interval", timeCounter);
             clearInterval(timeCounter);
-            console.log("setTimeOut in checkAnswers");
             clearStatusClass(answerButtonsRef);
             selectedButton.classList.remove(classToApply);
             answerButtonsRef.forEach((button) => {
@@ -368,35 +368,6 @@ const activateButton = (selectedLevelBtn) => {
 
 };
 
-/** 
-*Wait for document to fully load and execute content
-*@param {Event} event - The form submission event.
-*Username and Level selection process
-*Hide start area and display question area
-*Alert when is either level or username missing
-*/
-
-document.addEventListener("DOMContentLoaded", function () {
-    startButtonRef.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const selectedLevel = document.querySelector(".level-btns.active");
-        const usernameEntered = usernameRef;
-
-        (usernameEntered.value && selectedLevel)
-            ? (
-                hideArea(startQuizAreaRef),
-                displayArea(questionAreaRef),
-                await startGame(selectedLevel.dataset.level)
-            )
-            : alert("Please select Username and Level.");
-    });
-    levelBtnsRef.forEach((button) => {
-        button.addEventListener("click", () => {
-            activateButton(button);
-        });
-    });
-});
 
 /**
  * API fetch error handling
@@ -432,4 +403,34 @@ document.addEventListener("click", (event) => {
         const supportElement = document.querySelector(`#${supportElements[id]}`);
         supportElement.style.display = show ? "block" : "none";
     }
+});
+
+/** 
+*Wait for document to fully load and execute content
+*@param {Event} event - The form submission event.
+*Username and Level selection process
+*Hide start area and display question area
+*Alert when is either level or username missing
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+    startButtonRef.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const selectedLevel = document.querySelector(".level-btns.active");
+        const usernameEntered = usernameRef;
+
+        (usernameEntered.value && selectedLevel)
+            ? (
+                hideArea(startQuizAreaRef),
+                displayArea(questionAreaRef),
+                await startGame(selectedLevel.dataset.level)
+            )
+            : alert("Please select Username and Level.");
+    });
+    levelBtnsRef.forEach((button) => {
+        button.addEventListener("click", () => {
+            activateButton(button);
+        });
+    });
 });
