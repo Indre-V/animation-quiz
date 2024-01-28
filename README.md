@@ -413,12 +413,16 @@ The Ultimate Animation Quiz has been tested in the [Chrome Dev Tools](https://de
 * Best Practices - checks whether the page is built on the modern standards of web development.
 * SEO - checks if the website is optimised for search engine result rankings.
 
-Tests for Desktop and Mobile on Lighthouse Chrome:
+Tests for Desktop on Lighthouse Chrome:
 ![Lighthouse-Desktop-Chrome-Index](docs/lighthouse-desktop-chrome-index.png "Lighthouse-Desktop-Chrome-Index")
+
+Tests for Mobile on Lighthouse Chrome:
 ![Lighthouse-Mobile-Chrome-Index](docs/lighthouse-mobile-chrome-index.png "Lighthouse-Mobile-Chrome-Index")
 
 Tests for Desktop and Mobile on Lighthouse Edge:
 ![Lighthouse-Desktop-Edge-Index](docs/lighthouse-desktop-edge-index.png "Lighthouse-Desktop-Edge-Index")
+
+Tests for Desktop and Mobile on Lighthouse Edge:
 ![Lighthouse-Mobile-Edge-Index](docs/lighthouse-mobile-edge-index.png "Lighthouse-Mobile-Edge-Index")
 
 
