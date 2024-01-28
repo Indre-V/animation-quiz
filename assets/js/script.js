@@ -126,7 +126,9 @@ const displayFinalScore = () => {
         
     };
 console.log("add score");
-    highScores.push(scoreObject);
+
+    highScores.unshift(scoreObject);
+    highScores.sort((a, b) => b.score - a.score);
     highScores.splice(5);
     localStorage.setItem('highScores', JSON.stringify(highScores));
 
