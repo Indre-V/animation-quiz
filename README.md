@@ -87,7 +87,12 @@ Players have the option provide feedback to website creators.
 * Increase overall website traffic by increasing rankings on search engine.
 
 
+## Target Audience
 
+* Animation enthusiasts
+* Casual viewers
+* Students and educators
+* Online communities and fan groups
 
 [Back to top](#contents)
 
@@ -211,8 +216,6 @@ _Small Screen Devices_
 [Back to top](#contents)
 
 ### Question View
-
-
 
 Questions are multiple choice and displayed one by one. The question body and 4 possible answers is displayed. Above the questions, users can see countdown timer and question number. The timer is set to 20 seconds, if the question is not answered to moves to the next one and the timer starts again. When the answer is selected, correct answer is displayed in green and wrong one in red. 
 
@@ -413,17 +416,17 @@ JS code was validated on [JSHint](https://jshint.com/ "JSHint"). No errors ident
 
 ## User Story Testing
 
-| User Story                                                                               | Result                                                                   | Pass |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---- |
-| As a user, I want my knowledge to be challenged.                                         | Quiz fetches questions from API so they do not repeat frequently         | Yes  |
-| As a user, I want to be able to test my knowledge at different levels.                   | User can choose from 3 levels                                            | Yes  |
-| As a user, I want to receive immediate feedback on my quiz answers                       | Once answer selected, color changes depending whether its correct or not | Yes  |
-| As a user, I want the instructions to be clear, concise and easily accessible.           | Instructions written in plain English and displayed at the of the page   | Yes  |
-| As a user, I want navigation to be intuitive.                                            | Buttons named logically                                                  | Yes  |
-| As a user, I want the score system to be transparent.                                    | Final score displayed                                                    | Yes  |
-| As a user, I want to be able to use website on range of devices.                         | Quiz is fully functional on all devices                                  | Yes  |
-| As a user, I want to be able to easily contact content creators for feedback or changes. | Feedback form available                                                  | Yes  |
-| As a user, I want the content to be accessible for anyone with diverse needs.            | Passed all accessibility tests                                           | Yes  |
+| User Story                                                                               | Result                                                                    | Pass | Screenshot                                                |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---- | --------------------------------------------------------- |
+| As a user, I want my knowledge to be challenged.                                         | Quiz fetches questions from API so they do not repeat frequently.         | Yes  | [Question View](docs/user-story1 "Question View")         |
+| As a user, I want to be able to test my knowledge at different levels.                   | User can choose from 3 levels.                                            | Yes  | [Level View](docs/user-story2 "Level View")               |
+| As a user, I want to receive immediate feedback on my quiz answers                       | Once answer selected, color changes depending whether its correct or not. | Yes  | [Question Answers](docs/user-story3 "Question Answers")   |
+| As a user, I want the instructions to be clear, concise and easily accessible.           | Instructions written in plain English and displayed at the of the page    | Yes  | [Instructions View](docs/user-story4 "Instructions View") |
+| As a user, I want navigation to be intuitive.                                            | Buttons named logically                                                   | Yes  | [Start View](docs/user-story5 "Start View")               |
+| As a user, I want the score system to be transparent.                                    | Immediate feedback on their answers                                       | Yes  | [Score View](docs/user-story6 "Score View")               |
+| As a user, I want to be able to use website on range of devices.                         | Quiz is fully functional on all devices                                   | Yes  | [Mobile View](docs/user-story7 "Mobile View")             |
+| As a user, I want to be able to easily contact content creators for feedback or changes. | Feedback form available                                                   | Yes  | [Feedback Form](docs/user-story8 "Feedback Form")         |
+| As a user, I want the content to be accessible for anyone with diverse needs.            | Passed all accessibility tests                                            | Yes  | See Accessibility Testing section
 
 [Back to top](#contents)
 
