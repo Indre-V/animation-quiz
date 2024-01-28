@@ -169,7 +169,7 @@ Users have an option to submit feedback and any other queries they may have. All
 
 #### Feedback Confirmation
 
-Provides the user with acknowledgement. Page reloads after 5 seconds and return to the start screen. 
+Provides the user with acknowledgement. Page reloads after 5 seconds and returns to the start screen. 
 
 <details><summary><b>Feedback Confirmation Page</b></summary>
 
@@ -201,7 +201,11 @@ _Small Screen Devices_
 
 ### Question View
 
-Questions are multiple choice and displayed one by one. The question body and 4 possible answers can be seen. Above the questions, users can see the timer and the progress which displays question number. The timer is set to 20 seconds, if the question is not answered to moves to the next one and the timer starts again. When the answer is selected, correct answer is displayed in green and wrong one in red. Under the question choices, users can also see the level selected and the number of right and wrong answers. 
+Questions are multiple choice and displayed one by one. The question body and 4 possible answers can be seen. Above the questions, users can see the timer and the progress which displays question number. The timer is set to 20 seconds, if the question is not answered to moves to the next one and the timer starts again. When the answer is selected, correct answer is displayed in green and wrong one in red. 
+
+Users can also monitor their progress. Above the question, a question number is displayed. Also, after each question a dot appears with the corresponding color whether the answer was wrong or right. If the answer timed out, the dot will be grey. It is a vsual representation of the players progress.
+
+Under the question choices, users can also see the level selected and the number of right and wrong answers as well. 
 
 <details><summary><b>Question View</b></summary>
 
@@ -213,15 +217,25 @@ Questions are multiple choice and displayed one by one. The question body and 4 
 
 ### Final Score View
 
-Final score view displays a message depending on the right score with the username. Also, a Play Again button which brings the user back to the landing view.
+Final score view displays a message depending on the right score with the username. Also, a Play Again and Player Scores buttons are displayed. Play Again buttons resets the game bring user to the landing view.
 
-<details><summary><b>Question View</b></summary>
+<details><summary><b>Final Score View</b></summary>
 
 ![Final Score](docs/final-score.png)
 
 </details><br/>
 
 [Back to top](#contents)
+
+### Player Scores
+
+Local storage feature has been introduced to store top 5 player scores. When the button is clicked. The cores are displayed in the alert. 
+
+<details><summary><b>Player Scores View/b></summary>
+
+![Player Scores View](docs/player-scores-view.png)
+
+</details><br/>
 
 ### Footer
 
@@ -430,10 +444,10 @@ Tests for Desktop on Lighthouse Chrome:
 Tests for Mobile on Lighthouse Chrome:
 ![Lighthouse-Mobile-Chrome-Index](docs/lighthouse-mobile-chrome-index.png "Lighthouse-Mobile-Chrome-Index")
 
-Tests for Desktop and Mobile on Lighthouse Edge:
+Tests for Desktop Lighthouse Edge:
 ![Lighthouse-Desktop-Edge-Index](docs/lighthouse-desktop-edge-index.png "Lighthouse-Desktop-Edge-Index")
 
-Tests for Desktop and Mobile on Lighthouse Edge:
+Tests for Mobile on Lighthouse Edge:
 ![Lighthouse-Mobile-Edge-Index](docs/lighthouse-mobile-edge-index.png "Lighthouse-Mobile-Edge-Index")
 
 

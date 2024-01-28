@@ -123,8 +123,9 @@ const displayFinalScore = () => {
     const scoreObject = {
         name: usernameRef.value,
         score: score
+        
     };
-
+console.log("add score");
     highScores.push(scoreObject);
     highScores.splice(5);
     localStorage.setItem('highScores', JSON.stringify(highScores));
