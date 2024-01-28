@@ -228,7 +228,6 @@ const startGame = async (difficulty) => {
         quizQuestions = await fetchQuestions(difficulty);
         console.log("load", difficulty);
         questionNumber = 0;
-        // score = 0;
         getNewQuestion();
 
     } catch (error) {
@@ -347,7 +346,6 @@ const clearStatusClass = (element) => {
 //prevents user from selecting multiple answers
 
 const disableAnswerButtons = () => {
-
     answerButtonsRef.forEach((btn) => {
         btn.classList.add("disabled");
         btn.disabled = true;
@@ -360,14 +358,10 @@ const disableAnswerButtons = () => {
 */
 
 const activateButton = (selectedLevelBtn) => {
-    levelBtnsRef
-        .forEach((button) => button.classList.remove("active"));
+    levelBtnsRef.forEach((button) => button.classList.remove("active"));
     selectedLevelBtn.classList.add("active");
-
     selectedLevelRef.textContent = selectedLevelBtn.textContent;
-
 };
-
 
 /**
  * API fetch error handling

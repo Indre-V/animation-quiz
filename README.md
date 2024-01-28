@@ -23,7 +23,7 @@ Players have the option provide feedback to website creators.
 - [Features](#features)
   * [Existing Features](#existing-features)
     + [Header](#header)
-      - [Intructions](#intructions)
+      - [Instructions](#instructions)
       - [Feedback](#feedback)
     + [Landing View](#landing-view)
     + [Question View](#question-view)
@@ -40,7 +40,7 @@ Players have the option provide feedback to website creators.
   * [Code Validation](#code-validation)
     + [HTML](#html)
     + [CSS](#css)
-    + [Javascript](#javascript)
+    + [JavaScript](#javascript)
   * [User Story Testing](#user-story-testing)
   * [Feature Testing](#feature-testing)
   * [Accessibility Testing](#accessibility-testing)
@@ -79,22 +79,23 @@ Players have the option provide feedback to website creators.
 
 * Provide entertainment and enjoyment for users whilst testing their knowledge.
 * Offer useful and accurate content that entices user to spend time on website.
-* Invite users to provide feeback.
+* Invite users to provide feedback.
 * Integrate accessibility features with high accessibility rating and diverse user audience. 
 * Increase overall website traffic by increasing rankings on search engine.
-* Invite users to share results on Social media to imcrease user interaction.
+
+
 
 [Back to top](#contents)
 
 ## Wireframes
 
-Wireframes were designed using Balsamiq tool. Following best practices, mobile version was designed first, then tablet and lastly the laptop view. There is some deviations from wireframes in the live version of the quiz. It is one page website to enhance the logical flow. I have added level user selected in the question view, a number of corect and wrong answers as well. 
+Wireframes were designed using Balsamiq tool. Following best practices, mobile version was designed first, then tablet and lastly the laptop view. There are some deviations from wireframes in the live version of the quiz. It is one page website to enhance the logical flow. I have added level user selected in the question view, a number of correct and wrong answers as well. A functionality of local storage to display top 5 results is included in the final version as well. 
 
  [Mobile Wireframes](docs/mobile-wireframes.pdf "Mobile Wireframes")
 
  [Tablet Wireframes](docs/tablet-wireframes.pdf "Tablet Wireframes")
 
- [Dektop Wireframes](docs/desktop-wireframes.pdf "Desktop Wireframes")
+ [Desktop Wireframes](docs/desktop-wireframes.pdf "Desktop Wireframes")
 
  [Back to top](#contents)
 
@@ -141,14 +142,14 @@ Layout is easy to use and adheres to best practices in formatting and styling. T
 
 ### Header
 
-This webpage has a header consistent across all screen sizes. It contains Intstructions and Feddback sections on the right. They both can be open at the same time. The close buttons and send buttons are the same styles as all the other buttons on the page. The headings are blue color so they blend in well and do not distract the quiz players. 
+This webpage has a header consistent across all screen sizes. It contains Instructions and Feedback sections on the right. They both can be open at the same time. The close buttons and send buttons are the same styles as all the other buttons on the page. The headings are blue color so they blend in well and do not distract the quiz players. 
 
 ![Header large screen](docs/header-full-screen.png)
 
 
 #### Instructions
 
-When clicked on instructions, a window opens with a close button on the bottom. This functionality is the same accross all devices. Instructions are written in plain English and displayed in a list style view. 
+When clicked on instructions, a window opens with a close button on the bottom. This functionality is the same across all devices. Instructions are written in plain English and displayed in a list style view. 
 
 <details><summary><b>Instructions View</b></summary>
 
@@ -168,7 +169,7 @@ Users have an option to submit feedback and any other queries they may have. All
 
 #### Feedback Confirmation
 
-Provides the user with aknowledgement. Page reloads after 5 secons and return to the start screen. 
+Provides the user with acknowledgement. Page reloads after 5 seconds and return to the start screen. 
 
 <details><summary><b>Feedback Confirmation Page</b></summary>
 
@@ -180,7 +181,7 @@ Provides the user with aknowledgement. Page reloads after 5 secons and return to
 
 ### Landing View
 
-The quiz is built on one page to get the best performance. The first page consists of quiz name, welcome message, username field, difficulty levels and start button. All the buttons have hover effect and level buttons have active color as well. Username and Difficulty Levels are required fields in oder to proceed to the next part of the quiz. Once they are selected, questions from API are fetched based on the difficulty level. For consistency purposes, home screen is the same accross all devices. 
+The quiz is built on one page to get the best performance. The first page consists of quiz name, welcome message, username field, difficulty levels and start button. All the buttons have hover effect and level buttons have active color as well. Username and Difficulty Levels are required fields in order to proceed to the next part of the quiz. Once they are selected, questions from API are fetched based on the difficulty level. For consistency purposes, home screen is the same across all devices. 
 
 <details><summary><b>Landing View Large Screen</b></summary>
 
@@ -200,7 +201,7 @@ _Small Screen Devices_
 
 ### Question View
 
-Questions are multiple choice and displayed one by one. The question body and 4 possible answers can be seen. Above the questions, users can see the timer and the progress whch displays question number. The timer is set to 20 seconds, if the question is not answered to moves to the next one and the timer starts again. When the answer is selected, correct answer is displayed in green and wrong one in red. Under the question choices, users can also see the level selected and the number of right and wrong answers. 
+Questions are multiple choice and displayed one by one. The question body and 4 possible answers can be seen. Above the questions, users can see the timer and the progress which displays question number. The timer is set to 20 seconds, if the question is not answered to moves to the next one and the timer starts again. When the answer is selected, correct answer is displayed in green and wrong one in red. Under the question choices, users can also see the level selected and the number of right and wrong answers. 
 
 <details><summary><b>Question View</b></summary>
 
@@ -238,7 +239,7 @@ To continue with cool toned theme, footer is very simple with two icons at the b
 
 ### 404 Page
 
-In a scenario where the link may be broken, 404 page has a built in 15 second auto refresh function whoch returns to homepage. 
+In a scenario where the link may be broken, 404 page has a built in 15 second auto refresh function which returns to homepage. 
 
 <details><summary><b>404 Page Screenshot</b></summary>
 
@@ -250,7 +251,7 @@ In a scenario where the link may be broken, 404 page has a built in 15 second au
 
 ### Loader
 
-Loader was also added to remove an empty display of question box while content is being loaded from [Open Trivia DB]("https://opentdb.com/"). In an unlikely scenario, where databse website is not active, loader will show and fetch error will appear if the questions are retrieved from DB. 
+Loader was also added to remove an empty display of question box while content is being loaded from [Open Trivia DB]("https://opentdb.com/"). In an unlikely scenario, where database website is not active, loader will show and fetch error will appear if the questions fail to retrieve from DB. 
 
 <details><summary><b>Loader</b></summary>
 
@@ -263,10 +264,11 @@ Loader was also added to remove an empty display of question box while content i
 
 * Multiple player option.
 * Online scoreboard that includes all players.
+* Share results on Social Media. 
 * Option to store the progress and return to the quiz at a later time, allowing to finish it at user's pace and not lose any of the questions already completed.
 * Broaden range of animation topics such as principles of animation, software tools, and industry best practices.
-* Provide  hints or additional resources for challenging questions.
-* Time-adjustable quiz where player can select a time limit for each question, all question or have no limitless time to complete.
+* Provide hints or additional resources for challenging questions.
+* Time-adjustable quiz where player can select a time limit for each question, all questions or have no limitless time to complete.
 
 [Back to top](#contents)
 
@@ -289,7 +291,7 @@ Loader was also added to remove an empty display of question box while content i
 
 * [Codeanywhere](https://app.codeanywhere.com/ "Codeanywhere")
 * [GitHub](https://github.com/ "GitHub")
-* [Gitpod](https://www.gitpod.io/#get-started "Gitpod")
+* [GitPod](https://www.gitpod.io/#get-started "GitPod")
 * [Balsamiq](https://balsamiq.com/wireframes/ "Balsamiq")
 * [W3C HTML Validation Service](https://validator.w3.org/ "W3C HTML")
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/ "W3C CSS")
@@ -354,7 +356,7 @@ CSS code for the webpage was validated on [W3C CSS Validation Service](https://j
 
 [Back to top](#contents)
 
-### Javascript
+### JavaScript
 
 
 ![JS Validation Image](docs/js-test-result.png)
