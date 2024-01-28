@@ -316,8 +316,8 @@ Loader was also added to remove an empty display of question box while content i
 
 - [Google Fonts](https://fonts.google.com/ "Google Fonts")
 - [Favicon](https://favicon.io/ "Favicon")
-- [Open Trivia DB]("https://opentdb.com/" "Open Trivia DB")
-- [cdnjs]("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" "cdnjs")
+* [Open Trivia DB](https://opentdb.com/ "Open Trivia DB")
+- [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css "cdnjs")
 
 ## Tools
 
@@ -418,14 +418,14 @@ JS code was validated on [JSHint](https://jshint.com/ "JSHint"). No errors ident
 
 | User Story                                                                               | Result                                                                    | Pass | Screenshot                                                |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---- | --------------------------------------------------------- |
-| As a user, I want my knowledge to be challenged.                                         | Quiz fetches questions from API so they do not repeat frequently.         | Yes  | [Question View](docs/user-story1 "Question View")         |
-| As a user, I want to be able to test my knowledge at different levels.                   | User can choose from 3 levels.                                            | Yes  | [Level View](docs/user-story2 "Level View")               |
-| As a user, I want to receive immediate feedback on my quiz answers                       | Once answer selected, color changes depending whether its correct or not. | Yes  | [Question Answers](docs/user-story3 "Question Answers")   |
-| As a user, I want the instructions to be clear, concise and easily accessible.           | Instructions written in plain English and displayed at the of the page    | Yes  | [Instructions View](docs/user-story4 "Instructions View") |
-| As a user, I want navigation to be intuitive.                                            | Buttons named logically                                                   | Yes  | [Start View](docs/user-story5 "Start View")               |
-| As a user, I want the score system to be transparent.                                    | Immediate feedback on their answers                                       | Yes  | [Score View](docs/user-story6 "Score View")               |
-| As a user, I want to be able to use website on range of devices.                         | Quiz is fully functional on all devices                                   | Yes  | [Mobile View](docs/user-story7 "Mobile View")             |
-| As a user, I want to be able to easily contact content creators for feedback or changes. | Feedback form available                                                   | Yes  | [Feedback Form](docs/user-story8 "Feedback Form")         |
+| As a user, I want my knowledge to be challenged.                                         | Quiz fetches questions from API so they do not repeat frequently.         | Yes  | [Question View](docs/user-story1.png "Question View")         |
+| As a user, I want to be able to test my knowledge at different levels.                   | User can choose from 3 levels.                                            | Yes  | [Level View](docs/user-story2.png "Level View")               |
+| As a user, I want to receive immediate feedback on my quiz answers                       | Once answer selected, color changes depending whether its correct or not. | Yes  | [Question Answers](docs/user-story3.png "Question Answers")   |
+| As a user, I want the instructions to be clear, concise and easily accessible.           | Instructions written in plain English and displayed at the of the page    | Yes  | [Instructions View](docs/user-story4.png "Instructions View") |
+| As a user, I want navigation to be intuitive.                                            | Buttons named logically                                                   | Yes  | [Start View](docs/user-story5.png "Start View")               |
+| As a user, I want the score system to be transparent.                                    | Immediate feedback on their answers                                       | Yes  | [Score View](docs/user-story6.png "Score View")               |
+| As a user, I want to be able to use website on range of devices.                         | Quiz is fully functional on all devices                                   | Yes  | [Mobile View](docs/user-story7.png "Mobile View")             |
+| As a user, I want to be able to easily contact content creators for feedback or changes. | Feedback form available                                                   | Yes  | [Feedback Form](docs/user-story8.png "Feedback Form")         |
 | As a user, I want the content to be accessible for anyone with diverse needs.            | Passed all accessibility tests                                            | Yes  | See Accessibility Testing section
 
 [Back to top](#contents)
