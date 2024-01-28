@@ -342,9 +342,18 @@ Final Test Results:
 ### HTML
 
 I have used [W3C HTML Validation Service](https://validator.w3.org/ "W3C HTML"). I have tested 2 html files. They both came back without errors.
+
+* Main Quiz Page:
+
 ![W3C HTML Validator](docs/html-validator-index.png "W3C HTML Validator index.html")
 
+* Feedback Acknowledgement:
+
 ![W3C HTML Validator](docs/html-validator-feedback-thanks.png "W3C HTML Validator feedback-thanks.html")
+
+* 404 Page:
+
+![W3C HTML Validator](docs/404-validator-html.png "W3C HTML Validator 404.html")
 
 
 [Back to top](#contents)
@@ -385,7 +394,9 @@ CSS code for the webpage was validated on [W3C CSS Validation Service](https://j
 
 This website was extensively tested for functionality using both Chrome and Edge developer tools.
 
-[Feature Testing Results](docs/manual-testing.pdf "Feature Testing Results")
+Every feature was manually tested using the test script and outcomes recorded. 
+
+[Feature Testing Results](docs/feature-test-results.pdf "Feature Testing Results")
 
 
 [Back to top](#contents)
