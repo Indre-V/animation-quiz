@@ -229,7 +229,7 @@ Final score view displays a message depending on the right score with the userna
 
 ### Player Scores
 
-Local storage feature has been introduced to store top 5 player scores. When the button is clicked. The cores are displayed in the alert. 
+Local storage feature has been introduced to store top 5 the most recent player scores. When the button is clicked, the scores are displayed in the alert. 
 
 <details><summary><b>Player Scores View/b></summary>
 
@@ -323,6 +323,14 @@ Loader was also added to remove an empty display of question box while content i
 # Testing
 
 ## Bugs Fixed
+
+The game was thoroughly tested. I have documented the manual testing in other parts of this document. I have also, used console logs to unsure JavaScript is running as expected in the background. 3 major bugs were identified and rectified: 
+
+| Bug                              | Status | Description                                                                                                                                                                 | Steps To Resolve                                                                                                                                                         |
+| -------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Player Scores array not updating | Fixed  | New player scores not adding to the player score array. The same 5 scores displaying all the time.                                                                          | Wrong method used. Score was being added to the ed of Array which is fixed size. Updated JS code to add score to the beginning of Array and sort the scores accordingly. |
+| Infinite Timer                   | Fixed  | While testing using console logs, transpired that timer keeps running after the game is finished and until Play Again is clicked.                                           | Moved startTimer function into get new question so when no questions are displayed the timer will not start.                                                             |
+| Progress Dots Missing            | Fixed  | The aim for the functionality is to display correct answers in green, wrong - red, timed out - grey. While testing noticed that it does not add a dot for timed out answer. | Added a function to updateProgressDot ('empty') when the time is up.                                                                                                     |
 
 [Back to top](#contents)
 

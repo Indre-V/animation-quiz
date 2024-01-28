@@ -266,8 +266,7 @@ const getNewQuestion = () => {
     let currentQuestion = quizQuestions[questionNumber];
 
     questionElementRef.innerHTML = currentQuestion.question;
-
-    // Add event listeners to answer buttons
+    
     answerButtonsRef.forEach((button, i) => {
         button.innerHTML = currentQuestion.answers[i];
         button.addEventListener("click", handleAnswerClick);
