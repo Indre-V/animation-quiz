@@ -539,7 +539,7 @@ Forking the GitHub repository allows you to create a duplicate of a local reposi
 
 * Quiz Questions
 
-  * [Open Trivia DB]("https://opentdb.com/" "Open Trivia DB")
+  * [Open Trivia DB](https://opentdb.com/ "Open Trivia DB")
 
 - Code inspiration and learning content:
 
