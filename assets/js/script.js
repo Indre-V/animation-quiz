@@ -412,13 +412,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedLevel = document.querySelector(".level-btns.active");
         const usernameEntered = usernameRef;
 
-        (usernameEntered.value && selectedLevel)
-            ? (
-                hideArea(startQuizAreaRef),
-                displayArea(questionAreaRef),
-                await startGame(selectedLevel.dataset.level)
-            )
-            : alert("Please select Username and Level.");
+        if (usernameEntered.value && selectedLevel) {
+            hideArea(startQuizAreaRef);
+            displayArea(questionAreaRef);
+            await startGame(selectedLevel.dataset.level);
+        } else {
+            alert("Please enter Username and select Level.");
+        }
     });
     levelBtnsRef.forEach((button) => {
         button.addEventListener("click", () => {
