@@ -216,7 +216,6 @@ const formatQuestions = (apiQuestions) => {
 const startGame = async (difficulty) => {
   try {
     quizQuestions = await fetchQuestions(difficulty);
-    console.log("load", difficulty);
     questionNumber = 0;
     getNewQuestion();
   } catch (Error) {
@@ -231,21 +230,15 @@ const startGame = async (difficulty) => {
  */
 
 const getNewQuestion = () => {
-  console.log("start of get new question");
-
   if (questionNumber >= 10) {
-    console.log("gameOver");
     return gameOver();
   }
 
   clearStatusClass(answerButtonsRef);
 
-  console.log("displayQuestions", quizQuestions);
-
   answerButtonsRef.forEach((btn) => (btn.disabled = false));
 
   acceptingAnswers = true;
-  console.log("question number", questionNumber);
 
   const currentQuestion = quizQuestions[questionNumber];
 
@@ -260,7 +253,6 @@ const getNewQuestion = () => {
 
   questionNumber++;
 
-  console.log("startTime in get new question");
   startTimer();
 };
 
@@ -277,7 +269,6 @@ const handleAnswerClick = (event) => {
  *Add a class to display correct answer
  */
 const checkAnswer = (selectedAnswer) => {
-  console.log("check Answer");
   const currentQuestion = quizQuestions[questionNumber - 1];
   const selectedButton = answerButtonsAllRef.find(
     (button) => button.innerHTML === selectedAnswer
@@ -290,14 +281,11 @@ const checkAnswer = (selectedAnswer) => {
 
   if (acceptingAnswers && selectedButton) {
     if (selectedAnswer === currentQuestion.correctAnswer) {
-      console.log("add correct score");
       incrementScore(SCOREBONUS);
       updateProgressDots("correct");
-      console.log("update progress dots");
     } else {
       incrementIncorrect(SCOREBONUS);
       updateProgressDots("wrong");
-      console.log("add WRONG score");
       answerButtonsAllRef
         .find((button) => button.innerHTML === currentQuestion.correctAnswer)
         ?.classList.add("correct");
@@ -410,16 +398,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   highScoresBtnRef.addEventListener("click", (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     playerScoresListRef.classList.toggle("hide");
 
     toggleIcon(highScoresBtnRef.querySelector("i"));
 
     if (!playerScoresListRef.classList.contains("hide")) {
-        displayPlayerScores();
+      displayPlayerScores();
     }
-});
+  });
 
   playAgainRef.addEventListener("click", resetGame);
 });
