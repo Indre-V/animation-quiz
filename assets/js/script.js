@@ -410,4 +410,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   playAgainRef.addEventListener("click", resetGame);
+
 });
