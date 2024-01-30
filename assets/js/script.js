@@ -17,13 +17,10 @@ const questionElementRef = document.querySelector("#question");
 const answerButtonsRef = document.querySelectorAll(".btn-a");
 const answerButtonsAllRef = Array.from(document.querySelectorAll(".btn-a"));
 const highScoresBtnRef = document.querySelector("#high-scores-btn");
-const playerScoresListRef= document.querySelector("#player-scores");
+const playerScoresListRef = document.querySelector("#player-scores");
 const scoreIndicatorRef = document.querySelector("#score-dots");
 
-
 const highScoresRef = JSON.parse(localStorage.getItem("highScores")) || [];
-
-
 
 let correctScore = 0;
 let incorrectScore = 0;
@@ -33,7 +30,7 @@ let quizQuestions = [];
 let acceptingAnswers = true;
 let timeCounter;
 
-const APILINK= `https://opentdb.com/api.php`;
+const APILINK = `https://opentdb.com/api.php`;
 const SCOREBONUS = 1;
 const MAXQUESTIONS = 10;
 const SUPPORT = {
@@ -44,11 +41,9 @@ const SUPPORT = {
 };
 
 const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
-const resetGame = () =>  location.reload();
+const resetGame = () => location.reload();
 const hideArea = (area) => area.classList.add("hide");
 const displayArea = (area) => area.classList.remove("hide");
-
-
 
 /**
  * Function to update progress dots based on the answer status
@@ -105,7 +100,7 @@ const handleTimeUp = () => {
   acceptingAnswers = true;
 };
 
-/** 
+/**
  * After last question, game Over is called
  */
 
@@ -123,7 +118,7 @@ const gameOver = () => {
  *Score message based on the score
  *Retrieves username entered
  */
- const displayFinalScore = () => {
+const displayFinalScore = () => {
   const usernameEntered = usernameRef.value;
   const score = parseInt(scoreRef.textContent);
 
@@ -134,7 +129,7 @@ const gameOver = () => {
 
   highScoresRef.unshift(scoreObject);
   highScoresRef.sort((a, b) => b.score - a.score);
-  highScoresRef.splice(5); 
+  highScoresRef.splice(5);
 
   localStorage.setItem("highScores", JSON.stringify(highScoresRef));
 
@@ -148,9 +143,8 @@ const gameOver = () => {
   scoreMessageRef.textContent = scoreMessage;
   correctScoreRef.textContent = score;
 
-  playerScoresListRef.classList.add('hide');
+  playerScoresListRef.classList.add("hide");
 };
-
 
 /**
  * Displays high scores in a toggle.
@@ -158,15 +152,14 @@ const gameOver = () => {
  */
 
 const displayPlayerScores = () => {
-    playerScoresListRef.innerHTML = '';
+  playerScoresListRef.innerHTML = "";
 
-    highScoresRef.forEach((score, index) => {
-        const scoreList = document.createElement('p');
-        scoreList.textContent = `${index + 1}. ${score.name}: ${score.score}`;
-        playerScoresListRef.appendChild(scoreList);
-    });
+  highScoresRef.forEach((score, index) => {
+    const scoreList = document.createElement("p");
+    scoreList.textContent = `${index + 1}. ${score.name}: ${score.score}`;
+    playerScoresListRef.appendChild(scoreList);
+  });
 };
-
 
 /**
  * Fetches trivia questions from the Open Trivia Database API based on the specified difficulty.
@@ -179,7 +172,9 @@ const fetchQuestions = (difficulty) => {
   displayArea(loaderRef);
   hideArea(questionAreaRef);
 
-  return fetch(`${APILINK}?amount=10&category=32&type=multiple&difficulty=${difficulty}`)
+  return fetch(
+    `${APILINK}?amount=10&category=32&type=multiple&difficulty=${difficulty}`
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Failed to fetch API questions.`);
@@ -247,7 +242,7 @@ const getNewQuestion = () => {
 
   console.log("displayQuestions", quizQuestions);
 
-  answerButtonsRef.forEach((btn) => btn.disabled = false );
+  answerButtonsRef.forEach((btn) => (btn.disabled = false));
 
   acceptingAnswers = true;
   console.log("question number", questionNumber);
@@ -338,7 +333,6 @@ const clearStatusClass = (element) => {
   });
 };
 
-
 const disableAnswerButtons = () => {
   answerButtonsRef.forEach((btn) => {
     btn.classList.add("disabled");
@@ -369,6 +363,11 @@ const handleFetchError = () => {
   setTimeout(() => {
     location.reload();
   }, 1000);
+};
+
+const toggleIcon = (icon) => {
+  icon.classList.toggle("fa-plus");
+  icon.classList.toggle("fa-minus");
 };
 
 /**
@@ -410,16 +409,18 @@ document.addEventListener("DOMContentLoaded", () => {
       supportForms.style.display = show ? "block" : "none";
     }
   });
-  
-  
-highScoresBtnRef.addEventListener('click', () => {
-  playerScoresListRef.classList.toggle('hide');
-  
-  if (!playerScoresListRef.classList.contains('hide')) {
-      displayPlayerScores();
-  }
-});
- 
-  playAgainRef.addEventListener("click", resetGame);
 
+  highScoresBtnRef.addEventListener("click", (event) => {
+    event.preventDefault(); 
+
+    playerScoresListRef.classList.toggle("hide");
+
+    toggleIcon(highScoresBtnRef.querySelector("i"));
+
+    if (!playerScoresListRef.classList.contains("hide")) {
+        displayPlayerScores();
+    }
+});
+
+  playAgainRef.addEventListener("click", resetGame);
 });
