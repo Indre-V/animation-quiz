@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The ultimate animation quiz for animation and cartoon enthusiasts">
-  <meta name="keywords" content="animation, anime, cartoon, quiz, knowledge, test, challenge, score, tv, cinema">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The ultimate animation quiz for animation and cartoon enthusiasts" />
+  <meta name="keywords" content="animation, anime, cartoon, quiz, knowledge, test, challenge, score, tv, cinema" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <title>The Ultimate Animation Quiz</title>
 </head>
 
@@ -21,7 +21,9 @@
   <header>
     <div id="support">
       <div id="instructions-list">
-        <button class="button nav-item" type="button" id="show-instructions">Instructions</button>
+        <button class="button nav-item" type="button" id="show-instructions">
+          Instructions
+        </button>
         <div class="nav-open-view text-center" id="instructions">
           <h3>How to Play</h3>
           <div id="list">
@@ -37,19 +39,23 @@
               <li>Select Play Again to go back to the main page</li>
             </ol>
           </div>
-          <button class="btn btn-support hover" type="button" id="close-instructions">Close</button>
+          <button class="btn btn-support hover" type="button" id="close-instructions">
+            Close
+          </button>
         </div>
       </div>
 
       <div id="contact-form">
-        <button class="button nav-item" type="button" id="show-contactForm">Feedback</button>
+        <button class="button nav-item" type="button" id="show-contactForm">
+          Feedback
+        </button>
         <div class="nav-open-view" id="feedback">
           <form action="feedback-thanks.html" method="GET" class="form">
             <div id="input-box">
               <label for="name-submission">Your Name*</label>
-              <input type="text" id="name-submission" placeholder="Mickey Mouse" required>
+              <input type="text" id="name-submission" placeholder="Mickey Mouse" required />
               <label for="email-submission">Your Email*</label>
-              <input type="email" id="email-submission" placeholder="example@disney.com" required>
+              <input type="email" id="email-submission" placeholder="example@disney.com" required />
               <label for="textarea">Message*</label>
               <textarea name="message" id="textarea" placeholder="Start typing here...." required></textarea>
             </div>
@@ -57,14 +63,17 @@
               Send
             </button>
           </form>
-          <button class="btn btn-support hover" type="button" id="close-contactForm">Close</button>
+          <button class="btn btn-support hover" type="button" id="close-contactForm">
+            Close
+          </button>
         </div>
       </div>
     </div>
   </header>
   <!-- End Header -->
   <!-- Loader  -->
-  <div id="loader" class="hide"></div> >
+  <div id="loader" class="hide"></div>
+  >
   <main>
     <!-- Quiz start area -->
     <div class="quiz-container text-center">
@@ -73,7 +82,7 @@
         <h2 class="text-center">Welcome to the quiz!</h2>
         <form id="start">
           <label for="username">Enter your username:</label>
-          <input type="text" name="username" id="username" class="btn" placeholder="Mickey Mouse" required>
+          <input type="text" name="username" id="username" class="btn" placeholder="Mickey Mouse" required />
           <h3 class="text-center">Choose your level:</h3>
           <div id="difficulty">
             <button data-type="easy" class="level-btns btn hover" data-level="easy" type="button">
@@ -98,23 +107,25 @@
       <div id="question-area" class="hide">
         <div id="progress">
           <p id="progress-text">Question</p>
-          <div id="score-dots"></div>         
+          <div id="score-dots"></div>
           <div id="timer">
             <!-- Font Awesome stopwatch icon -->
             <i class="fas fa-stopwatch"></i>
             <!-- Element to display the remaining seconds -->
             <span id="seconds">20</span>
-        </div>
+          </div>
         </div>
         <div id="question">Question</div>
         <div id="answer-buttons" class="btn-grid">
-          <button type="button" class="btn btn-a ">Answer 1</button>
-          <button type="button" class="btn btn-a ">Answer 2</button>
+          <button type="button" class="btn btn-a">Answer 1</button>
+          <button type="button" class="btn btn-a">Answer 2</button>
           <button type="button" class="btn btn-a">Answer 3</button>
           <button type="button" class="btn btn-a">Answer 4</button>
         </div>
         <div id="score-area">
-          <p><i class="fa fa-level-up" aria-hidden="true"></i><span id="selected-level">x</span></p>
+          <p>
+            <i class="fa fa-level-up" aria-hidden="true"></i><span id="selected-level">x</span>
+          </p>
         </div>
         <div id="result">
           <i class="fa-solid fa-check"></i>: <span id="score">0</span>
@@ -127,8 +138,18 @@
         <p id="score-message"></p>
         <p class="text-center">Final Score:</p>
         <h1 id="correct-score">0</h1>
-        <p><button id="high-scores-btn" class="btn high-scores hover">Player Scores</button></p>
-        <p><button id="play-again-btn" class="btn restart hover">Play Again</button></p>
+        <button id="play-again-btn" class="btn restart hover">
+          Play Again
+        </button>
+        <div class="btn high-score-display text-center">
+          <div id="toggle">
+            <h3 class="text-center">Player Scores</h3>
+            <button id="high-scores-btn" class="hover btn scores-toggle">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <div id="player-scores" class="text-center"></div>
+        </div>
       </div>
     </div>
     <!-- End of Game Over area -->

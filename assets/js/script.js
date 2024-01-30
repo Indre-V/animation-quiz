@@ -17,13 +17,13 @@ const questionElementRef = document.querySelector("#question");
 const answerButtonsRef = document.querySelectorAll(".btn-a");
 const answerButtonsAllRef = Array.from(document.querySelectorAll(".btn-a"));
 const highScoresBtnRef = document.querySelector("#high-scores-btn");
+const playerScoresListRef= document.querySelector("#player-scores");
 const scoreIndicatorRef = document.querySelector("#score-dots");
 
 
-let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const highScoresRef = JSON.parse(localStorage.getItem("highScores")) || [];
 
-const hideArea = (area) => area.classList.add("hide");
-const displayArea = (area) => area.classList.remove("hide");
+
 
 let correctScore = 0;
 let incorrectScore = 0;
@@ -33,10 +33,9 @@ let quizQuestions = [];
 let acceptingAnswers = true;
 let timeCounter;
 
-const SCORE_BONUS = 1;
-const MAX_QUESTIONS = 10;
-
-
+const APILINK= `https://opentdb.com/api.php`;
+const SCOREBONUS = 1;
+const MAXQUESTIONS = 10;
 const SUPPORT = {
   "show-instructions": "instructions",
   "show-contactForm": "feedback",
@@ -44,9 +43,14 @@ const SUPPORT = {
   "close-contactForm": "feedback",
 };
 
+const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
+const resetGame = () =>  location.reload();
+const hideArea = (area) => area.classList.add("hide");
+const displayArea = (area) => area.classList.remove("hide");
 
 
-/***
+
+/**
  * Function to update progress dots based on the answer status
  * @param {"correct" | "wrong"} status - The status of the answer, either 'correct' or 'wrong'.
  */
@@ -119,59 +123,50 @@ const gameOver = () => {
  *Score message based on the score
  *Retrieves username entered
  */
-const displayFinalScore = () => {
+ const displayFinalScore = () => {
   const usernameEntered = usernameRef.value;
   const score = parseInt(scoreRef.textContent);
 
   const scoreObject = {
-    name: usernameRef.value,
+    name: usernameEntered,
     score: score,
   };
-  console.log("add score");
 
-  highScores.unshift(scoreObject);
-  highScores.sort((a, b) => b.score - a.score);
-  highScores.splice(5);
-  localStorage.setItem("highScores", JSON.stringify(highScores));
+  highScoresRef.unshift(scoreObject);
+  highScoresRef.sort((a, b) => b.score - a.score);
+  highScoresRef.splice(5); 
+
+  localStorage.setItem("highScores", JSON.stringify(highScoresRef));
 
   let scoreMessage = "";
 
   if (score < 5) {
     scoreMessage = `${usernameEntered} can do better! Keep trying.`;
   } else {
-    scoreMessage = `Congratulations! ${usernameEntered} done a great job!`;
+    scoreMessage = `Congratulations, ${usernameEntered}! You've done a great job!`;
   }
-
   scoreMessageRef.textContent = scoreMessage;
   correctScoreRef.textContent = score;
+
+  playerScoresListRef.classList.add('hide');
 };
+
 
 /**
- * Displays high scores in an alert dialog.
- * @param {Array} highScores - An array containing high scores objects with properties 'name' and 'score'.
+ * Displays high scores in a toggle.
+ * @param {Array} highScores - An array containing high scores objects
  */
 
-const displayHighScoresAlert = () => {
-  let highScoresString = `Player Scores:\n`;
-  highScores.forEach((score, index) => {
-    highScoresString += `${index + 1}. ${score.name}: ${score.score}\n`;
-  });
+const displayPlayerScores = () => {
+    playerScoresListRef.innerHTML = '';
 
-  alert(highScoresString);
+    highScoresRef.forEach((score, index) => {
+        const scoreList = document.createElement('p');
+        scoreList.textContent = `${index + 1}. ${score.name}: ${score.score}`;
+        playerScoresListRef.appendChild(scoreList);
+    });
 };
 
-highScoresBtnRef.addEventListener("click", displayHighScoresAlert);
-
-/*
- *Reset the game
- *Activate reload page
- */
-
-const resetGame = () =>  location.reload();
-
-playAgainRef.addEventListener("click", resetGame);
-
-const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 
 /**
  * Fetches trivia questions from the Open Trivia Database API based on the specified difficulty.
@@ -183,9 +178,8 @@ const shuffle = (answers) => answers.sort(() => Math.random() - 0.5);
 const fetchQuestions = (difficulty) => {
   displayArea(loaderRef);
   hideArea(questionAreaRef);
-  const apiLink = `https://opentdb.com/api.php?amount=10&category=32&type=multiple&difficulty=${difficulty}`;
 
-  return fetch(apiLink)
+  return fetch(`${APILINK}?amount=10&category=32&type=multiple&difficulty=${difficulty}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Failed to fetch API questions.`);
@@ -267,7 +261,7 @@ const getNewQuestion = () => {
     button.addEventListener("click", handleAnswerClick);
   });
 
-  progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAX_QUESTIONS}`;
+  progressTextRef.innerHTML = `Question ${questionNumber + 1}/${MAXQUESTIONS}`;
 
   questionNumber++;
 
@@ -302,11 +296,11 @@ const checkAnswer = (selectedAnswer) => {
   if (acceptingAnswers && selectedButton) {
     if (selectedAnswer === currentQuestion.correctAnswer) {
       console.log("add correct score");
-      incrementScore(SCORE_BONUS);
+      incrementScore(SCOREBONUS);
       updateProgressDots("correct");
       console.log("update progress dots");
     } else {
-      incrementIncorrect(SCORE_BONUS);
+      incrementIncorrect(SCOREBONUS);
       updateProgressDots("wrong");
       console.log("add WRONG score");
       answerButtonsAllRef
@@ -417,7 +411,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
-
-
+  
+highScoresBtnRef.addEventListener('click', () => {
+  playerScoresListRef.classList.toggle('hide');
+  
+  if (!playerScoresListRef.classList.contains('hide')) {
+      displayPlayerScores();
+  }
+});
+ 
+  playAgainRef.addEventListener("click", resetGame);
 
 });
