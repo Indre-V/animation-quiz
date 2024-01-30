@@ -335,15 +335,17 @@ footer {
   animation: spin 2s linear infinite;
 }
 
+/* style for 404 and feedback thanks pages */
+
 .redirect {
   background-color: var(--light-cream);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--dark-gray);
   margin-top: 5rem;
   padding: 1rem;
-  max-width: 70%;
 }
 
 @keyframes spin {
