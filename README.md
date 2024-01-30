@@ -367,7 +367,7 @@ Final Test Results:
 | Size | Device Example     | Navigation | Element Alignments | Content Placement | Functionality | Notes                                             |
 | ---- | ------------------ | ---------- | ------------------ | ----------------- | ------------- | ------------------------------------------------- |
 | sm   | Samsung Galaxy S20 | Good       | Good               | Good              | Good          | 
-| sm   | iPhone 11 PRO      | Good       | Good               | Good              | Good          | Updated font size of the sart area
+| sm   | iPhone 11 PRO      | Good       | Good               | Good              | Good          | Updated font size of the start area
 | sm   | iPhone 13 PRO MAX  | Good       | Good               | Good              | Good          | Updated header bottom margin to fit quiz container 
 | md   | iPad MINI          | Good       | Good               | Good              | Good          |                                                   |
 | md   | Galaxy Tab S7      | Good       | Good               | Good              | Good          |                                                   |
