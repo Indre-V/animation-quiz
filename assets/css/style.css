@@ -336,6 +336,17 @@ footer {
     animation: spin 2s linear infinite;
 }
 
+.redirect {
+    background-color: var(--light-cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 1rem;
+
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -346,6 +357,14 @@ footer {
     }
 }
 
+#home-icon {
+    font-size: 2rem;
+    color: var(--blue);
+}
+
+#home-icon:hover {
+    color: var(--dark-blue);
+}
 /* Footer */
 
 .fa-brands {

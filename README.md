@@ -123,17 +123,17 @@ I have also used [Contrast Grid](https://contrast-grid.eightshapes.com/ "Contras
 
 
 ![Contrast Grid](docs/contrast-grid-color.png)
-| Primary Colors CSS HEX:             |                                                                                |
-| ---------------------------------- | ------------------------------------------------------------------------------ |
-|     --blue: #95B0B7;               | Button and timer background color, footer hover color.                         |
-|     --dark-gray: #232323;          | Font color for the quiz.                                                       |
-|     --light-gray: #d8d8d8;         | Timer border color, support open background color.                             |
-|     --light-cream: #f4f0ed;        | Button hover color, timer shadow color.                                        |
-|     --dark-blue: #507682;          | Font color for support section, border color for buttons, active button color. |
-| Other Colors CSS HEX:               |                                                                                |
-|     --wrong-answer-red: #ff3333;   | Color for wrong answer button.                                                 |
-|     --right-answer-green: #51BF83; | Color for correct answer button, color for check icon.                         |
-|     --pale-gray: #ffffff9c;        | Overlay color for the quiz container.                                          |
+| CSS Name                 | HEX       | Comment                                                                       |
+| ------------------------ | --------- | ----------------------------------------------------------------------------- |
+|     --blue               | #95B0B7   | Button and timer background color, footer hover color.                        |
+|     --dark-gray          | #232323   | Font color for the quiz                                                       |
+|     --light-gray         | #d8d8d8   | Timer border color, support open background color                             |
+|     --light-cream        | #f4f0ed   | Button hover color, timer shadow color                                        |
+|     --dark-blue          | #507682   | Font color for support section, border color for buttons, active button color |
+| Other Colors CSS Hex     |           |                                                                               |
+|     --wrong-answer-red   | #ff3333   | Color for wrong answer button                                                 |
+|     --right-answer-green | #51BF83   | Color for correct answer button, color for check icon                         |
+|     --pale-gray          | #ffffff9f | Overlay color for the quiz container                                          |                                       |
 
 ### Images
 
