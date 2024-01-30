@@ -15,9 +15,10 @@ const usernameRef = document.querySelector("#username");
 const secondsRef = document.querySelector("#seconds");
 const questionElementRef = document.querySelector("#question");
 const answerButtonsRef = document.querySelectorAll(".btn-a");
+const answerButtonsAllRef = Array.from(document.querySelectorAll(".btn-a"));
 const highScoresBtnRef = document.querySelector("#high-scores-btn");
 const scoreIndicatorRef = document.querySelector("#score-dots");
-const answerButtonsArray = Array.from(document.getElementsByClassName("btn-a"));
+
 
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -35,9 +36,19 @@ let timeCounter;
 const SCORE_BONUS = 1;
 const MAX_QUESTIONS = 10;
 
+
+const SUPPORT = {
+  "show-instructions": "instructions",
+  "show-contactForm": "feedback",
+  "close-instructions": "instructions",
+  "close-contactForm": "feedback",
+};
+
+
+
 /***
  * Function to update progress dots based on the answer status
- * @param {string} status - The status of the answer, either 'correct' or 'wrong'.
+ * @param {"correct" | "wrong"} status - The status of the answer, either 'correct' or 'wrong'.
  */
 const updateProgressDots = (status) => {
   const dot = document.createElement("div");
@@ -64,7 +75,6 @@ const incrementIncorrect = (num) => {
 /**
  * Sets timer for the quiz
  * Counts down from specified time
- * @param {number} time - The time is set in seconds
  */
 
 const startTimer = () => {
@@ -74,7 +84,7 @@ const startTimer = () => {
   timeCounter = setInterval(() => {
     timerElement.textContent = sec;
     sec--;
-    if (sec < 0) {
+    if (sec <= 0) {
       clearInterval(timeCounter);
       handleTimeUp();
     }
@@ -91,8 +101,8 @@ const handleTimeUp = () => {
   acceptingAnswers = true;
 };
 
-/*
- * After last question, Game Over is called
+/** 
+ * After last question, game Over is called
  */
 
 const gameOver = () => {
@@ -102,7 +112,7 @@ const gameOver = () => {
   displayFinalScore();
 };
 
-/*
+/**
  *Display final score
  *Construct a score object containing the user's name and their score
  *Add score to local storage
@@ -142,7 +152,7 @@ const displayFinalScore = () => {
  */
 
 const displayHighScoresAlert = () => {
-  let highScoresString = "Player Scores:\n";
+  let highScoresString = `Player Scores:\n`;
   highScores.forEach((score, index) => {
     highScoresString += `${index + 1}. ${score.name}: ${score.score}\n`;
   });
@@ -157,9 +167,7 @@ highScoresBtnRef.addEventListener("click", displayHighScoresAlert);
  *Activate reload page
  */
 
-const resetGame = () => {
-  location.reload();
-};
+const resetGame = () =>  location.reload();
 
 playAgainRef.addEventListener("click", resetGame);
 
@@ -187,15 +195,15 @@ const fetchQuestions = (difficulty) => {
       return response.json();
     })
     .then((apiData) => formatQuestions(apiData.results))
-    .catch((error) => {
-      handleFetchError(error);
-      throw error;
+    .catch((Error) => {
+      handleFetchError(Error);
+      throw Error;
     });
 };
 
 /**
- * @param {object} apiQuestions - The  data from the API.
- * @returns {object} A formatted question object with properties obtained from API
+ * @param {Array} apiQuestions - The  data from the API.
+ * @returns {Array} A formatted question object with properties obtained from API
  */
 
 const formatQuestions = (apiQuestions) => {
@@ -213,8 +221,7 @@ const formatQuestions = (apiQuestions) => {
 /**
  * Start the game when Start Quiz clicked
  * @param {string} difficulty -  Fetches quiz questions based on the selected difficulty level,
- * @returns {Promise<void>} A promise that resolves when the game is successfully started.
- * @param {Error} error - hadles error if fails to start
+ * @param {Error} error - handles error if fails to start
  */
 
 const startGame = async (difficulty) => {
@@ -223,8 +230,8 @@ const startGame = async (difficulty) => {
     console.log("load", difficulty);
     questionNumber = 0;
     getNewQuestion();
-  } catch (error) {
-    handleFetchError(error);
+  } catch (Error) {
+    handleFetchError();
   }
 };
 
@@ -246,12 +253,12 @@ const getNewQuestion = () => {
 
   console.log("displayQuestions", quizQuestions);
 
-  answerButtonsRef.forEach((btn) => { btn.disabled = false; });
+  answerButtonsRef.forEach((btn) => btn.disabled = false );
 
   acceptingAnswers = true;
   console.log("question number", questionNumber);
 
-  let currentQuestion = quizQuestions[questionNumber];
+  const currentQuestion = quizQuestions[questionNumber];
 
   questionElementRef.innerHTML = currentQuestion.question;
 
@@ -283,7 +290,7 @@ const handleAnswerClick = (event) => {
 const checkAnswer = (selectedAnswer) => {
   console.log("check Answer");
   const currentQuestion = quizQuestions[questionNumber - 1];
-  const selectedButton = answerButtonsArray.find(
+  const selectedButton = answerButtonsAllRef.find(
     (button) => button.innerHTML === selectedAnswer
   );
 
@@ -302,7 +309,7 @@ const checkAnswer = (selectedAnswer) => {
       incrementIncorrect(SCORE_BONUS);
       updateProgressDots("wrong");
       console.log("add WRONG score");
-      answerButtonsArray
+      answerButtonsAllRef
         .find((button) => button.innerHTML === currentQuestion.correctAnswer)
         ?.classList.add("correct");
     }
@@ -328,6 +335,8 @@ const checkAnswer = (selectedAnswer) => {
  * Clears the color and status of the buttons
  * @param {HTMLElement[]} elements - An array of HTML elements of buttons.
  */
+
+//CHANGE ELEMENT
 const clearStatusClass = (element) => {
   element.forEach((btn) => {
     btn.classList.remove("correct", "wrong");
@@ -335,7 +344,6 @@ const clearStatusClass = (element) => {
   });
 };
 
-//prevents user from selecting multiple answers
 
 const disableAnswerButtons = () => {
   answerButtonsRef.forEach((btn) => {
@@ -358,37 +366,16 @@ const activateButton = (selectedLevelBtn) => {
 /**
  * API fetch error handling
  * page reloads if error occurs
- * @param {error} error
+ * @param {Error} error
  */
-const handleFetchError = (error) => {
+const handleFetchError = () => {
+  displayArea(loaderRef);
+  hideArea(questionAreaRef);
   alert("Error fetching data. Please try again later.");
   setTimeout(() => {
     location.reload();
   }, 1000);
 };
-
-/**
- * Shows and hide the Rules window to the user according to the parameter.
- * @param {boolean} show - Boolean to verify if its to show or close window
- */
-
-const supportElements = {
-  "show-instructions": "instructions",
-  "show-contactForm": "feedback",
-  "close-instructions": "instructions",
-  "close-contactForm": "feedback",
-};
-
-document.addEventListener("click", (event) => {
-  const { target } = event;
-  const { id } = target;
-  if (id in supportElements) {
-    event.preventDefault();
-    const show = id.startsWith("show");
-    const supportElement = document.querySelector(`#${supportElements[id]}`);
-    supportElement.style.display = show ? "block" : "none";
-  }
-});
 
 /**
  *Wait for document to fully load and execute content
@@ -398,7 +385,7 @@ document.addEventListener("click", (event) => {
  *Alert when is either level or username missing
  */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   startButtonRef.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -418,4 +405,19 @@ document.addEventListener("DOMContentLoaded", function () {
       activateButton(button);
     });
   });
+
+  document.addEventListener("click", (event) => {
+    const { target } = event;
+    const { id } = target;
+    if (id in SUPPORT) {
+      event.preventDefault();
+      const show = id.startsWith("show");
+      const supportForms = document.querySelector(`#${SUPPORT[id]}`);
+      supportForms.style.display = show ? "block" : "none";
+    }
+  });
+  
+
+
+
 });

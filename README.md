@@ -315,12 +315,10 @@ Loader was also added to remove an empty display of question box while content i
 
 - [Google Fonts](https://fonts.google.com/ "Google Fonts")
 - [Favicon](https://favicon.io/ "Favicon")
-* [Open Trivia DB](https://opentdb.com/ "Open Trivia DB")
-- [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css "cdnjs")
+
 
 ## Tools
 
-* [Codeanywhere](https://app.codeanywhere.com/ "Codeanywhere")
 * [GitHub](https://github.com/ "GitHub")
 * [GitPod](https://www.gitpod.io/#get-started "GitPod")
 * [Balsamiq](https://balsamiq.com/wireframes/ "Balsamiq")
@@ -333,6 +331,8 @@ Loader was also added to remove an empty display of question box while content i
 * [WAVE Accessibility Tool](https://wave.webaim.org/ "WAVE Accessibility Tool")
 * [Image Resize](https://www.iloveimg.com/ "iLoveIMG")
 * [Color Contrast Accessibility Validator](https://color.a11y.com/ "Color Contrast Accessibility Validator")
+* [Open Trivia DB](https://opentdb.com/ "Open Trivia DB")
+- [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css "cdnjs")
 
 
 [Back to top](#contents)
