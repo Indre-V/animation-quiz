@@ -1,3 +1,4 @@
+// Query selectors to select various elements in the HTML document
 const startQuizAreaRef = document.querySelector("#start-area");
 const questionAreaRef = document.querySelector("#question-area");
 const gameOverAreaRef = document.querySelector("#game-over");
@@ -46,7 +47,7 @@ const hideArea = (area) => area.classList.add("hide");
 const displayArea = (area) => area.classList.remove("hide");
 
 /**
- * Function to update progress dots based on the answer status
+ * Updates progress dots based on the answer status
  * @param {"correct" | "wrong"} status - The status of the answer, either 'correct' or 'wrong'.
  */
 const updateProgressDots = (status) => {
@@ -58,7 +59,7 @@ const updateProgressDots = (status) => {
 
 /**
  * Increments the correct and incorrect score
- * @param {number} num - Increments the score by set number.
+ * @param {number} num - Increments/decrements the score
  */
 
 const incrementScore = (num) => {
@@ -72,8 +73,7 @@ const incrementIncorrect = (num) => {
 };
 
 /**
- * Sets timer for the quiz
- * Counts down from specified time
+ * Sets timer for the quiz and counts down from 20 secs
  */
 
 const startTimer = () => {
@@ -90,9 +90,6 @@ const startTimer = () => {
   }, 1000);
 };
 
-/**
- * Handles the time-up event
- */
 
 const handleTimeUp = () => {
   updateProgressDots("empty");
@@ -115,9 +112,9 @@ const gameOver = () => {
  *Display final score
  *Construct a score object containing the user's name and their score
  *Add score to local storage
- *Score message based on the score
- *Retrieves username entered
+ *Score message based on the score including username
  */
+
 const displayFinalScore = () => {
   const usernameEntered = usernameRef.value;
   const score = parseInt(scoreRef.textContent);
@@ -159,6 +156,16 @@ const displayPlayerScores = () => {
     scoreList.textContent = `${index + 1}. ${score.name}: ${score.score}`;
     playerScoresListRef.appendChild(scoreList);
   });
+};
+
+/**
+ * Change of the icon.
+ * @param {HTMLElement} icon - whose classes will be toggled
+ */
+
+const toggleIcon = (icon) => {
+  icon.classList.toggle("fa-plus");
+  icon.classList.toggle("fa-minus");
 };
 
 /**
@@ -224,7 +231,6 @@ const startGame = async (difficulty) => {
 };
 
 /*
- * Loads and displays new question onto the quiz.
  * Display question text, answer choices
  * Assign each answer to a specific button.
  */
@@ -256,18 +262,17 @@ const getNewQuestion = () => {
   startTimer();
 };
 
-// Event listener function for answer button clicks
 const handleAnswerClick = (event) => {
   const selectedAnswer = event.target.innerHTML;
   checkAnswer(selectedAnswer);
 };
 
 /**
- *Checks if the selected answer is correct
  *Find button corresponding to the selected answer
- *Check if the selected answer is correct
- *Add a class to display correct answer
+ *Check if the selected answer is correct or wrong
+ *@param {string} selectedAnswer - The answer selected by the user.
  */
+
 const checkAnswer = (selectedAnswer) => {
   const currentQuestion = quizQuestions[questionNumber - 1];
   const selectedButton = answerButtonsAllRef.find(
@@ -310,15 +315,16 @@ const checkAnswer = (selectedAnswer) => {
 
 /**
  * Clears the color and status of the buttons
- * @param {HTMLElement[]} elements - An array of HTML elements of buttons.
+ * @param {HTMLElement[]} button- An array of buttons.
  */
 
-const clearStatusClass = (element) => {
-  element.forEach((btn) => {
+const clearStatusClass = (button) => {
+  button.forEach((btn) => {
     btn.classList.remove("correct", "wrong");
     btn.classList.remove("disabled");
   });
 };
+
 
 const disableAnswerButtons = () => {
   answerButtonsRef.forEach((btn) => {
@@ -328,8 +334,8 @@ const disableAnswerButtons = () => {
 };
 
 /**
- * Activate level buttons
  * Adds selected level to question display area
+ * @param {HTMLElement} selectedLevelBtn - The HTML buttonbmrepresenting the selected level button.
  */
 
 const activateButton = (selectedLevelBtn) => {
@@ -339,9 +345,7 @@ const activateButton = (selectedLevelBtn) => {
 };
 
 /**
- * API fetch error handling
- * page reloads if error occurs
- * @param {Error} error
+ * API fetch error handling to reload if error occurs
  */
 const handleFetchError = () => {
   displayArea(loaderRef);
@@ -352,17 +356,14 @@ const handleFetchError = () => {
   }, 1000);
 };
 
-const toggleIcon = (icon) => {
-  icon.classList.toggle("fa-plus");
-  icon.classList.toggle("fa-minus");
-};
+
 
 /**
  *Wait for document to fully load and execute content
  *@param {Event} event - the form submission event.
- *Username and Level selection process
+ *Username and Level selection process and alert when is either level or username missing
  *Hide start area and display question area
- *Alert when is either level or username missing
+ *Loads event listeners 
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -380,6 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please enter Username and select Level.");
     }
   });
+
   levelBtnsRef.forEach((button) => {
     button.addEventListener("click", () => {
       activateButton(button);
@@ -401,7 +403,6 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     playerScoresListRef.classList.toggle("hide");
-
     toggleIcon(highScoresBtnRef.querySelector("i"));
 
     if (!playerScoresListRef.classList.contains("hide")) {
