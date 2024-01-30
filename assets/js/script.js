@@ -325,7 +325,6 @@ const checkAnswer = (selectedAnswer) => {
  * @param {HTMLElement[]} elements - An array of HTML elements of buttons.
  */
 
-//CHANGE ELEMENT
 const clearStatusClass = (element) => {
   element.forEach((btn) => {
     btn.classList.remove("correct", "wrong");

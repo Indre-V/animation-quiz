@@ -398,6 +398,7 @@ I have used [W3C HTML Validation Service](https://validator.w3.org/ "W3C HTML").
 [Back to top](#contents)
 
 ### CSS
+
 CSS code for the webpage was validated on [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/ "W3C CSS Validator"). It has returned errors only relating to external cdnjs file which is used for font awesome icons. There were no errors relating CSS code for this website. 
 
 ![W3C CSS Validator](docs/css-validator-results.png "W3C CSS Validator results")
@@ -503,7 +504,7 @@ The Ultimate Animation Quiz was deployed early in the process to GitHub pages vi
 
 - Click on the **Save** button.
 
-- The website is now live at `https://indre-v.github.io/animation-quiz/`.
+- The website is now live at https://indre-v.github.io/animation-quiz/.
 
 _Any changes required to the website, they can be made, committed and pushed to GitHub._
 
