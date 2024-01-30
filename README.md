@@ -160,8 +160,11 @@ This webpage has a header consistent across all screen sizes. It contains Instru
 
 ![Header large screen](docs/header-full-screen.png)
 
+<details><summary><b>Header Open</b></summary>
+
 ![Header Open](docs/header-open.png)
 
+</details><br/>
 
 #### Instructions
 
@@ -185,7 +188,7 @@ Users have an option to submit feedback and any other queries they may have. All
 
 #### Feedback Confirmation
 
-Provides the user with acknowledgement. Page reloads after 5 seconds and returns to the start screen. 
+Provides the user with acknowledgement. Page reloads after 5 seconds and returns to the start screen. There is also an option to click on home icon to return to homepage. 
 
 <details><summary><b>Feedback Confirmation Page</b></summary>
 
@@ -245,7 +248,7 @@ Final score view displays a message depending on the right score with the userna
 
 ### Player Scores
 
-Local storage feature has been introduced to store top 5 the most recent player scores. When the button is clicked, the scores are displayed in the alert. This feedback helps users track their progress and encourages them to continue participating to improve their scores.
+Local storage feature has been introduced to store top 5 the most recent player scores. When the toggle is clicked, the scores are displayed. It closes by clicking minus sign. This feedback helps users track their progress and encourages them to continue participating to improve their scores. There is hover effect on the toggle for UX. 
 
 <details><summary><b>Player Scores View</b></summary>
 
@@ -271,7 +274,7 @@ To continue with cool toned theme, footer is very simple with two icons at the b
 
 ### 404 Page
 
-In a scenario where the link may be broken, 404 page has a built in 15 second auto refresh function which returns to homepage. 
+In a scenario where the link may be broken, 404 page has a built in 5 second auto refresh function which returns to homepage. It also contains home icon chich brings back to the homepage. 
 
 <details><summary><b>404 Page Screenshot</b></summary>
 
@@ -341,7 +344,7 @@ Loader was also added to remove an empty display of question box while content i
 
 ## Bugs 
 
-The quiz was thoroughly tested. I have recorded the manual testing in other parts of this document. I have used console logs to ensure JavaScript is running as expected in the background. 3 major bugs were identified and rectified. 2 bug are still unresolved and require further investigation: 
+The quiz was thoroughly tested. I have recorded the manual testing in other parts of this document. I have used console logs to ensure JavaScript is running as expected in the background. 3 major bugs were identified and rectified. 2 bugs are still unresolved and require further investigation: 
 
 | Bug                              | Status     | Description                                                                                                                                                                                                                                                                                                                         | Steps To Resolve                                                                                                                                                                                                                             |
 | -------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

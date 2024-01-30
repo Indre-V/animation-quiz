@@ -1,4 +1,4 @@
-// Query selectors to select various elements in the HTML document
+
 const startQuizAreaRef = document.querySelector("#start-area");
 const questionAreaRef = document.querySelector("#question-area");
 const gameOverAreaRef = document.querySelector("#game-over");
@@ -89,7 +89,6 @@ const startTimer = () => {
     }
   }, 1000);
 };
-
 
 const handleTimeUp = () => {
   updateProgressDots("empty");
@@ -325,7 +324,6 @@ const clearStatusClass = (button) => {
   });
 };
 
-
 const disableAnswerButtons = () => {
   answerButtonsRef.forEach((btn) => {
     btn.classList.add("disabled");
@@ -356,14 +354,12 @@ const handleFetchError = () => {
   }, 1000);
 };
 
-
-
 /**
  *Wait for document to fully load and execute content
  *@param {Event} event - the form submission event.
  *Username and Level selection process and alert when is either level or username missing
  *Hide start area and display question area
- *Loads event listeners 
+ *Loads event listeners
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -411,5 +407,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   playAgainRef.addEventListener("click", resetGame);
-
 });
